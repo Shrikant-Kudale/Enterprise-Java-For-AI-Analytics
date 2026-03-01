@@ -31,3 +31,19 @@ Level 0 interpreter -> Levels 1-3 C1 (quick, with profiling at level 3) -> Level
 * Latency SLOs (p99) are dominated by GC pauses and JIT warm-up: pre-warm with synthetic traffic before joining the load balancer.
 * In containers use `-XX:MaxRAMPercentage=70` (not a fixed `-Xmx`) and leave room for Metaspace + direct memory + thread stacks.
 
+## 2. Memory Architecture Breakdown
+
+```
+ +--------------------------- JVM process (RSS) ---------------------------+
+ |  Java Heap (-Xms/-Xmx)         |  Metaspace   |  Code Cache  |  Threads  |
+ |  +-------+--------+---------+  |  (native)    |  (C1+C2 code)|  stacks   |
+ |  | Eden  | Surv   |  Old    |  |              |              |  1MB each |
+ |  +-------+--------+---------+  |              |              |           |
+ |                                 +--------------+--------------+-----------+
+ |  Direct buffers / mmap (native, -XX:MaxDirectMemorySize)  | GC structures |
+ +-----------------------------------------------------------+---------------+
+```
+* `RSS = heap + metaspace + code cache + thread stacks + direct + GC remembered sets + libc arenas`. A 4 GB `-Xmx` JVM routinely uses 5-5.5 GB RSS - size container limits accordingly.
+* **Remembered sets / card tables** let a young GC avoid scanning the whole old gen; they cost ~5-10 % of heap in G1.
+* **Safepoints** - GC, deopt and biased-lock revocation stop all threads at safepoints; a counted loop without safepoint polls (`int` loop) delays them (time-to-safepoint problem).
+
