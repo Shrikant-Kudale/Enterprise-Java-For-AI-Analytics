@@ -47,3 +47,12 @@ Level 0 interpreter -> Levels 1-3 C1 (quick, with profiling at level 3) -> Level
 * **Remembered sets / card tables** let a young GC avoid scanning the whole old gen; they cost ~5-10 % of heap in G1.
 * **Safepoints** - GC, deopt and biased-lock revocation stop all threads at safepoints; a counted loop without safepoint polls (`int` loop) delays them (time-to-safepoint problem).
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. `System.gc()` is a hint, and `WeakReference` clearing in a test is never guaranteed - never assert on it.
+2. A microbenchmark without warm-up measures the interpreter. A benchmark whose result is unused is deleted by dead-code elimination - always consume the result (blackhole / sink).
+3. Escape analysis can remove allocation entirely: `new Point` in a hot loop may cost 0 bytes. Storing the reference into a static field defeats it.
+4. `-Xmx` bigger than physical RAM in a container -> OOM-killer (exit 137) not `OutOfMemoryError`.
+5. Humongous allocations (>= region/2) bypass Eden; many of them trigger concurrent cycles early (`G1 Humongous Allocation` GC cause).
+6. Deep recursion on a virtual thread grows the stack on the heap; on a platform thread it is fixed (`-Xss`).
+
