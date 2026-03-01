@@ -56,3 +56,23 @@ Level 0 interpreter -> Levels 1-3 C1 (quick, with profiling at level 3) -> Level
 5. Humongous allocations (>= region/2) bypass Eden; many of them trigger concurrent cycles early (`G1 Humongous Allocation` GC cause).
 6. Deep recursion on a virtual thread grows the stack on the heap; on a platform thread it is fixed (`-Xss`).
 
+## 4. Interview Q&A
+
+**Q1. What is the difference between heap and stack memory in Java?**  
+Heap is shared, GC managed and holds objects/arrays. Each thread has its own stack of frames holding primitives and *references*; frames die on return so no GC is needed. Escape analysis can even stack-allocate (scalar-replace) objects that don't escape.
+
+**Q2. Explain tiered compilation.**  
+Code starts interpreted, gathers counters, is compiled by C1 (fast compile, optional profiling), then hot methods are recompiled by C2 using the collected type/branch profiles. This gives fast startup and peak throughput. Deopt falls back to the interpreter if a speculative assumption fails.
+
+**Q3. Why does the first request to a Java service take 10x longer?**  
+Class loading and linking, interpreter execution, no inlining and cold caches. Mitigate with warm-up traffic, CDS/AppCDS, `-XX:TieredStopAtLevel`, or GraalVM native-image / CRaC for fast start.
+
+**Q4. G1 vs ZGC vs Parallel - how do you choose?**  
+Parallel: max throughput for batch jobs, long pauses OK. G1: balanced default, pause goal `MaxGCPauseMillis`. ZGC (generational in 21+): sub-millisecond pauses independent of heap size, ideal for latency-critical inference APIs with big heaps, at ~10-15% throughput cost.
+
+**Q5. How would you diagnose a memory leak in production?**  
+Watch old-gen after full GC trend; `jcmd <pid> GC.heap_dump`, analyse with Eclipse MAT dominator tree; use JFR allocation profiling (`jcmd JFR.start`), look for growing `static` maps, ThreadLocals, listeners, and unbounded caches.
+
+**Q6. Why do compressed oops matter?**  
+Object references shrink from 8 to 4 bytes by storing 8-byte-aligned offsets, improving cache density by ~15-20%. They disable automatically above ~32 GB heap, so a 40 GB heap may hold *less* than a 31 GB one.
+
