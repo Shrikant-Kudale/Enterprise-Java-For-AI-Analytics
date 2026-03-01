@@ -1,0 +1,554 @@
+{
+  "day-01-jvm-memory-and-jit": {
+    "day": 1,
+    "backdate": "2026-03-01",
+    "git_date": "2026-03-01T10:00:00+05:30",
+    "commit_message": "feat(day-01): JVM runtime areas, escape analysis and JIT warm-up benchmark"
+  },
+  "day-02-modern-java-syntax-records-sealed-classes": {
+    "day": 2,
+    "backdate": "2026-03-02",
+    "git_date": "2026-03-02T10:00:00+05:30",
+    "commit_message": "feat(day-02): records, sealed hierarchies, record patterns and exhaustive switch"
+  },
+  "day-03-oop-and-design-patterns-for-ai-backends": {
+    "day": 3,
+    "backdate": "2026-03-03",
+    "git_date": "2026-03-03T10:00:00+05:30",
+    "commit_message": "feat(day-03): strategy, decorator, factory, builder, observer and chain patterns for model serving"
+  },
+  "day-04-exception-hierarchies-and-clean-architecture": {
+    "day": 4,
+    "backdate": "2026-03-04",
+    "git_date": "2026-03-04T10:00:00+05:30",
+    "commit_message": "feat(day-04): sealed domain exceptions, Result type and ports-and-adapters scoring use case"
+  },
+  "day-05-io-nio-and-fast-data-serialization": {
+    "day": 5,
+    "backdate": "2026-03-05",
+    "git_date": "2026-03-05T10:00:00+05:30",
+    "commit_message": "feat(day-05): stream vs channel vs mmap binary IO and CSV baseline benchmark"
+  },
+  "day-06-generics-and-type-erasure": {
+    "day": 6,
+    "backdate": "2026-03-06",
+    "git_date": "2026-03-06T10:00:00+05:30",
+    "commit_message": "feat(day-06): bounded types, PECS, super type tokens, bridge methods and heap pollution"
+  },
+  "day-07-collections-arraylist-and-linkedlist-internals": {
+    "day": 7,
+    "backdate": "2026-03-07",
+    "git_date": "2026-03-07T10:00:00+05:30",
+    "commit_message": "feat(day-07): hand-built ArrayList/LinkedList with growth policy, fail-fast iterators and benchmarks"
+  },
+  "day-08-hashmap-treeify-and-concurrenthashmap": {
+    "day": 8,
+    "backdate": "2026-03-08",
+    "git_date": "2026-03-08T10:00:00+05:30",
+    "commit_message": "feat(day-08): hash table from scratch, collision attack benchmark and ConcurrentHashMap atomics"
+  },
+  "day-09-queues-deques-and-priority-heaps": {
+    "day": 9,
+    "backdate": "2026-03-09",
+    "git_date": "2026-03-09T10:00:00+05:30",
+    "commit_message": "feat(day-09): binary heap, ring-buffer deque, top-K, k-way merge and sliding-window maximum"
+  },
+  "day-10-custom-data-structures-for-analytics": {
+    "day": 10,
+    "backdate": "2026-03-10",
+    "git_date": "2026-03-10T10:00:00+05:30",
+    "commit_message": "feat(day-10): Bloom filter, Count-Min sketch, HyperLogLog, Welford stats and reservoir sampling"
+  },
+  "day-11-comparators-sorting-and-binary-search": {
+    "day": 11,
+    "backdate": "2026-03-11",
+    "git_date": "2026-03-11T10:00:00+05:30",
+    "commit_message": "feat(day-11): comparator chains, stable merge sort, 3-way quicksort and binary-search variants"
+  },
+  "day-12-big-o-optimization-in-java-collections": {
+    "day": 12,
+    "backdate": "2026-03-12",
+    "git_date": "2026-03-12T10:00:00+05:30",
+    "commit_message": "feat(day-12): empirical complexity experiments - membership, two-sum, string building, queues, presizing"
+  },
+  "day-13-functional-interfaces-and-lambdas": {
+    "day": 13,
+    "backdate": "2026-03-13",
+    "git_date": "2026-03-13T10:00:00+05:30",
+    "commit_message": "feat(day-13): custom functional interfaces, currying, memoization, feature pipelines and lambda benchmarks"
+  },
+  "day-14-stream-api-internals-and-custom-collectors": {
+    "day": 14,
+    "backdate": "2026-03-14",
+    "git_date": "2026-03-14T10:00:00+05:30",
+    "commit_message": "feat(day-14): lazy pipelines, custom collectors, sliding-window spliterator and stream-vs-loop benchmarks"
+  },
+  "day-15-parallel-streams-and-forkjoin-pool": {
+    "day": 15,
+    "backdate": "2026-03-15",
+    "git_date": "2026-03-15T10:00:00+05:30",
+    "commit_message": "feat(day-15): RecursiveTask/Action, custom pool for parallel streams, threshold tuning and pitfalls"
+  },
+  "day-16-multithreading-synchronization-and-locks": {
+    "day": 16,
+    "backdate": "2026-03-16",
+    "git_date": "2026-03-16T10:00:00+05:30",
+    "commit_message": "feat(day-16): counters, lock ordering, volatile visibility and deadlock detection"
+  },
+  "day-17-executorservice-and-completablefuture": {
+    "day": 17,
+    "backdate": "2026-03-17",
+    "git_date": "2026-03-17T10:00:00+05:30",
+    "commit_message": "feat(day-17): bounded pools, rejection policies and scatter-gather with timeouts"
+  },
+  "day-18-virtual-threads-and-project-loom": {
+    "day": 18,
+    "backdate": "2026-03-18",
+    "git_date": "2026-03-18T10:00:00+05:30",
+    "commit_message": "feat(day-18): virtual-thread executors, concurrency limits and pinning comparison"
+  },
+  "day-19-spring-boot-3-microservices-architecture": {
+    "day": 19,
+    "backdate": "2026-03-19",
+    "git_date": "2026-03-19T10:00:00+05:30",
+    "commit_message": "feat(day-19): mini DI container, annotation routing and HTTP microservice from first principles"
+  },
+  "day-20-spring-data-jpa-and-hikaricp-optimization": {
+    "day": 20,
+    "backdate": "2026-03-20",
+    "git_date": "2026-03-20T10:00:00+05:30",
+    "commit_message": "feat(day-20): connection pool, N+1 elimination, JDBC batching and pool-sizing experiment"
+  },
+  "day-21-rest-api-design-and-validation": {
+    "day": 21,
+    "backdate": "2026-03-21",
+    "git_date": "2026-03-21T10:00:00+05:30",
+    "commit_message": "feat(day-21): annotation-driven validation, RFC 7807 errors, cursor pagination, idempotency keys"
+  },
+  "day-22-redis-caching-for-high-throughput": {
+    "day": 22,
+    "backdate": "2026-03-22",
+    "git_date": "2026-03-22T10:00:00+05:30",
+    "commit_message": "feat(day-22): TTL+LRU cache, single-flight stampede guard and RESP wire codec"
+  },
+  "day-23-spring-batch-for-massive-dataset-processing": {
+    "day": 23,
+    "backdate": "2026-03-23",
+    "git_date": "2026-03-23T10:00:00+05:30",
+    "commit_message": "feat(day-23): chunk-oriented batch engine with skip, restart checkpoints and partitioning"
+  },
+  "day-24-grpc-for-low-latency-microservice-rpc": {
+    "day": 24,
+    "backdate": "2026-03-24",
+    "git_date": "2026-03-24T10:00:00+05:30",
+    "commit_message": "feat(day-24): protobuf-style varint encoding and length-prefixed TCP RPC with latency percentiles"
+  },
+  "day-25-vector-and-matrix-manipulation-in-java": {
+    "day": 25,
+    "backdate": "2026-03-25",
+    "git_date": "2026-03-25T10:00:00+05:30",
+    "commit_message": "feat(day-25): cache-aware matmul variants, stable softmax and cosine similarity"
+  },
+  "day-26-onnx-runtime-integration-in-java": {
+    "day": 26,
+    "backdate": "2026-03-26",
+    "git_date": "2026-03-26T10:00:00+05:30",
+    "commit_message": "feat(day-26): ONNX-style tensor graph executor (Gemm/Relu/Softmax) with batch benchmark"
+  },
+  "day-27-deep-java-library-djl-inference-pipeline": {
+    "day": 27,
+    "backdate": "2026-03-27",
+    "git_date": "2026-03-27T10:00:00+05:30",
+    "commit_message": "feat(day-27): Translator/Predictor/Criteria pipeline with dynamic micro-batching"
+  },
+  "day-28-vector-database-client-integration": {
+    "day": 28,
+    "backdate": "2026-03-28",
+    "git_date": "2026-03-28T10:00:00+05:30",
+    "commit_message": "feat(day-28): flat vs IVF approximate search, recall@k, metadata filters and Qdrant REST payloads"
+  },
+  "day-29-enterprise-system-design-ai-microservice": {
+    "day": 29,
+    "backdate": "2026-03-29",
+    "git_date": "2026-03-29T10:00:00+05:30",
+    "commit_message": "feat(day-29): inference gateway with rate limit, cache, bulkhead, circuit breaker, retry and capacity math"
+  },
+  "day-30-faang-interview-deep-dive-and-mock-round": {
+    "day": 30,
+    "backdate": "2026-03-30",
+    "git_date": "2026-03-30T10:00:00+05:30",
+    "commit_message": "feat(day-30): timed mock round - LRU, top-K, intervals, median, quickselect, bounded queue, rate limiter"
+  },
+  "day-31-string-internals-and-interning": {
+    "day": 31,
+    "backdate": "2026-03-31",
+    "git_date": "2026-03-31T10:00:00+05:30",
+    "commit_message": "feat(day-31): string internals and interning mini-lab with assertions"
+  },
+  "day-32-optional-and-null-safety": {
+    "day": 32,
+    "backdate": "2026-04-01",
+    "git_date": "2026-04-01T10:00:00+05:30",
+    "commit_message": "feat(day-32): optional and null safety mini-lab with assertions"
+  },
+  "day-33-immutability-and-defensive-copying": {
+    "day": 33,
+    "backdate": "2026-04-02",
+    "git_date": "2026-04-02T10:00:00+05:30",
+    "commit_message": "feat(day-33): immutability and defensive copying mini-lab with assertions"
+  },
+  "day-34-equals-hashcode-and-object-contracts": {
+    "day": 34,
+    "backdate": "2026-04-03",
+    "git_date": "2026-04-03T10:00:00+05:30",
+    "commit_message": "feat(day-34): equals, hashcode and object contracts mini-lab with assertions"
+  },
+  "day-35-enums-and-state-machines": {
+    "day": 35,
+    "backdate": "2026-04-04",
+    "git_date": "2026-04-04T10:00:00+05:30",
+    "commit_message": "feat(day-35): enums and state machines mini-lab with assertions"
+  },
+  "day-36-interfaces-default-methods-and-mixins": {
+    "day": 36,
+    "backdate": "2026-04-05",
+    "git_date": "2026-04-05T10:00:00+05:30",
+    "commit_message": "feat(day-36): interfaces, default methods and mixins mini-lab with assertions"
+  },
+  "day-37-nested-classes-and-capture": {
+    "day": 37,
+    "backdate": "2026-04-06",
+    "git_date": "2026-04-06T10:00:00+05:30",
+    "commit_message": "feat(day-37): nested classes and variable capture mini-lab with assertions"
+  },
+  "day-38-reflection-and-annotations": {
+    "day": 38,
+    "backdate": "2026-04-07",
+    "git_date": "2026-04-07T10:00:00+05:30",
+    "commit_message": "feat(day-38): reflection and annotations mini-lab with assertions"
+  },
+  "day-39-java-time-api-and-time-series": {
+    "day": 39,
+    "backdate": "2026-04-08",
+    "git_date": "2026-04-08T10:00:00+05:30",
+    "commit_message": "feat(day-39): java.time api and time series mini-lab with assertions"
+  },
+  "day-40-bigdecimal-and-numeric-precision": {
+    "day": 40,
+    "backdate": "2026-04-09",
+    "git_date": "2026-04-09T10:00:00+05:30",
+    "commit_message": "feat(day-40): bigdecimal and numeric precision mini-lab with assertions"
+  },
+  "day-41-bit-manipulation-and-bitsets": {
+    "day": 41,
+    "backdate": "2026-04-10",
+    "git_date": "2026-04-10T10:00:00+05:30",
+    "commit_message": "feat(day-41): bit manipulation and bitsets mini-lab with assertions"
+  },
+  "day-42-text-processing-regex-and-tokenization": {
+    "day": 42,
+    "backdate": "2026-04-11",
+    "git_date": "2026-04-11T10:00:00+05:30",
+    "commit_message": "feat(day-42): regex and tokenization mini-lab with assertions"
+  },
+  "day-43-json-parsing-from-scratch": {
+    "day": 43,
+    "backdate": "2026-04-12",
+    "git_date": "2026-04-12T10:00:00+05:30",
+    "commit_message": "feat(day-43): json parsing from scratch mini-lab with assertions"
+  },
+  "day-44-csv-streaming-and-large-files": {
+    "day": 44,
+    "backdate": "2026-04-13",
+    "git_date": "2026-04-13T10:00:00+05:30",
+    "commit_message": "feat(day-44): csv streaming and large files mini-lab with assertions"
+  },
+  "day-45-logging-and-structured-observability": {
+    "day": 45,
+    "backdate": "2026-04-14",
+    "git_date": "2026-04-14T10:00:00+05:30",
+    "commit_message": "feat(day-45): logging and structured observability mini-lab with assertions"
+  },
+  "day-46-unit-testing-assertions-and-property-tests": {
+    "day": 46,
+    "backdate": "2026-04-15",
+    "git_date": "2026-04-15T10:00:00+05:30",
+    "commit_message": "feat(day-46): unit testing and property tests mini-lab with assertions"
+  },
+  "day-47-jmh-style-benchmarking-pitfalls": {
+    "day": 47,
+    "backdate": "2026-04-16",
+    "git_date": "2026-04-16T10:00:00+05:30",
+    "commit_message": "feat(day-47): jmh-style benchmarking pitfalls mini-lab with assertions"
+  },
+  "day-48-garbage-collection-algorithms-simulation": {
+    "day": 48,
+    "backdate": "2026-04-17",
+    "git_date": "2026-04-17T10:00:00+05:30",
+    "commit_message": "feat(day-48): garbage collection: mark-sweep simulation mini-lab with assertions"
+  },
+  "day-49-classloading-and-service-loader": {
+    "day": 49,
+    "backdate": "2026-04-18",
+    "git_date": "2026-04-18T10:00:00+05:30",
+    "commit_message": "feat(day-49): class loading basics mini-lab with assertions"
+  },
+  "day-50-memory-leaks-weak-references-and-caches": {
+    "day": 50,
+    "backdate": "2026-04-19",
+    "git_date": "2026-04-19T10:00:00+05:30",
+    "commit_message": "feat(day-50): memory leaks, weak references and caches mini-lab with assertions"
+  },
+  "day-51-jvm-flags-and-tuning-cheatsheet": {
+    "day": 51,
+    "backdate": "2026-04-20",
+    "git_date": "2026-04-20T10:00:00+05:30",
+    "commit_message": "feat(day-51): jvm flags and heap sizing mini-lab with assertions"
+  },
+  "day-52-profiling-jfr-and-thread-dumps": {
+    "day": 52,
+    "backdate": "2026-04-21",
+    "git_date": "2026-04-21T10:00:00+05:30",
+    "commit_message": "feat(day-52): profiling, jfr and thread dumps mini-lab with assertions"
+  },
+  "day-53-two-pointers-and-sliding-window": {
+    "day": 53,
+    "backdate": "2026-04-22",
+    "git_date": "2026-04-22T10:00:00+05:30",
+    "commit_message": "feat(day-53): two pointers and sliding window mini-lab with assertions"
+  },
+  "day-54-prefix-sums-and-difference-arrays": {
+    "day": 54,
+    "backdate": "2026-04-23",
+    "git_date": "2026-04-23T10:00:00+05:30",
+    "commit_message": "feat(day-54): prefix sums and difference arrays mini-lab with assertions"
+  },
+  "day-55-graph-bfs-dfs-and-topological-sort": {
+    "day": 55,
+    "backdate": "2026-04-24",
+    "git_date": "2026-04-24T10:00:00+05:30",
+    "commit_message": "feat(day-55): graph bfs, dfs and topological sort mini-lab with assertions"
+  },
+  "day-56-dijkstra-and-shortest-paths": {
+    "day": 56,
+    "backdate": "2026-04-25",
+    "git_date": "2026-04-25T10:00:00+05:30",
+    "commit_message": "feat(day-56): dijkstra and shortest paths mini-lab with assertions"
+  },
+  "day-57-union-find-and-connected-components": {
+    "day": 57,
+    "backdate": "2026-04-26",
+    "git_date": "2026-04-26T10:00:00+05:30",
+    "commit_message": "feat(day-57): union-find and connected components mini-lab with assertions"
+  },
+  "day-58-tries-and-autocomplete": {
+    "day": 58,
+    "backdate": "2026-04-27",
+    "git_date": "2026-04-27T10:00:00+05:30",
+    "commit_message": "feat(day-58): tries and autocomplete mini-lab with assertions"
+  },
+  "day-59-dynamic-programming-patterns": {
+    "day": 59,
+    "backdate": "2026-04-28",
+    "git_date": "2026-04-28T10:00:00+05:30",
+    "commit_message": "feat(day-59): dynamic programming patterns mini-lab with assertions"
+  },
+  "day-60-backtracking-and-combinatorics": {
+    "day": 60,
+    "backdate": "2026-04-29",
+    "git_date": "2026-04-29T10:00:00+05:30",
+    "commit_message": "feat(day-60): backtracking and combinatorics mini-lab with assertions"
+  },
+  "day-61-intervals-and-sweep-line": {
+    "day": 61,
+    "backdate": "2026-04-30",
+    "git_date": "2026-04-30T10:00:00+05:30",
+    "commit_message": "feat(day-61): intervals and sweep line mini-lab with assertions"
+  },
+  "day-62-http-client-and-timeouts-retries": {
+    "day": 62,
+    "backdate": "2026-05-01",
+    "git_date": "2026-05-01T10:00:00+05:30",
+    "commit_message": "feat(day-62): http client, timeouts and retries mini-lab with assertions"
+  },
+  "day-63-transactions-and-isolation-levels": {
+    "day": 63,
+    "backdate": "2026-05-02",
+    "git_date": "2026-05-02T10:00:00+05:30",
+    "commit_message": "feat(day-63): transactions and isolation levels mini-lab with assertions"
+  },
+  "day-64-optimistic-locking-and-versioning": {
+    "day": 64,
+    "backdate": "2026-05-03",
+    "git_date": "2026-05-03T10:00:00+05:30",
+    "commit_message": "feat(day-64): optimistic locking and versioning mini-lab with assertions"
+  },
+  "day-65-idempotency-and-exactly-once-semantics": {
+    "day": 65,
+    "backdate": "2026-05-04",
+    "git_date": "2026-05-04T10:00:00+05:30",
+    "commit_message": "feat(day-65): idempotency and exactly-once semantics mini-lab with assertions"
+  },
+  "day-66-message-queues-and-consumer-groups": {
+    "day": 66,
+    "backdate": "2026-05-05",
+    "git_date": "2026-05-05T10:00:00+05:30",
+    "commit_message": "feat(day-66): message queues and consumer groups mini-lab with assertions"
+  },
+  "day-67-event-sourcing-and-cqrs": {
+    "day": 67,
+    "backdate": "2026-05-06",
+    "git_date": "2026-05-06T10:00:00+05:30",
+    "commit_message": "feat(day-67): event sourcing and cqrs mini-lab with assertions"
+  },
+  "day-68-rate-limiting-algorithms": {
+    "day": 68,
+    "backdate": "2026-05-07",
+    "git_date": "2026-05-07T10:00:00+05:30",
+    "commit_message": "feat(day-68): rate limiting algorithms mini-lab with assertions"
+  },
+  "day-69-consistent-hashing-and-sharding": {
+    "day": 69,
+    "backdate": "2026-05-08",
+    "git_date": "2026-05-08T10:00:00+05:30",
+    "commit_message": "feat(day-69): consistent hashing and sharding mini-lab with assertions"
+  },
+  "day-70-bulkhead-and-backpressure": {
+    "day": 70,
+    "backdate": "2026-05-09",
+    "git_date": "2026-05-09T10:00:00+05:30",
+    "commit_message": "feat(day-70): bulkhead and backpressure mini-lab with assertions"
+  },
+  "day-71-api-security-jwt-and-hmac": {
+    "day": 71,
+    "backdate": "2026-05-10",
+    "git_date": "2026-05-10T10:00:00+05:30",
+    "commit_message": "feat(day-71): api security: hmac and jwt mini-lab with assertions"
+  },
+  "day-72-password-hashing-and-secrets": {
+    "day": 72,
+    "backdate": "2026-05-11",
+    "git_date": "2026-05-11T10:00:00+05:30",
+    "commit_message": "feat(day-72): password hashing and secrets mini-lab with assertions"
+  },
+  "day-73-observability-metrics-histograms-and-percentiles": {
+    "day": 73,
+    "backdate": "2026-05-12",
+    "git_date": "2026-05-12T10:00:00+05:30",
+    "commit_message": "feat(day-73): metrics, histograms and percentiles mini-lab with assertions"
+  },
+  "day-74-distributed-id-generation-snowflake": {
+    "day": 74,
+    "backdate": "2026-05-13",
+    "git_date": "2026-05-13T10:00:00+05:30",
+    "commit_message": "feat(day-74): distributed id generation (snowflake) mini-lab with assertions"
+  },
+  "day-75-leader-election-and-heartbeats": {
+    "day": 75,
+    "backdate": "2026-05-14",
+    "git_date": "2026-05-14T10:00:00+05:30",
+    "commit_message": "feat(day-75): leader election and heartbeats mini-lab with assertions"
+  },
+  "day-76-docker-and-container-memory-limits": {
+    "day": 76,
+    "backdate": "2026-05-15",
+    "git_date": "2026-05-15T10:00:00+05:30",
+    "commit_message": "feat(day-76): docker and container memory limits mini-lab with assertions"
+  },
+  "day-77-linear-regression-gradient-descent": {
+    "day": 77,
+    "backdate": "2026-05-16",
+    "git_date": "2026-05-16T10:00:00+05:30",
+    "commit_message": "feat(day-77): linear regression with gradient descent mini-lab with assertions"
+  },
+  "day-78-logistic-regression-from-scratch": {
+    "day": 78,
+    "backdate": "2026-05-17",
+    "git_date": "2026-05-17T10:00:00+05:30",
+    "commit_message": "feat(day-78): logistic regression from scratch mini-lab with assertions"
+  },
+  "day-79-k-means-clustering": {
+    "day": 79,
+    "backdate": "2026-05-18",
+    "git_date": "2026-05-18T10:00:00+05:30",
+    "commit_message": "feat(day-79): k-means clustering mini-lab with assertions"
+  },
+  "day-80-decision-tree-gini": {
+    "day": 80,
+    "backdate": "2026-05-19",
+    "git_date": "2026-05-19T10:00:00+05:30",
+    "commit_message": "feat(day-80): decision trees and gini impurity mini-lab with assertions"
+  },
+  "day-81-naive-bayes-text-classifier": {
+    "day": 81,
+    "backdate": "2026-05-20",
+    "git_date": "2026-05-20T10:00:00+05:30",
+    "commit_message": "feat(day-81): naive bayes text classifier mini-lab with assertions"
+  },
+  "day-82-evaluation-metrics-precision-recall-auc": {
+    "day": 82,
+    "backdate": "2026-05-21",
+    "git_date": "2026-05-21T10:00:00+05:30",
+    "commit_message": "feat(day-82): evaluation metrics: precision, recall, auc mini-lab with assertions"
+  },
+  "day-83-feature-engineering-one-hot-and-hashing": {
+    "day": 83,
+    "backdate": "2026-05-22",
+    "git_date": "2026-05-22T10:00:00+05:30",
+    "commit_message": "feat(day-83): feature engineering: one-hot and hashing mini-lab with assertions"
+  },
+  "day-84-embeddings-cosine-similarity-and-knn": {
+    "day": 84,
+    "backdate": "2026-05-23",
+    "git_date": "2026-05-23T10:00:00+05:30",
+    "commit_message": "feat(day-84): embeddings, cosine similarity and knn mini-lab with assertions"
+  },
+  "day-85-tf-idf-and-bm25-search": {
+    "day": 85,
+    "backdate": "2026-05-24",
+    "git_date": "2026-05-24T10:00:00+05:30",
+    "commit_message": "feat(day-85): tf-idf and bm25 search mini-lab with assertions"
+  },
+  "day-86-neural-network-forward-and-backprop-gradient-check": {
+    "day": 86,
+    "backdate": "2026-05-25",
+    "git_date": "2026-05-25T10:00:00+05:30",
+    "commit_message": "feat(day-86): neural network backprop and gradient check mini-lab with assertions"
+  },
+  "day-87-model-serving-batching-and-latency-budgets": {
+    "day": 87,
+    "backdate": "2026-05-26",
+    "git_date": "2026-05-26T10:00:00+05:30",
+    "commit_message": "feat(day-87): model serving: batching and latency budgets mini-lab with assertions"
+  },
+  "day-88-ab-testing-and-statistics": {
+    "day": 88,
+    "backdate": "2026-05-27",
+    "git_date": "2026-05-27T10:00:00+05:30",
+    "commit_message": "feat(day-88): a/b testing and statistics mini-lab with assertions"
+  },
+  "day-89-data-drift-psi-and-ks": {
+    "day": 89,
+    "backdate": "2026-05-28",
+    "git_date": "2026-05-28T10:00:00+05:30",
+    "commit_message": "feat(day-89): data drift: psi and ks mini-lab with assertions"
+  },
+  "day-90-mock-interview-coding-round-set": {
+    "day": 90,
+    "backdate": "2026-05-29",
+    "git_date": "2026-05-29T10:00:00+05:30",
+    "commit_message": "feat(day-90): mock coding round: drills mini-lab with assertions"
+  },
+  "day-91-mock-interview-system-design-round": {
+    "day": 91,
+    "backdate": "2026-05-30",
+    "git_date": "2026-05-30T10:00:00+05:30",
+    "commit_message": "feat(day-91): mock system design: capacity math mini-lab with assertions"
+  },
+  "day-92-final-review-and-portfolio-wrap-up": {
+    "day": 92,
+    "backdate": "2026-05-31",
+    "git_date": "2026-05-31T10:00:00+05:30",
+    "commit_message": "feat(day-92): final review and portfolio wrap-up mini-lab with assertions"
+  }
+}

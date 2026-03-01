@@ -1,0 +1,40 @@
+# Day 55 - Graph BFS, DFS and Topological Sort
+
+> **Phase:** Algorithms & Data Structures Drills | **Date:** 2026-04-24 | **Code:** [`GraphTopologicalSort.java`](./GraphTopologicalSort.java) | **Runtime:** JDK 21+
+
+## 1. Core Concepts
+
+Model graphs as adjacency lists. BFS = shortest path in unweighted graphs; DFS = connectivity/cycles; **Kahn's algorithm** orders a DAG by repeatedly removing zero in-degree nodes (build pipelines, ML DAGs).
+
+## 2. Memory Architecture Breakdown
+
+Adjacency list O(V+E) memory; use `ArrayDeque` for the queue.
+
+## 3. Interview Edge Cases & Pitfalls
+
+1. Cycle => topological order impossible (result shorter than V).
+2. Recursive DFS can overflow the stack.
+
+## 4. Interview Q&A
+
+**Q1. Detect a cycle in a directed graph?**  
+Kahn leaves nodes unprocessed, or DFS colours (white/grey/black).
+
+**Q2. BFS complexity?**  
+O(V+E).
+
+## 5. Run the Lab
+
+```bash
+cd day-55-graph-bfs-dfs-and-topological-sort
+javac GraphTopologicalSort.java
+java GraphTopologicalSort
+```
+The program prints benchmark tables and finishes with `Day 55 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 6. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
