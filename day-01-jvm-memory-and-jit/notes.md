@@ -76,3 +76,18 @@ Watch old-gen after full GC trend; `jcmd <pid> GC.heap_dump`, analyse with Eclip
 **Q6. Why do compressed oops matter?**  
 Object references shrink from 8 to 4 bytes by storing 8-byte-aligned offsets, improving cache density by ~15-20%. They disable automatically above ~32 GB heap, so a 40 GB heap may hold *less* than a 31 GB one.
 
+## 5. Run the Lab
+
+```bash
+cd day-01-jvm-memory-and-jit
+javac JvmMemoryAndJit.java
+java JvmMemoryAndJit
+```
+The program prints benchmark tables and finishes with `Day 01 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 6. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
