@@ -37,3 +37,13 @@ record Success(String m, double[] s, long t)  ->  [hdr][m ref]-->String  [s ref]
 * Sealed hierarchies are recorded in the `PermittedSubclasses` class-file attribute and verified at class load time.
 * Pattern-matching switch compiles to `invokedynamic` `SwitchBootstraps.typeSwitch` - a type-test loop, not a chain of `instanceof` bytecodes; cost is small and optimisable.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Record with array component: `equals`/`hashCode` use reference semantics - two logically equal records are unequal.
+2. A compact constructor must not assign `this.field = ...`; it reassigns the *parameter* and the compiler copies it at the end.
+3. Records can't be `abstract`, can't extend, but may implement a sealed interface - the idiomatic ADT combo.
+4. Pattern `case Success s` before `case Success s when ...` is a dominance error: guards go first.
+5. Adding a `permits` subtype in a different package requires a *module* (named) - or the same package in the unnamed module.
+6. Deserialising a record bypasses the constructor? No - Java serialization of records *always* calls the canonical constructor, so validation is enforced.
+7. A `switch` over a sealed type with missing case throws `MatchException` at runtime if the hierarchy changed after separate compilation.
+
