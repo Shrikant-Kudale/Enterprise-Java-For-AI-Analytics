@@ -67,3 +67,18 @@ Pattern binds a flow-scoped variable only where the test is definitely true, eli
 **Q6. Do records have a performance advantage?**  
 Not inherently - same layout as a final class. The advantage is correctness and brevity; escape analysis removes short-lived ones. Valhalla value classes will later remove the identity header.
 
+## 5. Run the Lab
+
+```bash
+cd day-02-modern-java-syntax-records-sealed-classes
+javac ModernJavaSyntax.java
+java ModernJavaSyntax
+```
+The program prints benchmark tables and finishes with `Day 02 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 6. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
