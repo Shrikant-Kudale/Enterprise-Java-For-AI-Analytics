@@ -22,3 +22,18 @@ A record is a *transparent, shallowly immutable data carrier*. The compiler gene
 ### Why it matters for AI backends
 Inference outcomes are naturally a sum type: `Success | Failure | Timeout`. Sealed + records makes the compiler enforce that every caller handles every outcome. Feature-expression trees, query ASTs and DSL interpreters get the same benefit.
 
+## 2. Memory Architecture Breakdown
+
+```
+record Point(double x, double y)          Heap layout (compressed oops)
++------------------------------+          +-----------+------------+----+----+
+| class Point (final, Record)  |   ==>    | mark 8B   | klass 4B   | x  | y  | = 32 B
+| private final double x, y    |          +-----------+------------+----+----+
++------------------------------+
+record Success(String m, double[] s, long t)  ->  [hdr][m ref]-->String  [s ref]-->double[] [t]
+```
+* Records are **shallowly** immutable: a `double[]` component is still mutable and `equals` compares array *references*. Clone in the compact constructor and in the accessor, or use `List<Double>`/a dedicated `Vector` type.
+* `ObjectMethods` makes `hashCode` per-component via a MethodHandle chain; JIT inlines it, so records are as fast as hand-written classes.
+* Sealed hierarchies are recorded in the `PermittedSubclasses` class-file attribute and verified at class load time.
+* Pattern-matching switch compiles to `invokedynamic` `SwitchBootstraps.typeSwitch` - a type-test loop, not a chain of `instanceof` bytecodes; cost is small and optimisable.
+
