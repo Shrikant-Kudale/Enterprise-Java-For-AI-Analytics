@@ -47,3 +47,23 @@ record Success(String m, double[] s, long t)  ->  [hdr][m ref]-->String  [s ref]
 6. Deserialising a record bypasses the constructor? No - Java serialization of records *always* calls the canonical constructor, so validation is enforced.
 7. A `switch` over a sealed type with missing case throws `MatchException` at runtime if the hierarchy changed after separate compilation.
 
+## 4. Interview Q&A
+
+**Q1. Are records fully immutable?**  
+No - shallowly. Fields are final but referenced objects (arrays, `ArrayList`) may mutate. Defensive-copy in the compact constructor and accessors.
+
+**Q2. When would you pick a sealed interface over an enum?**  
+Enums have one instance per constant with identical shape. Sealed interfaces let each variant carry *different data* (`Success(scores)`, `Failure(reason)`), giving exhaustive pattern-matching on heterogeneous variants.
+
+**Q3. How does exhaustive switch improve maintainability?**  
+Adding a variant produces compile errors at every switch lacking it, so no silent fall-through to a `default` branch that hides a bug.
+
+**Q4. Can a record have a custom `equals`?**  
+Yes, but the contract must still hold; usually you just fix the component types (e.g. use `List<Double>` instead of `double[]`).
+
+**Q5. What is the difference between `instanceof` pattern and a cast?**  
+Pattern binds a flow-scoped variable only where the test is definitely true, eliminating redundant casts and `ClassCastException` risk; scoping follows `&&`, `!` and early-return rules.
+
+**Q6. Do records have a performance advantage?**  
+Not inherently - same layout as a final class. The advantage is correctness and brevity; escape analysis removes short-lived ones. Valhalla value classes will later remove the identity header.
+
