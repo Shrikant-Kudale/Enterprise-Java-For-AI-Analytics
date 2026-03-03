@@ -27,3 +27,14 @@ Decorators stack at runtime (`Metered(Caching(Remote))`), while inheritance woul
 ### Equals/hashCode contract & immutability
 Request/feature objects used as cache keys must be immutable and have value-based `equals/hashCode`; mutable keys silently vanish from `HashMap`s.
 
+## 2. Memory Architecture Breakdown
+
+```
+Client -> ModelRouter --(RoutingStrategy)--> [ Metered -> Caching -> LinearModel ]
+                                             [ Metered -> Caching -> RemoteModel ]
+Each decorator = 1 object header (12B) + 1 ref (4B) + state; a 3-deep stack adds ~3 virtual calls.
+```
+* Interface calls are **megamorphic** when >2 implementations are seen at one call-site: the JIT falls back to a vtable/itable dispatch (~3 ns) and loses inlining. Keep hot paths bimorphic or use `final` classes + sealed interfaces so CHA can devirtualise.
+* Caches keyed by `List<Double>` boxed per call allocate heavily: in production hash the `double[]` (e.g. `Arrays.hashCode`) into a record key to cut allocation.
+* Observers hold strong references to listeners: a forgotten unsubscribe is a classic memory leak (`static EventBus` retains listener graphs).
+
