@@ -47,3 +47,23 @@ Each decorator = 1 object header (12B) + 1 ref (4B) + state; a 3-deep stack adds
 5. Observer callbacks run on the publisher thread: a slow listener stalls inference. Dispatch asynchronously or bound the queue.
 6. Singleton via static mutable state defeats testing; inject instead.
 
+## 4. Interview Q&A
+
+**Q1. Strategy vs State pattern?**  
+Both swap behaviour via composition. Strategy is chosen by the *client* and is stateless/independent; State transitions are driven by the object itself (e.g. circuit breaker CLOSED->OPEN).
+
+**Q2. Why use Decorator rather than AOP/proxies?**  
+Decorators are explicit, type-safe, trivially testable and have no reflection. AOP (Spring) is more concise for dozens of cross-cutting methods but hides control flow.
+
+**Q3. How do you implement an A/B test router?**  
+Hash a stable key (userId) with a salt into [0,100), compare against traffic split; keep assignment sticky and log the variant with each prediction for analysis.
+
+**Q4. What breaks Liskov in model hierarchies?**  
+Subtypes returning different dimensionality, throwing new unchecked exceptions for valid inputs, or requiring pre-warm calls the base type doesn't.
+
+**Q5. Explain the Builder's advantage over telescoping constructors.**  
+Named optional parameters, immutability of the product, centralised validation, and readable call-sites; records + builder gives the best of both.
+
+**Q6. Where does dependency injection fit?**  
+Composition root builds the decorator graph once; classes receive collaborators via constructor so tests can pass fakes without a container.
+
