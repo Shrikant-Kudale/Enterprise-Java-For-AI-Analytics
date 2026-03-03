@@ -38,3 +38,12 @@ Each decorator = 1 object header (12B) + 1 ref (4B) + state; a 3-deep stack adds
 * Caches keyed by `List<Double>` boxed per call allocate heavily: in production hash the `double[]` (e.g. `Arrays.hashCode`) into a record key to cut allocation.
 * Observers hold strong references to listeners: a forgotten unsubscribe is a classic memory leak (`static EventBus` retains listener graphs).
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Decorator order matters: `Caching(Metered(model))` measures only misses; `Metered(Caching(model))` measures hit + miss latency.
+2. Round-robin with `AtomicInteger.getAndIncrement() % n` goes negative after overflow - use `Math.floorMod`.
+3. Builder must validate in `build()`, not in setters, so cross-field rules (timeout vs batch size) are checked once.
+4. Caching nondeterministic models (dropout, sampling temperature) returns stale results - include temperature/seed in the key.
+5. Observer callbacks run on the publisher thread: a slow listener stalls inference. Dispatch asynchronously or bound the queue.
+6. Singleton via static mutable state defeats testing; inject instead.
+
