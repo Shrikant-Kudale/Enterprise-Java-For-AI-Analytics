@@ -73,3 +73,18 @@ One `@ControllerAdvice`/mapper using an exhaustive switch on the sealed domain h
 **Q6. Is it OK to use exceptions for control flow?**  
 Not in hot paths: slow and obscures intent. Use `Optional`, `Result` or explicit validation. Exceptions model *exceptional* failures.
 
+## 5. Run the Lab
+
+```bash
+cd day-04-exception-hierarchies-and-clean-architecture
+javac ExceptionHierarchiesCleanArchitecture.java
+java ExceptionHierarchiesCleanArchitecture
+```
+The program prints benchmark tables and finishes with `Day 04 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 6. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
