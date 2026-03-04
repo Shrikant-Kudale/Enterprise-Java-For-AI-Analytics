@@ -29,3 +29,17 @@
 ### Retry semantics
 Mark exceptions `retryable` (timeouts, 503) vs not (validation). Retry only idempotent operations, with exponential backoff + jitter and an overall deadline.
 
+## 2. Memory Architecture Breakdown
+
+```
+new Exception()                      fillInStackTrace()  (native walk of N frames)
+  Throwable                          +-- Throwable object: ~40B
+  +- detailMessage  ref                +-- StackTraceElement[] backtrace: depth * ~16B + strings (lazily materialised)
+  +- cause          ref
+  +- stackTrace     (backtrace)      Cost grows linearly with stack depth: 50 frames ~ 5-20 us.
+  +- suppressedExceptions
+```
+* Stack-trace capture dominates exception cost. Passing `writableStackTrace=false` to `Throwable(msg, cause, enableSuppression, writableStackTrace)` makes `new` + `throw` cost ~ an allocation. The JIT can even turn a throw/catch within one compiled unit into a plain jump after inlining.
+* Exceptions retained in logs/queues keep their whole `StackTraceElement[]` and `cause` chain alive - a source of memory pressure when buffering failures.
+* Deep `cause` chains: always pass the cause (`new X(msg, cause)`) rather than `initCause` after the fact.
+
