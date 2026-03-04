@@ -53,3 +53,23 @@ new Exception()                      fillInStackTrace()  (native walk of N frame
 6. Logging *and* rethrowing the same exception produces duplicate stack traces - log at the boundary only.
 7. `StackOverflowError` caught deep in recursion may leave state inconsistent; treat as fatal for that request.
 
+## 4. Interview Q&A
+
+**Q1. Checked vs unchecked - which do you choose and why?**  
+Checked exceptions at adapter edges where the caller can actually react; unchecked for domain failures and bugs so signatures stay clean and lambdas/streams compose. Whatever the choice, translate at layer boundaries.
+
+**Q2. How do you stop infrastructure exceptions leaking into the domain?**  
+Define ports in the domain; adapters catch library exceptions and throw domain exceptions with the cause attached. Domain/test code never imports `java.sql`, `redis.clients` etc.
+
+**Q3. Why is `new Exception()` expensive and how do you avoid it?**  
+`fillInStackTrace` walks the stack. Avoid in hot paths via pre-allocated/stackless exceptions (`writableStackTrace=false`) or `Result` types.
+
+**Q4. What are suppressed exceptions?**  
+When both the try body and `close()` throw, the body's exception propagates and the close exception is attached via `addSuppressed`, visible with `getSuppressed()`.
+
+**Q5. How should a REST layer map exceptions?**  
+One `@ControllerAdvice`/mapper using an exhaustive switch on the sealed domain hierarchy, returning RFC 7807 `application/problem+json` with code, detail and correlation id.
+
+**Q6. Is it OK to use exceptions for control flow?**  
+Not in hot paths: slow and obscures intent. Use `Optional`, `Result` or explicit validation. Exceptions model *exceptional* failures.
+
