@@ -43,3 +43,13 @@ new Exception()                      fillInStackTrace()  (native walk of N frame
 * Exceptions retained in logs/queues keep their whole `StackTraceElement[]` and `cause` chain alive - a source of memory pressure when buffering failures.
 * Deep `cause` chains: always pass the cause (`new X(msg, cause)`) rather than `initCause` after the fact.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. `finally` that `return`s or throws discards the in-flight exception - never do that.
+2. Catching `Exception` also catches `InterruptedException`; swallow it and the thread loses its interrupt status -> re-set with `Thread.currentThread().interrupt()`.
+3. Multi-catch `catch (A | B e)` makes `e` effectively final and typed as the common supertype.
+4. An exception thrown in a `CompletableFuture` stage arrives wrapped in `CompletionException`; unwrap `getCause()` before mapping to status codes.
+5. Overriding method can't throw broader checked exceptions than the interface method (LSP).
+6. Logging *and* rethrowing the same exception produces duplicate stack traces - log at the boundary only.
+7. `StackOverflowError` caught deep in recursion may leave state inconsistent; treat as fatal for that request.
+
