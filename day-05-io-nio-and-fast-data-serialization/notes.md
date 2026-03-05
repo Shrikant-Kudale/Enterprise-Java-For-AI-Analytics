@@ -41,3 +41,14 @@ sendfile:            page cache --------------------------------------> NIC (nev
 * Direct buffers have a `Cleaner` (phantom reference) that frees native memory; heavy churn can hit `OutOfMemoryError: Direct buffer memory` before heap GC runs - pool and reuse them (Netty `PooledByteBufAllocator`).
 * Page cache means *repeat* reads are served from RAM; benchmark with cold cache (`echo 3 > /proc/sys/vm/drop_caches`) to see disk reality.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Forgetting `buffer.flip()` between write and read yields zero-length reads; `clear()` doesn't erase data, only resets indices.
+2. `InputStream.read(byte[])` may return fewer bytes than requested - loop or use `readNBytes`/`readFully`.
+3. `FileChannel.write(buffer)` may write partially - loop `while (buf.hasRemaining())`.
+4. Always specify charset (`StandardCharsets.UTF_8`); platform default changed in Java 18 (JEP 400) but older runtimes differ.
+5. `Files.readAllBytes` on a multi-GB file allocates an equally large array -> OOM. Stream or map.
+6. `float` text round-trip is exact only with `Float.toString`/`parseFloat` (shortest repr) - `%.3f` formatting loses data.
+7. Mapped files: writes aren't durable until `force()`; crash mid-write leaves torn records - add a length/CRC footer.
+8. `BufferedWriter.close()` flushes; forgetting to close/flush truncates the tail of the file.
+
