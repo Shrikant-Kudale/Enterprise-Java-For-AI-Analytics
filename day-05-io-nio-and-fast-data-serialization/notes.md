@@ -52,3 +52,23 @@ sendfile:            page cache --------------------------------------> NIC (nev
 7. Mapped files: writes aren't durable until `force()`; crash mid-write leaves torn records - add a length/CRC footer.
 8. `BufferedWriter.close()` flushes; forgetting to close/flush truncates the tail of the file.
 
+## 4. Interview Q&A
+
+**Q1. Why is NIO faster for servers?**  
+Selectors let one thread multiplex thousands of connections and buffers/channels avoid intermediate copies. Thread-per-connection blocking I/O scales to thousands of threads at best (virtual threads now close that gap for simple code).
+
+**Q2. Heap vs direct buffer - when to use each?**  
+Direct for long-lived, I/O- or JNI-bound buffers (network, ONNX tensors); heap for short-lived small buffers where allocation speed and GC management win.
+
+**Q3. How does `transferTo` work?**  
+Delegates to `sendfile`/`splice`, letting the kernel move page-cache pages to the socket directly, eliminating two copies and two context switches.
+
+**Q4. Why columnar formats for analytics?**  
+Queries touch a few columns; columnar layout reads only those, compresses similar values together and enables SIMD. Row formats win for point lookups and writes.
+
+**Q5. How would you ship 1 TB of training features to a Java inference trainer?**  
+Sharded Parquet/Arrow files, memory-map or stream row-groups, parallel readers with bounded queues, avoid per-row object creation (read into primitive arrays).
+
+**Q6. What's wrong with Java serialization?**  
+Large, slow, brittle across versions and a security vulnerability class (gadget chains). Use schema'd formats like Protobuf/Avro.
+
