@@ -72,3 +72,18 @@ Sharded Parquet/Arrow files, memory-map or stream row-groups, parallel readers w
 **Q6. What's wrong with Java serialization?**  
 Large, slow, brittle across versions and a security vulnerability class (gadget chains). Use schema'd formats like Protobuf/Avro.
 
+## 5. Run the Lab
+
+```bash
+cd day-05-io-nio-and-fast-data-serialization
+javac FastDataSerialization.java
+java FastDataSerialization
+```
+The program prints benchmark tables and finishes with `Day 05 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 6. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
