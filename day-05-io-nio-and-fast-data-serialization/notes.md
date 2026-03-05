@@ -29,3 +29,15 @@
 ### Endianness
 `ByteBuffer` defaults to BIG_ENDIAN (network order, same as `DataOutputStream`). Native libraries (ONNX, NumPy `.npy`) are usually little-endian: call `order(ByteOrder.LITTLE_ENDIAN)`.
 
+## 2. Memory Architecture Breakdown
+
+```
+Heap stream write:   float[] -> byte[] (heap) -> [copy] -> kernel page cache -> disk
+Direct buffer write: float -> direct ByteBuffer (native) ----------> kernel page cache -> disk
+mmap read:           disk -> page cache <==== mapped into process address space (no copy; page-fault on touch)
+sendfile:            page cache --------------------------------------> NIC (never enters JVM)
+```
+* A `MappedByteBuffer` is unmapped only when its Java object is GC'd (no public `unmap` before `MemorySegment`/Arena in Java 21+ FFM); on Windows this blocks file deletion.
+* Direct buffers have a `Cleaner` (phantom reference) that frees native memory; heavy churn can hit `OutOfMemoryError: Direct buffer memory` before heap GC runs - pool and reuse them (Netty `PooledByteBufAllocator`).
+* Page cache means *repeat* reads are served from RAM; benchmark with cold cache (`echo 3 > /proc/sys/vm/drop_caches`) to see disk reality.
+
