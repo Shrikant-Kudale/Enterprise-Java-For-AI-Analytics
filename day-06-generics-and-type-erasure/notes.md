@@ -54,3 +54,23 @@ int[1M]:               4 MB contiguous
 6. Comparable bound should be `Comparable<? super T>` so `java.sql.Timestamp extends Date` types work.
 7. `Integer a=1000,b=1000; a==b` is false; `a.equals(b)` is true.
 
+## 4. Interview Q&A
+
+**Q1. What is type erasure and why does Java have it?**  
+The compiler removes type arguments after checking, replacing parameters with bounds and inserting casts. This kept binary compatibility with pre-generics libraries and avoided reified-generic runtime changes.
+
+**Q2. Explain PECS with an example.**  
+Producer-extends / Consumer-super. `copy(List<? super T> dst, List<? extends T> src)` reads T from src (producer) and writes T into dst (consumer). It maximises API flexibility while remaining type safe.
+
+**Q3. How can you get the generic type at runtime?**  
+Only if it's captured in a class signature: subclass a generic type with a concrete argument (super type token) or pass a `Class<T>`. `getGenericSuperclass()` returns a `ParameterizedType`.
+
+**Q4. What are bridge methods?**  
+Synthetic methods generated to preserve polymorphism after erasure, e.g. `compareTo(Object)` delegating to `compareTo(Version)` with a cast. They show up in stack traces and `Method.isBridge()`.
+
+**Q5. What causes heap pollution and how do you avoid it?**  
+Mixing raw types / unchecked casts / generic varargs so a typed reference holds a wrong-type object; avoid raw types, minimise `@SuppressWarnings("unchecked")` scope and prefer immutable collections.
+
+**Q6. Why is `List<Double>` slow for numeric work?**  
+Each element is a separate boxed object (16 B + 4 B ref), arithmetic requires unboxing, memory is scattered. Use `double[]`, `DoubleStream` or primitive collections.
+
