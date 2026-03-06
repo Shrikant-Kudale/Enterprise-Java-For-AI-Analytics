@@ -44,3 +44,13 @@ int[1M]:               4 MB contiguous
 * Generic class metadata survives in the `Signature` attribute of class files (that's what reflection and super type tokens read) even though the verifier/JIT only sees erased types.
 * Primitive specialisations (`IntStream`, `Int2ObjectMap` in fastutil/Eclipse Collections) exist solely because erasure forces boxing; Project Valhalla aims to fix this with specialised generics.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. `List<Object> l = new ArrayList<String>()` does not compile (invariance), but `Object[] o = new String[1]; o[0] = 1;` compiles and throws `ArrayStoreException`.
+2. `static <T> void f(List<T>)` vs `static void f(List<?>)`: the wildcard version can't add anything; use a capture-helper method to write.
+3. Two methods `void f(List<String>)` and `void f(List<Integer>)` clash after erasure (same erasure `f(List)`).
+4. `T[] arr = (T[]) new Object[n]` works internally but returning it as `T[]` to a caller with `String[]` throws `ClassCastException` - use `Array.newInstance(cls, n)`.
+5. `instanceof T` and `catch (T e)` are illegal; `T.class` doesn't exist - pass a `Class<T>`.
+6. Comparable bound should be `Comparable<? super T>` so `java.sql.Timestamp extends Date` types work.
+7. `Integer a=1000,b=1000; a==b` is false; `a.equals(b)` is true.
+
