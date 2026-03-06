@@ -74,3 +74,18 @@ Mixing raw types / unchecked casts / generic varargs so a typed reference holds 
 **Q6. Why is `List<Double>` slow for numeric work?**  
 Each element is a separate boxed object (16 B + 4 B ref), arithmetic requires unboxing, memory is scattered. Use `double[]`, `DoubleStream` or primitive collections.
 
+## 5. Run the Lab
+
+```bash
+cd day-06-generics-and-type-erasure
+javac GenericsAndTypeErasure.java
+java GenericsAndTypeErasure
+```
+The program prints benchmark tables and finishes with `Day 06 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 6. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
