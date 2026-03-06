@@ -30,3 +30,17 @@ A variable of parameterized type referring to an object of a different type (via
 ### AI-backend relevance
 Typed pipelines (`Stage<I,O>`), tensors typed by element (`Tensor<Float>`), JSON deserialisation of `List<Prediction>` all rely on these mechanics; boxing in `List<Double>` is also the #1 hidden memory/latency cost in numeric Java.
 
+## 2. Memory Architecture Breakdown
+
+```
+Source:   List<String> names = ...; String s = names.get(0);
+Bytecode: List names; String s = (String) names.get(0);     // checkcast inserted
+Runtime:  ArrayList<String>.class == ArrayList<Integer>.class == ArrayList.class
+
+List<Integer> of 1M:   Object[] 4MB refs + 1M x Integer(16B) = ~20 MB   (and cache-hostile pointer chasing)
+int[1M]:               4 MB contiguous
+```
+* Integer cache: `Integer.valueOf(-128..127)` returns shared instances; `==` on larger boxed values is `false` - always `equals`.
+* Generic class metadata survives in the `Signature` attribute of class files (that's what reflection and super type tokens read) even though the verifier/JIT only sees erased types.
+* Primitive specialisations (`IntStream`, `Int2ObjectMap` in fastutil/Eclipse Collections) exist solely because erasure forces boxing; Project Valhalla aims to fix this with specialised generics.
+
