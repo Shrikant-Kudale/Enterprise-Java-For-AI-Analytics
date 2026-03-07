@@ -46,3 +46,23 @@ Growth 10 -> 15 -> 22 -> 33 -> 49 -> 73 ...  (each step allocates new array + co
 6. `LinkedList.get(i)` in a for-loop makes iteration O(n^2).
 7. Sublist of a sublist after parent modification -> CME on any access.
 
+## 4. Interview Q&A
+
+**Q1. ArrayList vs LinkedList - which would you pick for a queue of 1M items?**  
+Neither: `ArrayDeque`. For random-access lists, `ArrayList`. LinkedList's per-node allocation and poor locality make it slower than ArrayList even for many mid-list insertions.
+
+**Q2. How does ArrayList grow and what is the amortised cost of add?**  
+Capacity grows by 1.5x using `Arrays.copyOf`. Total copying over n appends is bounded by a geometric series, so amortised O(1).
+
+**Q3. What is fail-fast and is it thread-safe?**  
+Iterators compare `modCount` to an expected value and throw CME on mismatch. It's a best-effort bug detector, not synchronisation; use `CopyOnWriteArrayList` or locks for concurrency.
+
+**Q4. How would you remove all elements matching a predicate efficiently?**  
+`list.removeIf(pred)` - ArrayList implements it with a single compaction pass (O(n)) instead of repeated shifting (O(n^2)).
+
+**Q5. Why might `ArrayList<Integer>` with 10M entries blow the heap even though `int[]` wouldn't?**  
+Each entry costs ~20 bytes (ref + 16-byte Integer) vs 4 bytes, plus resize doubling; use primitive arrays or primitive collections.
+
+**Q6. Implement a dynamic array interview-style - what do you watch for?**  
+Index checks, null-ing removed slots, overflow in capacity computation, modCount, amortised growth factor, and iterator remove.
+
