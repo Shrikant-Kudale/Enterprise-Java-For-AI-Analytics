@@ -36,3 +36,13 @@ Growth 10 -> 15 -> 22 -> 33 -> 49 -> 73 ...  (each step allocates new array + co
 * After `remove`, ArrayList nulls the vacated slot (`elementData[--size] = null`) so the GC can reclaim the element - forgetting this in custom collections is the classic "loitering" memory leak.
 * Because linked nodes are allocated at different times they are scattered; a traversal is a chain of dependent loads (~100 cycles each on cache miss) while array scan is prefetched at ~1 element/cycle.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. `list.remove(int)` vs `list.remove(Object)`: for `List<Integer>`, `remove(1)` removes *index* 1; use `remove(Integer.valueOf(1))`.
+2. Removing inside for-each throws CME - use `Iterator.remove()` or `removeIf` (single pass, O(n)).  The notorious exception: removing the *second-to-last* element silently ends the loop without CME.
+3. `Arrays.asList(arr).add(x)` throws `UnsupportedOperationException`; `List.of(...).contains(null)` throws NPE.
+4. `ArrayList.removeAll(Collection)` is O(n*m) if the argument is a List - pass a `HashSet`.
+5. `new ArrayList<>(Collections.nCopies(n, null))` gives size n; `new ArrayList<>(n)` gives size 0 - `set(0, x)` throws `IndexOutOfBounds`.
+6. `LinkedList.get(i)` in a for-loop makes iteration O(n^2).
+7. Sublist of a sublist after parent modification -> CME on any access.
+
