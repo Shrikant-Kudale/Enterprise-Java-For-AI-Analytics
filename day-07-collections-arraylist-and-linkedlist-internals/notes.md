@@ -23,3 +23,16 @@ Textbooks say LinkedList wins for insert-in-middle. In practice **ArrayList wins
 ### Other list types to know
 `CopyOnWriteArrayList` (read-heavy snapshot iteration, O(n) writes), `Vector` (legacy synchronized), `Arrays.asList` (fixed-size view over the array), `List.of` (immutable, null-hostile), `Collections.unmodifiableList` (read-only *view*), `ArrayDeque`.
 
+## 2. Memory Architecture Breakdown
+
+```
+ArrayList (size=5, cap=10)                 LinkedList (size=3)
+ elementData --> [ r0 r1 r2 r3 r4 .. .. ..]   first -> [prev|item|next] <-> [prev|item|next] <-> [..] <- last
+                  contiguous refs                      each node 24B scattered in heap
+
+Growth 10 -> 15 -> 22 -> 33 -> 49 -> 73 ...  (each step allocates new array + copies; old array becomes garbage)
+```
+* Array growth of a 100 MB list allocates a 150 MB array while the old one is still live: peak footprint **2.5x** momentarily - presize large lists.
+* After `remove`, ArrayList nulls the vacated slot (`elementData[--size] = null`) so the GC can reclaim the element - forgetting this in custom collections is the classic "loitering" memory leak.
+* Because linked nodes are allocated at different times they are scattered; a traversal is a chain of dependent loads (~100 cycles each on cache miss) while array scan is prefetched at ~1 element/cycle.
+
