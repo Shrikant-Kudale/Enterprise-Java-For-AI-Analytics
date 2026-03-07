@@ -8,3 +8,4 @@
 | 04 | 2026-03-04 | Exception Hierarchies and Clean Architecture | done |
 | 05 | 2026-03-05 | I/O, NIO and Fast Data Serialization | done |
 | 06 | 2026-03-06 | Generics and Type Erasure | done |
+| 07 | 2026-03-07 | Collections: ArrayList and LinkedList Internals | done |
