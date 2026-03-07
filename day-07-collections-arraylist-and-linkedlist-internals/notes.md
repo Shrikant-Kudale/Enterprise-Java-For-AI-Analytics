@@ -66,3 +66,18 @@ Each entry costs ~20 bytes (ref + 16-byte Integer) vs 4 bytes, plus resize doubl
 **Q6. Implement a dynamic array interview-style - what do you watch for?**  
 Index checks, null-ing removed slots, overflow in capacity computation, modCount, amortised growth factor, and iterator remove.
 
+## 5. Run the Lab
+
+```bash
+cd day-07-collections-arraylist-and-linkedlist-internals
+javac ListInternals.java
+java ListInternals
+```
+The program prints benchmark tables and finishes with `Day 07 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 6. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
