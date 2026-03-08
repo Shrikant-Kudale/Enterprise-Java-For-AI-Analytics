@@ -79,3 +79,18 @@ When many keys share a bucket (poor hashCode / flooding). Java 8 treeifies bins 
 **Q7. HashMap vs TreeMap vs LinkedHashMap?**  
 Hash: O(1) unordered. Tree: O(log n) sorted/navigable (floor, ceiling, range views). Linked: O(1) with predictable insertion/access order; `accessOrder=true` + `removeEldestEntry` = LRU cache.
 
+## 5. Run the Lab
+
+```bash
+cd day-08-hashmap-treeify-and-concurrenthashmap
+javac HashMapInternals.java
+java HashMapInternals
+```
+The program prints benchmark tables and finishes with `Day 08 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 6. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
