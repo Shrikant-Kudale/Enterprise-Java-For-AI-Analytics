@@ -45,3 +45,14 @@ Per-entry cost (HashMap<Integer,Integer>): 32B node + 16B key + 16B value + 4B t
 * `ConcurrentHashMap.CounterCell[]` adds padding (`@Contended`) to avoid false sharing - one reason it's larger than HashMap.
 * `HashSet` is a `HashMap` with a dummy `PRESENT` value - 1 extra ref per entry versus a purpose-built open-addressing set.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Mutating a key's fields after insertion changes `hashCode` -> entry becomes unreachable (leak). Keys must be immutable.
+2. Override `equals` **and** `hashCode` together; equal objects must have equal hashes, the converse isn't required.
+3. `HashMap` permits one `null` key and null values; `ConcurrentHashMap`/`Hashtable`/`Map.of` don't.
+4. `computeIfAbsent` with a recursive mapping function that modifies the same map -> `IllegalStateException: Recursive update` (CHM) or CME (HashMap, Java 9+).
+5. Treeify requires table >= 64: with a small table 8 collisions just trigger a resize.
+6. Iteration order of HashMap is unspecified and changes with capacity - never depend on it (use `LinkedHashMap`/`TreeMap`).
+7. `ConcurrentHashMap.size()` is only an estimate under contention; check-then-act (`if(!m.containsKey) m.put`) is a race - use `putIfAbsent`.
+8. `Collections.synchronizedMap` locks the entire map on each call, and iteration still needs manual `synchronized(map)`.
+
