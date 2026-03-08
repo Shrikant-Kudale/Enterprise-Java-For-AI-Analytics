@@ -29,3 +29,19 @@ An attacker submitting thousands of keys with identical hashes (JSON field names
 ### Siblings
 `LinkedHashMap` (insertion/access order -> LRU via `removeEldestEntry`), `TreeMap` (red-black, sorted, O(log n)), `IdentityHashMap`, `EnumMap`, `WeakHashMap`, `ConcurrentSkipListMap` (sorted + concurrent).
 
+## 2. Memory Architecture Breakdown
+
+```
+table (n=16)      Node: [hash 4B][key ref][val ref][next ref] = 32B (12 hdr + 4 + 4*3 -> 32)
+ [0] -> null
+ [1] -> N --> N --> N            chain <8   : linked list
+ [5] -> TreeNode(red/black)      chain>=8 & n>=64 : TreeNode = 56B+ (parent,left,right,prev,red)
+ ...
+Resize 16->32: bin j splits into j (lo) and j+16 (hi) depending on (hash & oldCap)
+
+Per-entry cost (HashMap<Integer,Integer>): 32B node + 16B key + 16B value + 4B table slot ~ 70B   (vs 8B in int[]/int[])
+```
+* HashMap is **not thread-safe**: concurrent resize in Java 7 could create a cyclic bucket list (100% CPU infinite loop); Java 8 can instead lose updates or return stale/null values. Never share without synchronisation.
+* `ConcurrentHashMap.CounterCell[]` adds padding (`@Contended`) to avoid false sharing - one reason it's larger than HashMap.
+* `HashSet` is a `HashMap` with a dummy `PRESENT` value - 1 extra ref per entry versus a purpose-built open-addressing set.
+
