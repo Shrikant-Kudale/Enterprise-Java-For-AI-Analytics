@@ -56,3 +56,26 @@ Per-entry cost (HashMap<Integer,Integer>): 32B node + 16B key + 16B value + 4B t
 7. `ConcurrentHashMap.size()` is only an estimate under contention; check-then-act (`if(!m.containsKey) m.put`) is a race - use `putIfAbsent`.
 8. `Collections.synchronizedMap` locks the entire map on each call, and iteration still needs manual `synchronized(map)`.
 
+## 4. Interview Q&A
+
+**Q1. Explain how HashMap works internally.**  
+Array of buckets indexed by `(n-1) & spread(hash)`, chaining on collision, tail insertion, treeify at chain >= 8 with n >= 64, resize doubling at load factor 0.75 with lo/hi split.
+
+**Q2. Why is the table size a power of two?**  
+So index = `hash & (n-1)` (a single AND) instead of modulo, and so resize can split bins using just one extra hash bit.
+
+**Q3. Why `h ^ (h >>> 16)`?**  
+With small tables only the low bits select the bucket; XOR-ing the upper 16 bits into the lower half lets high-bit differences influence the index and reduces collisions for hashes that differ only in high bits (e.g. floats, doubles).
+
+**Q4. How does ConcurrentHashMap achieve concurrency without a global lock?**  
+CAS for empty-bin insertion, per-bin `synchronized` on the head node otherwise, volatile reads for lock-free `get`, striped size counters, cooperative resizing.
+
+**Q5. When does HashMap degrade to O(n) and how does Java mitigate it?**  
+When many keys share a bucket (poor hashCode / flooding). Java 8 treeifies bins to O(log n) provided keys are Comparable or hash-distinct enough.
+
+**Q6. How would you build a thread-safe word-frequency counter?**  
+`ConcurrentHashMap<String, LongAdder>` using `computeIfAbsent(k, x -> new LongAdder()).increment()` - or `merge(k, 1L, Long::sum)` for low contention.
+
+**Q7. HashMap vs TreeMap vs LinkedHashMap?**  
+Hash: O(1) unordered. Tree: O(log n) sorted/navigable (floor, ceiling, range views). Linked: O(1) with predictable insertion/access order; `accessOrder=true` + `removeEldestEntry` = LRU cache.
+
