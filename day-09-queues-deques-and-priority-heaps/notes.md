@@ -59,3 +59,23 @@ Heap in array (min-heap)               ArrayDeque ring buffer (cap=8)
 7. A **max**-heap via `Collections.reverseOrder()` / `Comparator.reverseOrder()`; to keep the K *largest* use a **min**-heap of size K.
 8. Unbounded queues hide overload until OOM - prefer bounded + rejection policy.
 
+## 4. Interview Q&A
+
+**Q1. Find the K largest elements from a stream of 10^9 numbers.**  
+Maintain a min-heap of size K; for each x, if heap.size<K push, else if x>peek replace the root. O(n log K) time, O(K) memory.
+
+**Q2. Why is heap build O(n) not O(n log n)?**  
+Most nodes are near the leaves and sift down very little: sum over heights h * n/2^(h+1) converges to O(n).
+
+**Q3. How does ArrayDeque outperform LinkedList?**  
+Contiguous array, no node allocation, power-of-two masking instead of branches/modulo, better prefetching and less GC.
+
+**Q4. How would you merge K sorted files too large for memory?**  
+Open a buffered reader per file, put each head in a min-heap keyed by value, pop the min, write it and push the next from that file. O(N log K) with O(K) memory.
+
+**Q5. Design a priority inference queue where tenants with equal priority are FIFO.**  
+Wrap entries as (priority, sequenceNumber) and compare priority then sequence; bound the queue and apply a rejection policy.
+
+**Q6. Blocking queue choice for a producer/consumer micro-batcher?**  
+Bounded `ArrayBlockingQueue` for predictable memory and back-pressure; `LinkedBlockingQueue` for throughput with separate put/take locks; `SynchronousQueue` for direct hand-off.
+
