@@ -10,3 +10,4 @@
 | 06 | 2026-03-06 | Generics and Type Erasure | done |
 | 07 | 2026-03-07 | Collections: ArrayList and LinkedList Internals | done |
 | 08 | 2026-03-08 | HashMap, Treeification and ConcurrentHashMap | done |
+| 09 | 2026-03-09 | Queues, Deques and Priority Heaps | done |
