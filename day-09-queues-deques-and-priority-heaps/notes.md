@@ -33,3 +33,18 @@ Complete binary tree stored in an array: parent `(k-1)/2`, children `2k+1`, `2k+
 ### AI backend relevance
 Top-K nearest neighbours (vector search), beam search decoding (keep best K hypotheses), merge of ranked results from sharded indices, priority inference queues (premium tenants first), bounded queues for micro-batching back-pressure.
 
+## 2. Memory Architecture Breakdown
+
+```
+Heap in array (min-heap)               ArrayDeque ring buffer (cap=8)
+        1                              idx: 0 1 2 3 4 5 6 7
+      /   \                                [d e . . . a b c]
+     3     2        [1,3,2,7,4,5,9]                 ^tail    ^head
+    / \   / \
+   7   4 5   9                         addFirst: head=(head-1)&7 ; addLast: tail=(tail+1)&7
+```
+* PriorityQueue stores references: 1M `Integer`s = 4 MB array + 16 MB boxed objects. A primitive `int[]`-based heap (or fastutil `IntHeapPriorityQueue`) cuts memory 5x.
+* Sift operations touch O(log n) cache lines: for big heaps, a **4-ary heap** or B-heap improves locality (children share a cache line).
+* `PriorityQueue` growth: doubles when < 64 elements else +50% - similar amortised behaviour to ArrayList.
+* Blocking queues: `ArrayBlockingQueue` pre-allocates its array (no GC churn, bounded memory); `LinkedBlockingQueue` allocates a node per element (garbage).
+
