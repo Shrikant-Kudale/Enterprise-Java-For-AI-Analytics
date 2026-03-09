@@ -48,3 +48,14 @@ Heap in array (min-heap)               ArrayDeque ring buffer (cap=8)
 * `PriorityQueue` growth: doubles when < 64 elements else +50% - similar amortised behaviour to ArrayList.
 * Blocking queues: `ArrayBlockingQueue` pre-allocates its array (no GC churn, bounded memory); `LinkedBlockingQueue` allocates a node per element (garbage).
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. `PriorityQueue.iterator()` / `toString()` does not return sorted order - only `poll()` does.
+2. `PriorityQueue` is not stable: equal priorities pop in arbitrary order. Add a sequence number tiebreaker for FIFO among equals.
+3. Comparators that overflow (`a - b` with ints) corrupt heap order - use `Integer.compare`.
+4. Mutating an element's priority while it's inside the heap breaks invariants; remove + re-insert.
+5. `ArrayDeque` rejects `null`; `offer(null)` NPE. `LinkedList` allows it - and then `poll()` ambiguity appears.
+6. `Queue.add` throws on capacity failure, `offer` returns false; `remove` throws on empty, `poll` returns null; `element`/`peek` similar.
+7. A **max**-heap via `Collections.reverseOrder()` / `Comparator.reverseOrder()`; to keep the K *largest* use a **min**-heap of size K.
+8. Unbounded queues hide overload until OOM - prefer bounded + rejection policy.
+
