@@ -37,3 +37,13 @@ HyperLogLog (p=12)     4096 bytes (we use byte[]; production packs 6-bit => 3 KB
 * A Bloom filter's `k` probes hit `k` random cache lines: blocked Bloom filters (all k bits in one 64-byte line) trade a little accuracy for ~2-3x speed.
 * Use `Long.remainderUnsigned`/`Math.floorMod` for bit indexes - a plain `%` on a negative hash yields a negative index.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Bloom filters degrade when **overfilled** beyond the designed n: FP rate rises sharply. Size for peak cardinality or use a scalable Bloom filter.
+2. Count-Min over-estimates; for *heavy hitters* that's fine, for *rare* items the relative error is huge. Conservative update reduces bias.
+3. HLL needs a **good 64-bit hash** (Murmur3/xxHash/SplitMix). `String.hashCode()` (32-bit, poor avalanche) ruins accuracy.
+4. HLL is poor for tiny cardinalities without linear-counting correction, and cannot count *intersections* directly (inclusion-exclusion amplifies error).
+5. Welford: merge partial stats with Chan's formula `M2 = M2a + M2b + delta^2 * na*nb/(na+nb)`.
+6. Reservoir sampling with `Random` shared across threads is a contention point; use `ThreadLocalRandom` and merge reservoirs by weighted resampling.
+7. Serialising a Bloom filter requires fixing hash seeds and `m`,`k` - otherwise producers and consumers disagree.
+
