@@ -67,3 +67,18 @@ Reservoir sampling Algorithm R: O(n) time, O(k) memory, each item ends up with p
 **Q6. How do you aggregate HLLs from 100 shards?**  
 Take the element-wise max of registers - the union's sketch - then estimate; this is why HLL powers distributed distinct counts.
 
+## 5. Run the Lab
+
+```bash
+cd day-10-custom-data-structures-for-analytics
+javac AnalyticsDataStructures.java
+java AnalyticsDataStructures
+```
+The program prints benchmark tables and finishes with `Day 10 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 6. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
