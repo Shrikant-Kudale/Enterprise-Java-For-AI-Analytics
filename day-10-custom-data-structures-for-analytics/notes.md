@@ -47,3 +47,23 @@ HyperLogLog (p=12)     4096 bytes (we use byte[]; production packs 6-bit => 3 KB
 6. Reservoir sampling with `Random` shared across threads is a contention point; use `ThreadLocalRandom` and merge reservoirs by weighted resampling.
 7. Serialising a Bloom filter requires fixing hash seeds and `m`,`k` - otherwise producers and consumers disagree.
 
+## 4. Interview Q&A
+
+**Q1. How would you check whether a URL was already crawled among 10 billion?**  
+A Bloom filter sharded by URL hash, sized for ~1% FP (~1.2 GB per 1 B keys). A positive triggers a precise lookup; a negative is final. Persist/merge with OR.
+
+**Q2. Why can Count-Min never under-estimate?**  
+Each cell holds the true count of its item plus colliding items' counts; taking the minimum across independent rows picks the least-inflated cell, which is still >= truth.
+
+**Q3. How does HyperLogLog estimate distinct counts with ~3 KB?**  
+By tracking the maximum leading-zero run per register - rare long runs imply many distinct hashes; averaging many registers (harmonic mean) cuts variance to 1.04/sqrt(m).
+
+**Q4. Why is naive variance `E[x^2] - E[x]^2` unsafe?**  
+Catastrophic cancellation for large means/small variance can give negative variance. Welford's online update is stable.
+
+**Q5. How would you uniformly sample 1M rows from a stream of unknown length?**  
+Reservoir sampling Algorithm R: O(n) time, O(k) memory, each item ends up with probability k/n.
+
+**Q6. How do you aggregate HLLs from 100 shards?**  
+Take the element-wise max of registers - the union's sketch - then estimate; this is why HLL powers distributed distinct counts.
+
