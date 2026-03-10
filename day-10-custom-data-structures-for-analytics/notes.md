@@ -26,3 +26,14 @@ When data is too large for exact answers in memory, trade a **bounded, quantifie
 ### AI/analytics relevance
 Feature stores (dedupe event ids with Bloom filters before expensive lookups), heavy-hitter detection for abuse/trending, unique-user counting across billions of events (BigQuery `APPROX_COUNT_DISTINCT`, Redis `PFCOUNT`, Druid), drift monitoring with streaming mean/variance, uniform down-sampling of training data from live traffic.
 
+## 2. Memory Architecture Breakdown
+
+```
+Bloom (n=1M, p=1%)     m = 9.59M bits = 1.2 MB   vs  HashSet<Long> of 1M = ~ 50+ MB
+Count-Min (d=5,w=2048) 10240 longs = 80 KB       vs  HashMap<Long,Long> of 1M keys ~ 70 MB
+HyperLogLog (p=12)     4096 bytes (we use byte[]; production packs 6-bit => 3 KB)
+```
+* Bits live in a `long[]` -> contiguous, cache-friendly, trivially serialisable (`ByteBuffer`) and mergeable via bitwise OR (Bloom), element-wise add (CMS) or element-wise max (HLL).
+* A Bloom filter's `k` probes hit `k` random cache lines: blocked Bloom filters (all k bits in one 64-byte line) trade a little accuracy for ~2-3x speed.
+* Use `Long.remainderUnsigned`/`Math.floorMod` for bit indexes - a plain `%` on a negative hash yields a negative index.
+
