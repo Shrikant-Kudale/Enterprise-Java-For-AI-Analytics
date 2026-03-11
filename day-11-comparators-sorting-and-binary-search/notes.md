@@ -51,3 +51,14 @@ List.sort -> toArray -> Arrays.sort(T[], c) -> write back via ListIterator/array
 * Sorting an array of records by a field is cache-hostile; for very hot paths sort an `int[]` of indices by a `double[]` of keys, or pack `(key, index)` into a `long` and sort primitives.
 * TimSort's merge scratch space is allocated per call (up to n/2) - memory spike for big lists; `parallelSort` allocates a full n-sized working buffer.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. `list.sort(null)` uses natural ordering and throws `ClassCastException` for non-Comparable elements.
+2. Comparator using `(a,b) -> (int)(a.score - b.score)` truncates fractions (0.9 vs 0.1 -> 0) and violates transitivity.
+3. `TreeSet` with a comparator that ignores a field treats objects as duplicates and silently drops them.
+4. `Arrays.sort(Integer[], Collections.reverseOrder())` works; `Arrays.sort(int[], reverseOrder)` doesn't compile - sort and reverse, or box.
+5. Sorting stability: sorting by score then by country as two passes only works if the **second** sort is stable and uses the *primary* key last.
+6. Binary search on unsorted or on a `LinkedList` (`Collections.binarySearch` degrades to O(n) node walks).
+7. Binary search for a floating-point answer: loop a fixed number of iterations (e.g. 100) instead of `lo != hi`; epsilon comparisons can livelock.
+8. Quicksort with a fixed pivot (first element) is O(n^2) on sorted input - randomise / median-of-three.
+
