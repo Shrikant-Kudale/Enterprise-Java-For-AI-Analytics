@@ -62,3 +62,23 @@ List.sort -> toArray -> Arrays.sort(T[], c) -> write back via ListIterator/array
 7. Binary search for a floating-point answer: loop a fixed number of iterations (e.g. 100) instead of `lo != hi`; epsilon comparisons can livelock.
 8. Quicksort with a fixed pivot (first element) is O(n^2) on sorted input - randomise / median-of-three.
 
+## 4. Interview Q&A
+
+**Q1. What sorting algorithm does `Arrays.sort` use and why two different ones?**  
+Primitives: dual-pivot quicksort (fastest, stability irrelevant). Objects: TimSort (stable and adaptive; stability matters when sorting by multiple keys and for user-visible order).
+
+**Q2. How do you sort records by score desc, then timestamp asc, then id?**  
+`Comparator.comparingDouble(P::score).reversed().thenComparingLong(P::ts).thenComparing(P::id)`; note `reversed()` applies to everything before it only if chained that way.
+
+**Q3. Implement lower_bound and explain the loop invariant.**  
+`lo=0, hi=n; while(lo<hi){mid=(lo+hi)>>>1; if(a[mid]<x) lo=mid+1; else hi=mid;} return lo;` Invariant: everything left of lo is < x, everything at or right of hi is >= x.
+
+**Q4. Find the smallest batch size that satisfies a throughput SLO.**  
+Throughput is monotone in batch size under a fixed+linear latency model, so binary search the integer range with the predicate `throughput(b) >= target`.
+
+**Q5. When is merge sort preferable to quicksort?**  
+When stability is needed, for linked lists, for external/out-of-core sorting (sequential access), and for guaranteed O(n log n) worst case.
+
+**Q6. How would you sort 1 TB of numbers on a 16 GB machine?**  
+External merge sort: sort 8 GB chunks in memory to temp files, then K-way merge with a heap and large sequential buffers (day 9).
+
