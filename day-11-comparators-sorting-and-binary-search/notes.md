@@ -82,3 +82,18 @@ When stability is needed, for linked lists, for external/out-of-core sorting (se
 **Q6. How would you sort 1 TB of numbers on a 16 GB machine?**  
 External merge sort: sort 8 GB chunks in memory to temp files, then K-way merge with a heap and large sequential buffers (day 9).
 
+## 5. Run the Lab
+
+```bash
+cd day-11-comparators-sorting-and-binary-search
+javac SortingAndSearch.java
+java SortingAndSearch
+```
+The program prints benchmark tables and finishes with `Day 11 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 6. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
