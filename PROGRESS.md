@@ -12,3 +12,4 @@
 | 08 | 2026-03-08 | HashMap, Treeification and ConcurrentHashMap | done |
 | 09 | 2026-03-09 | Queues, Deques and Priority Heaps | done |
 | 10 | 2026-03-10 | Custom Data Structures for Analytics | done |
+| 11 | 2026-03-11 | Comparators, Sorting and Binary Search | done |
