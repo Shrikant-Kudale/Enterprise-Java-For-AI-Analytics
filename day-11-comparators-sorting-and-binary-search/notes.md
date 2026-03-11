@@ -37,3 +37,17 @@ Invariant-based thinking prevents off-by-one bugs: maintain `lo` as "all indices
 ### AI backend relevance
 Ranking model outputs, merging top-k from shards, picking a threshold from a sorted score list (ROC curves), bucketising features with sorted boundaries (`binarySearch` into quantile cut-points), timeline lookups in time-series feature stores.
 
+## 2. Memory Architecture Breakdown
+
+```
+Object[] sort                          int[] sort
+ [ref][ref][ref]...  -> scattered      [4B][4B][4B]...  contiguous
+ each compare = 2 pointer derefs       each compare = register compare
+ TimSort temp: n/2 refs                dual-pivot: in place (O(log n) stack)
+
+List.sort -> toArray -> Arrays.sort(T[], c) -> write back via ListIterator/arraycopy
+```
+* Sorting `List<Integer>` of 1M elements touches 1M boxed objects (cache misses) - typically **3-6x slower** than `int[]`.
+* Sorting an array of records by a field is cache-hostile; for very hot paths sort an `int[]` of indices by a `double[]` of keys, or pack `(key, index)` into a `long` and sort primitives.
+* TimSort's merge scratch space is allocated per call (up to n/2) - memory spike for big lists; `parallelSort` allocates a full n-sized working buffer.
+
