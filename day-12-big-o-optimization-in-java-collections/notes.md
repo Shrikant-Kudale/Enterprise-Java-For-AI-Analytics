@@ -34,3 +34,17 @@ Double n and measure: ratio ~2 -> O(n), ~4 -> O(n^2), ~2.1 -> O(n log n). `expon
 ### Interview communication template
 State the brute force and its complexity -> identify the bottleneck operation -> name the data structure that makes it cheaper -> state the new time *and space* -> mention trade-offs (memory vs speed, preprocessing cost).
 
+## 2. Memory Architecture Breakdown
+
+```
+Space-time trade-off in "two sum":
+  brute force : O(1) extra space, O(n^2) time   (n=20k -> 200M comparisons)
+  hash index  : O(n) extra space, O(n) time     (HashMap<Integer,Integer>: ~70 B/entry -> 1.4 MB)
+
+String s += "x" (n times):   each concat allocates a NEW String + byte[] of length i -> garbage = n^2/2 bytes
+StringBuilder:               one growing byte[] (doubling) -> O(n) bytes copied in total
+```
+* `HashMap` default growth copies ~2n entries total: presizing for 1M entries saves ~19 resizes (and ~100 MB of short-lived garbage).
+* `ArrayList.remove(0)` shifts n references: for 100k elements that is ~400 KB of memmove per call - 40 GB of memory traffic for a full drain.
+* Complexity ignores constants and cache: `O(n)` over a `LinkedList` can lose to `O(n log n)` over an array for realistic n.
+
