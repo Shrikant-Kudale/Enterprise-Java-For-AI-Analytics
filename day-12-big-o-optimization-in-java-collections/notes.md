@@ -48,3 +48,14 @@ StringBuilder:               one growing byte[] (doubling) -> O(n) bytes copied 
 * `ArrayList.remove(0)` shifts n references: for 100k elements that is ~400 KB of memmove per call - 40 GB of memory traffic for a full drain.
 * Complexity ignores constants and cache: `O(n)` over a `LinkedList` can lose to `O(n log n)` over an array for realistic n.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. `list.contains()` inside a loop silently turns O(n) into O(n^2) - the single most common interview and production perf bug.
+2. `String.intern`, `substring` (copy since Java 7u6), `+=` in loops, `String.split` + regex compile cost.
+3. `stream().distinct().count()` allocates a LinkedHashSet-like structure; `parallel` doesn't make poor algorithms good.
+4. Big-O hides constants: for n < ~50 a linear scan beats a HashMap lookup; JDK `Arrays.sort` uses insertion sort for tiny ranges.
+5. `HashMap` is O(1) only with a decent `hashCode`; mutable keys and constant hashes destroy it (day 8).
+6. `TreeMap.size()` is O(1) but `subMap(...).size()` is O(k) (counts by iterating).
+7. `Collections.sort(linkedList)` copies to an array first - O(n log n) is still fine, but `LinkedList.get` loops are O(n^2).
+8. Amortised analysis: `ArrayList.add` is fine for throughput but a rehash/copy pause can blow a p99 SLO.
+
