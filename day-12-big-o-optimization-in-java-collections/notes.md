@@ -59,3 +59,23 @@ StringBuilder:               one growing byte[] (doubling) -> O(n) bytes copied 
 7. `Collections.sort(linkedList)` copies to an array first - O(n log n) is still fine, but `LinkedList.get` loops are O(n^2).
 8. Amortised analysis: `ArrayList.add` is fine for throughput but a rehash/copy pause can blow a p99 SLO.
 
+## 4. Interview Q&A
+
+**Q1. Given an array and target, find two numbers that sum to target. Complexity?**  
+One pass with a `HashMap<value,index>`: look up `target - x` before inserting x. O(n) time, O(n) space; the brute force is O(n^2) time, O(1) space.
+
+**Q2. How do you validate a Big-O claim empirically?**  
+Warm up, then measure at n, 2n, 4n (min of several runs) and compute `log2(t(2n)/t(n))` - ~1 linear, ~2 quadratic; confirm with a profiler since caches distort curves.
+
+**Q3. Why is `String +=` in a loop O(n^2)?**  
+Strings are immutable, so each concatenation allocates and copies the whole prefix; total copied ~ n^2/2 chars. `StringBuilder` amortises to O(n).
+
+**Q4. Which collection for 'recent K items, evict oldest'?**  
+`ArrayDeque` ring buffer or `LinkedHashMap` with `removeEldestEntry` for key-addressed LRU; both O(1).
+
+**Q5. How would you speed up a service spending 60% of CPU in `list.contains` on a 50k list?**  
+Build a `HashSet` index once (O(n)), keep it in sync or rebuild on change, and if memory-bound use a sorted array + binary search or a Bloom filter pre-check.
+
+**Q6. When can O(n log n) beat O(n)?**  
+When constants/cache behaviour dominate (small n, sequential memory vs random pointer chasing) or when the O(n) approach needs heavy allocation/hashing.
+
