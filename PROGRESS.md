@@ -13,3 +13,4 @@
 | 09 | 2026-03-09 | Queues, Deques and Priority Heaps | done |
 | 10 | 2026-03-10 | Custom Data Structures for Analytics | done |
 | 11 | 2026-03-11 | Comparators, Sorting and Binary Search | done |
+| 12 | 2026-03-12 | Big-O Optimization in Java Collections | done |
