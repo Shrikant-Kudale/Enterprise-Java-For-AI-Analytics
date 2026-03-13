@@ -35,3 +35,17 @@ An interface with exactly **one abstract method** (default/static/Object-method 
 ### AI backend relevance
 Feature transformation pipelines (`standardize -> clip -> log1p`) are function composition; post-processing hooks, retry/fallback policies and metrics callbacks are higher-order functions; reducing boilerplate in strategy-heavy code (day 3).
 
+## 2. Memory Architecture Breakdown
+
+```
+Capturing lambda:   int threshold = 5;  x -> x > threshold
+    heap object  [hdr 12B][captured threshold 4B] -> 16B, allocated each time the lambda expression is evaluated
+Non-capturing:      x -> x * 2            single cached instance (no per-use allocation)
+
+invokedynamic call site --(first execution)--> LambdaMetafactory --> hidden class (Lookup.defineHiddenClass)
+                          afterwards: ConstantCallSite -> JIT inlines like a static call
+```
+* Hidden lambda classes are unloadable and don't clutter the class path, but the *first* use of each lambda costs ~50-100 us of linkage - noticeable in cold-start benchmarks and serverless.
+* Megamorphic call sites: a `Function.apply` site that sees > 2 lambda classes is no longer inlined (vtable/itable dispatch ~2-3 ns) - show in today's benchmark.
+* Boxing in `Function<Integer,Integer>` allocates (outside the Integer cache); use `IntUnaryOperator` & friends in hot loops.
+
