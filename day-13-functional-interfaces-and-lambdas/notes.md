@@ -60,3 +60,23 @@ invokedynamic call site --(first execution)--> LambdaMetafactory --> hidden clas
 7. Method reference to an overloaded method may be ambiguous (`Integer::toString`).
 8. Serialising lambdas is fragile - avoid.
 
+## 4. Interview Q&A
+
+**Q1. What is the difference between a lambda and an anonymous inner class?**  
+Different scoping of `this`, no extra class file (invokedynamic + hidden class), possible non-allocating singleton for non-capturing lambdas, and typically better JIT inlining; anonymous classes can have state/multiple methods.
+
+**Q2. Why must captured variables be effectively final?**  
+The lambda captures *values* (copied into the lambda object); allowing mutation would imply shared mutable locals across threads/stack frames, which the JVM can't support - use a holder object explicitly.
+
+**Q3. How does invokedynamic improve lambdas?**  
+It defers the translation strategy to runtime (`LambdaMetafactory`), allowing the JDK to change the implementation without recompiling, and produces call sites the JIT optimises as constants.
+
+**Q4. Implement memoisation for an expensive pure function.**  
+Wrap the function with `ConcurrentHashMap.computeIfAbsent`; ensure purity, bound the cache (LRU/Caffeine), and avoid recursive use of the same map.
+
+**Q5. How do you handle checked exceptions in streams?**  
+Wrap in a functional interface that throws and adapts to an unchecked one, or catch inside the lambda and return `Optional`/`Result`; never swallow silently.
+
+**Q6. Why use `IntBinaryOperator` over `BinaryOperator<Integer>`?**  
+Avoid boxing/unboxing allocations and the identity-cache pitfalls; critical in tight numeric loops.
+
