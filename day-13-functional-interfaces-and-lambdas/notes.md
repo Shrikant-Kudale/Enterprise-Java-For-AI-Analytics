@@ -49,3 +49,14 @@ invokedynamic call site --(first execution)--> LambdaMetafactory --> hidden clas
 * Megamorphic call sites: a `Function.apply` site that sees > 2 lambda classes is no longer inlined (vtable/itable dispatch ~2-3 ns) - show in today's benchmark.
 * Boxing in `Function<Integer,Integer>` allocates (outside the Integer cache); use `IntUnaryOperator` & friends in hot loops.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. `this` inside a lambda is the enclosing instance; inside an anonymous class it's the anonymous instance.
+2. Capturing a loop variable of an enhanced-for is fine (new binding per iteration), but classic `for(int i...)` variables aren't effectively final.
+3. Lambdas can't throw checked exceptions unless the functional method declares them -> wrap (`ThrowingFunction.unchecked`).
+4. Recursive lambdas need a field or holder (`Function<Integer,Integer>[] f = new Function[1]`) - or use a named method.
+5. `computeIfAbsent(k, f)` where `f` modifies the same map -> `IllegalStateException`/CME (classic memoised-Fibonacci trap).
+6. Overloaded methods taking different functional interfaces (`submit(Runnable)` vs `submit(Callable)`) make lambdas ambiguous - cast or use explicit types.
+7. Method reference to an overloaded method may be ambiguous (`Integer::toString`).
+8. Serialising lambdas is fragile - avoid.
+
