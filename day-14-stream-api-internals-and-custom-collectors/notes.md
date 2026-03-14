@@ -54,3 +54,23 @@ Stream<Integer> boxed sum: 16B Integer per element read + unbox;  IntStream: zer
 7. `sorted()` is stable only for ordered streams; `forEach` doesn't preserve order in parallel (`forEachOrdered` does, at a cost).
 8. Custom collector without a correct combiner passes sequential tests and breaks in parallel.
 
+## 4. Interview Q&A
+
+**Q1. Explain how a stream pipeline executes.**  
+Intermediate operations wrap the downstream `Sink`; the terminal operation pulls elements from the spliterator and pushes each through the fused sink chain. Short-circuit ops flip `cancellationRequested` to stop early.
+
+**Q2. `map` vs `flatMap` vs `mapMulti`?**  
+`map` 1->1; `flatMap` 1->stream (allocates a stream per element); `mapMulti` 1->0..n via a `Consumer` buffer, cheaper for small fan-outs.
+
+**Q3. Write a custom Collector - what must hold for parallel correctness?**  
+Supplier returns a fresh mutable container; accumulator mutates only its container; the combiner merges two containers associatively; finisher is pure. Declare `UNORDERED/CONCURRENT` only if true.
+
+**Q4. Why can `stream().sorted().findFirst()` be slower than `min()`?**  
+`sorted` is a full barrier O(n log n) and buffers all elements; `min` is O(n) with O(1) memory.
+
+**Q5. When are streams slower than loops?**  
+Tiny collections, primitive hot loops, boxed elements, megamorphic lambda sites and short-circuit-free pipelines; for typical business code the difference is negligible, for inner-loop numeric kernels use arrays/loops.
+
+**Q6. How does `groupingBy` work and how do you get a sorted map of counts?**  
+Container is a `Map<K, A>` with downstream accumulators per key: `groupingBy(f, TreeMap::new, counting())`.
+
