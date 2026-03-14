@@ -15,3 +15,4 @@
 | 11 | 2026-03-11 | Comparators, Sorting and Binary Search | done |
 | 12 | 2026-03-12 | Big-O Optimization in Java Collections | done |
 | 13 | 2026-03-13 | Functional Interfaces and Lambdas | done |
+| 14 | 2026-03-14 | Stream API Internals and Custom Collectors | done |
