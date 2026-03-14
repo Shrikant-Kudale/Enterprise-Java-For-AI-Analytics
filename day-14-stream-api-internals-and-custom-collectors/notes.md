@@ -43,3 +43,14 @@ Stream<Integer> boxed sum: 16B Integer per element read + unbox;  IntStream: zer
 * `Collectors.toList()` uses `ArrayList` with default growth; `Stream.toList()` (16+) builds from `toArray` (exact size, unmodifiable).
 * Parallel `groupingBy` merges per-thread maps (copying); `groupingByConcurrent` writes into one `ConcurrentHashMap` (less merging, unordered).
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. `peek` is for debugging only: with `count()` on a SIZED source the JDK 9+ may *skip* the pipeline entirely, so peek never runs.
+2. Side effects in `map/filter/forEach` on a parallel stream (adding to a shared ArrayList) are data races - use `collect`.
+3. `Collectors.toMap` throws `IllegalStateException` on duplicate keys unless a merge function is given; and NPE on null values.
+4. `Stream.iterate(seed, f)` without `limit/takeWhile` never terminates; `Stream.generate` + `limit` on parallel streams wastes work.
+5. `flatMap` closes each inner stream, but a lazily-evaluated `flatMap` didn't short-circuit before JDK 10 (fixed).
+6. `IntStream.range(0, n).boxed().collect(toList())` boxes n integers - prefer `toArray`.
+7. `sorted()` is stable only for ordered streams; `forEach` doesn't preserve order in parallel (`forEachOrdered` does, at a cost).
+8. Custom collector without a correct combiner passes sequential tests and breaks in parallel.
+
