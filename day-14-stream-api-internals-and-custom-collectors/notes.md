@@ -28,3 +28,18 @@ Hot inner loops over primitives (loop is simpler and ~as fast or faster), code w
 ### AI/analytics relevance
 Batch feature aggregation, group-by metrics per model/tenant, rolling-window features (sliding windows), top-K collectors, histograms for drift detection - all expressible as collectors that also work in parallel.
 
+## 2. Memory Architecture Breakdown
+
+```
+list.stream().filter(p).map(f).limit(3).collect(c)
+
+ ReferenceSpliterator(list) -> Head -> StatelessOp(filter) -> StatelessOp(map) -> SliceOp(limit) -> ReduceOp(collect)
+ wrapSink() builds:   FilterSink -> MapSink -> LimitSink -> CollectorSink    (one pass, no temp lists)
+
+Allocation per pipeline: ~10-15 small objects (ops, sinks, spliterator). Per *element*: only boxed values / lambda results.
+Stream<Integer> boxed sum: 16B Integer per element read + unbox;  IntStream: zero allocation.
+```
+* `sorted()` buffers the whole stream in an array/ArrayList (O(n) memory); `distinct()` uses a hash set (O(n)); `limit` after `sorted` can't avoid the full sort.
+* `Collectors.toList()` uses `ArrayList` with default growth; `Stream.toList()` (16+) builds from `toArray` (exact size, unmodifiable).
+* Parallel `groupingBy` merges per-thread maps (copying); `groupingByConcurrent` writes into one `ConcurrentHashMap` (less merging, unordered).
+
