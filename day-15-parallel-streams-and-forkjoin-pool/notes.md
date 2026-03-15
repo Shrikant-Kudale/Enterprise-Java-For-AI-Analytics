@@ -42,3 +42,14 @@ Task object ~ 32-48 B (fields lo, hi, array ref, result, status). A threshold of
 * Memory-bound loops (sum of a big array) saturate bandwidth with 2-4 cores; extra cores add nothing. Compute-bound kernels (sin/log/model scoring) scale ~linearly.
 * False sharing: per-thread accumulators packed in one array (`long[] partial = new long[p]`) ping-pong cache lines; pad or use local variables + final combine (or `LongAdder`).
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Blocking inside a parallel stream on the common pool (HTTP calls, `sleep`, DB) can stall the whole JVM's async work; classic production outage.
+2. `reduce(0, (a,b) -> a - b)` isn't associative: sequential and parallel results differ. Same for `reduce` with a non-identity seed (`reduce(10, Integer::sum)` adds 10 per split!).
+3. `parallelStream().forEach(list::add)` -> lost elements / `ArrayIndexOutOfBoundsException`; `Collections.synchronizedList` fixes safety but kills speed-up.
+4. `findFirst` on a parallel ordered stream preserves encounter order (and costs); `findAny` is cheaper.
+5. `limit(n)` on an ordered parallel stream can be slower than sequential - drop ordering with `unordered()`.
+6. Nested parallel streams share the same pool: no extra parallelism, risk of starvation.
+7. Thread-locals and `SecurityContext`/MDC are not propagated into pool threads.
+8. Floating-point sums differ between sequential and parallel runs (non-associative rounding) - compare with tolerance.
+
