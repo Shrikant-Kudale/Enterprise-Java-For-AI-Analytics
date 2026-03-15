@@ -53,3 +53,23 @@ Task object ~ 32-48 B (fields lo, hi, array ref, result, status). A threshold of
 7. Thread-locals and `SecurityContext`/MDC are not propagated into pool threads.
 8. Floating-point sums differ between sequential and parallel runs (non-associative rounding) - compare with tolerance.
 
+## 4. Interview Q&A
+
+**Q1. How does work stealing work and why is it efficient?**  
+Each worker owns a deque, pushing/popping at one end; idle workers steal from the other end, taking the oldest (largest) tasks, minimising contention and giving good load balance for irregular recursive workloads.
+
+**Q2. When should you not use parallel streams?**  
+Small data, I/O or lock-bound work, ordered/limited pipelines, poorly splittable sources, code with side effects, or when the common pool is shared with latency-critical code.
+
+**Q3. How do you run a parallel stream on a dedicated pool?**  
+Submit the terminal operation as a task into your own `ForkJoinPool`: `pool.submit(() -> stream.parallel().sum()).get()`; size the pool deliberately and shut it down.
+
+**Q4. Why must a reduce identity be a real identity?**  
+Each parallel partition starts from the identity; a non-identity (e.g. 10 for sum) is added once per partition, producing a result that depends on the split count.
+
+**Q5. fork() both halves and join both, or fork one and compute the other?**  
+Fork one, compute the other directly: it avoids queueing a task you'd immediately wait for and keeps the current thread busy.
+
+**Q6. How do you choose the sequential threshold?**  
+Profile: pick a leaf size where per-leaf work is ~10-100 us (thousands of simple ops) so scheduling overhead is < 5%; typical heuristic is `n / (8 * parallelism)`.
+
