@@ -29,3 +29,16 @@ Speed-up <= `1 / (s + (1-s)/p)`; task creation, splitting, memory bandwidth and 
 ### AI backend relevance
 Batch scoring of features, parallel evaluation of candidate models/rules, shard merges, distance computations over large embedding arrays (compute-bound kernels). For I/O-bound fan-out prefer `CompletableFuture` + executor or virtual threads (day 17-18).
 
+## 2. Memory Architecture Breakdown
+
+```
+Worker 0 deque: [T5 T4 T3]  <-- owner push/pop (LIFO, hot in L1/L2)        ... thieves take from the head: T3? no - FIFO end
+Worker 1 deque: []        --- steals oldest/largest task from Worker 0's opposite end ---
+Common pool threads: daemon, named ForkJoinPool.commonPool-worker-N; custom: ForkJoinPool-N-worker-M
+
+Task object ~ 32-48 B (fields lo, hi, array ref, result, status). A threshold of 1 creates millions of tasks -> allocation + queue contention dominate.
+```
+* Fork/join tasks are heap objects: recursion depth is logarithmic (the pool, not the Java stack, holds the pending work) so deep splits don't overflow the stack.
+* Memory-bound loops (sum of a big array) saturate bandwidth with 2-4 cores; extra cores add nothing. Compute-bound kernels (sin/log/model scoring) scale ~linearly.
+* False sharing: per-thread accumulators packed in one array (`long[] partial = new long[p]`) ping-pong cache lines; pad or use local variables + final combine (or `LongAdder`).
+
