@@ -17,3 +17,10 @@ AtomicLong   -> one volatile long + CAS loop; LongAdder -> Cell[] (padded, @Cont
 ```
 Contended CAS on one cache line bounces it between cores; striping (LongAdder) trades read cost for write scalability.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. `volatile` gives visibility, not atomicity (`count++` still races).
+2. Double-checked locking is only correct with a `volatile` field.
+3. Never call alien methods while holding a lock (deadlock/latency).
+4. `wait()` must be in a `while` loop (spurious wakeups).
+
