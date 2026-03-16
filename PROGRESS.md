@@ -17,3 +17,4 @@
 | 13 | 2026-03-13 | Functional Interfaces and Lambdas | done |
 | 14 | 2026-03-14 | Stream API Internals and Custom Collectors | done |
 | 15 | 2026-03-15 | Parallel Streams and the Fork/Join Pool | done |
+| 16 | 2026-03-16 | Multithreading, Synchronization and Locks | done |
