@@ -24,3 +24,14 @@ Contended CAS on one cache line bounces it between cores; striping (LongAdder) t
 3. Never call alien methods while holding a lock (deadlock/latency).
 4. `wait()` must be in a `while` loop (spurious wakeups).
 
+## 4. Interview Q&A
+
+**Q1. synchronized vs ReentrantLock?**  
+Same mutual exclusion/visibility; ReentrantLock adds tryLock, timeouts, fairness, multiple conditions and must be unlocked in `finally`.
+
+**Q2. How do you prevent deadlock in a money transfer?**  
+Always acquire locks in a total order (e.g. by account id), or use tryLock with back-off.
+
+**Q3. When LongAdder over AtomicLong?**  
+Write-heavy counters/metrics where exact value is read rarely.
+
