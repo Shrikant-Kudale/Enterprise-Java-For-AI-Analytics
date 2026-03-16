@@ -35,3 +35,18 @@ Always acquire locks in a total order (e.g. by account id), or use tryLock with 
 **Q3. When LongAdder over AtomicLong?**  
 Write-heavy counters/metrics where exact value is read rarely.
 
+## 5. Run the Lab
+
+```bash
+cd day-16-multithreading-synchronization-and-locks
+javac ConcurrencyPrimitives.java
+java ConcurrencyPrimitives
+```
+The program prints benchmark tables and finishes with `Day 16 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 6. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
