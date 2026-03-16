@@ -9,3 +9,11 @@
 * **Deadlock** needs mutual exclusion + hold-and-wait + no preemption + circular wait. Break circular wait with a global **lock order**; or use `tryLock(timeout)`.
 * `ReentrantLock` adds `tryLock`, fairness, `Condition`s, interruptible locking; `ReadWriteLock`/`StampedLock` favour read-heavy data.
 
+## 2. Memory Architecture Breakdown
+
+```
+synchronized -> object header mark word (thin lock CAS -> inflated ObjectMonitor under contention)
+AtomicLong   -> one volatile long + CAS loop; LongAdder -> Cell[] (padded, @Contended) summed on read
+```
+Contended CAS on one cache line bounces it between cores; striping (LongAdder) trades read cost for write scalability.
+
