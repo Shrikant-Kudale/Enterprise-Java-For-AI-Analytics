@@ -36,3 +36,18 @@ Only when the queue is full; with an unbounded queue max size is never used.
 **Q3. thenApply vs thenCompose?**  
 thenApply maps a value; thenCompose flattens a function returning another future (like flatMap).
 
+## 5. Run the Lab
+
+```bash
+cd day-17-executorservice-and-completablefuture
+javac ExecutorsAndFutures.java
+java ExecutorsAndFutures
+```
+The program prints benchmark tables and finishes with `Day 17 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 6. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
