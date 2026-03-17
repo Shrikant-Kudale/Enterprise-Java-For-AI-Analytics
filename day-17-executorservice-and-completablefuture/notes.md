@@ -18,3 +18,10 @@ CompletableFuture = result/exception field + Completion stack (linked list of de
 ```
 Each stage allocates a future + completion node; deep chains on huge fan-outs create garbage - batch the work.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Blocking calls on the common pool starve every async stage in the JVM.
+2. `CallerRunsPolicy` slows the producer deliberately - that is the back-pressure.
+3. `allOf` completes with `null`; join each future to read values.
+4. Always `shutdown()` + `awaitTermination`; non-daemon pool threads keep the JVM alive.
+
