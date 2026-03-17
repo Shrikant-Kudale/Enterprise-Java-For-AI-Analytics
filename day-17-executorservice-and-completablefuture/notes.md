@@ -10,3 +10,11 @@
 * **CompletableFuture**: `supplyAsync`, `thenApply/thenCompose/thenCombine`, `allOf/anyOf`, `orTimeout/completeOnTimeout`, `exceptionally/handle`. Pass your own executor; the default is the common ForkJoinPool.
 * Scatter-gather with per-replica timeout + fallback keeps p99 bounded when one model replica is slow.
 
+## 2. Memory Architecture Breakdown
+
+```
+task -> [core threads] -> [BlockingQueue] -> [extra threads up to max] -> RejectedExecutionHandler
+CompletableFuture = result/exception field + Completion stack (linked list of dependents, CAS-pushed)
+```
+Each stage allocates a future + completion node; deep chains on huge fan-outs create garbage - batch the work.
+
