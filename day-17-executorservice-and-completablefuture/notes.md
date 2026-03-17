@@ -25,3 +25,14 @@ Each stage allocates a future + completion node; deep chains on huge fan-outs cr
 3. `allOf` completes with `null`; join each future to read values.
 4. Always `shutdown()` + `awaitTermination`; non-daemon pool threads keep the JVM alive.
 
+## 4. Interview Q&A
+
+**Q1. When does a ThreadPoolExecutor create threads beyond core size?**  
+Only when the queue is full; with an unbounded queue max size is never used.
+
+**Q2. How do you add a timeout to a CompletableFuture?**  
+`orTimeout` (fail) or `completeOnTimeout` (fallback value), Java 9+.
+
+**Q3. thenApply vs thenCompose?**  
+thenApply maps a value; thenCompose flattens a function returning another future (like flatMap).
+
