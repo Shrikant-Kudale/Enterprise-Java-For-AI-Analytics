@@ -19,3 +19,4 @@
 | 15 | 2026-03-15 | Parallel Streams and the Fork/Join Pool | done |
 | 16 | 2026-03-16 | Multithreading, Synchronization and Locks | done |
 | 17 | 2026-03-17 | ExecutorService and CompletableFuture | done |
+| 18 | 2026-03-18 | Virtual Threads and Project Loom | done |
