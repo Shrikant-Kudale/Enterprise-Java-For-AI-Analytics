@@ -10,3 +10,11 @@
 * Helps I/O-bound workloads only; CPU-bound work still needs cores.
 * **Pinning** (Java 21): blocking inside `synchronized` (or native frames) pins the carrier. Prefer `ReentrantLock` in hot blocking paths (fixed in JDK 24).
 
+## 2. Memory Architecture Breakdown
+
+```
+Platform thread: ~1 MB reserved stack, OS scheduled         Virtual thread: stack chunks on the HEAP (starts ~1 KB), grows as needed
+carrier pool = ForkJoinPool (parallelism = cores)           mount/unmount copies frames to/from heap (cheap, no syscall)
+```
+ThreadLocals work but cost memory per thread - avoid large ones; ScopedValue is the successor (preview).
+
