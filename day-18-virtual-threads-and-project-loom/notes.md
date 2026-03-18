@@ -18,3 +18,10 @@ carrier pool = ForkJoinPool (parallelism = cores)           mount/unmount copies
 ```
 ThreadLocals work but cost memory per thread - avoid large ones; ScopedValue is the successor (preview).
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Do not use thread pools of virtual threads.
+2. Pinned carriers + many blocking tasks can stall everything.
+3. Unbounded concurrency overloads downstream (DB, model server): add a Semaphore.
+4. Thread dumps show only mounted virtual threads; use `jcmd Thread.dump_to_file`.
+
