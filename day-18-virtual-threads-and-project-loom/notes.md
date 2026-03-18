@@ -25,3 +25,14 @@ ThreadLocals work but cost memory per thread - avoid large ones; ScopedValue is 
 3. Unbounded concurrency overloads downstream (DB, model server): add a Semaphore.
 4. Thread dumps show only mounted virtual threads; use `jcmd Thread.dump_to_file`.
 
+## 4. Interview Q&A
+
+**Q1. Why are virtual threads cheaper?**  
+Tiny heap-allocated stacks and user-mode scheduling; blocking parks the continuation instead of an OS thread.
+
+**Q2. Do virtual threads replace reactive programming?**  
+For most request/response services yes: same scalability with simple blocking code and normal stack traces.
+
+**Q3. How do you limit concurrency?**  
+A `Semaphore` around the scarce resource, not a smaller thread pool.
+
