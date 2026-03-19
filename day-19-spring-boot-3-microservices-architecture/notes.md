@@ -26,3 +26,14 @@ Reflection `Method.invoke` is JIT-optimised after warm-up; Spring caches handler
 3. `@Transactional` is proxy-based: self-invocation bypasses it.
 4. Always set connect/read timeouts and a circuit breaker on outbound clients.
 
+## 4. Interview Q&A
+
+**Q1. How does Spring Boot auto-configuration work?**  
+`@EnableAutoConfiguration` loads candidate config classes from `AutoConfiguration.imports`, each guarded by `@Conditional*` (class present, bean missing, property set).
+
+**Q2. Singleton bean thread-safety?**  
+Singletons are shared across requests, so they must be stateless or internally thread-safe.
+
+**Q3. How do you make a service ready for Kubernetes?**  
+Liveness/readiness probes, graceful shutdown, externalised config, resource limits aligned with JVM flags, structured logs, metrics.
+
