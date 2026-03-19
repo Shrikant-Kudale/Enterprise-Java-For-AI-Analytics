@@ -19,3 +19,10 @@ Request: HttpServer -> virtual thread -> route table lookup (path -> bean + Meth
 ```
 Reflection `Method.invoke` is JIT-optimised after warm-up; Spring caches handler methods for the same reason.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Field injection hides dependencies and blocks immutability - use constructor injection.
+2. Circular dependencies indicate a design smell (Boot 2.6+ forbids by default).
+3. `@Transactional` is proxy-based: self-invocation bypasses it.
+4. Always set connect/read timeouts and a circuit breaker on outbound clients.
+
