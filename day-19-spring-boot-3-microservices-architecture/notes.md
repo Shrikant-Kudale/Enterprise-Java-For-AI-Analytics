@@ -37,3 +37,39 @@ Singletons are shared across requests, so they must be stateless or internally t
 **Q3. How do you make a service ready for Kubernetes?**  
 Liveness/readiness probes, graceful shutdown, externalised config, resource limits aligned with JVM flags, structured logs, metrics.
 
+## 5. Production Mapping (real libraries)
+
+```xml
+<parent><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-parent</artifactId><version>3.3.5</version></parent>
+<dependencies>
+  <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-web</artifactId></dependency>
+  <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-actuator</artifactId></dependency>
+</dependencies>
+```
+```java
+@RestController
+class PredictionController {
+    private final PredictionService svc;
+    PredictionController(PredictionService svc) { this.svc = svc; }
+    @GetMapping("/predict") Map<String,Object> predict(@RequestParam String model, @RequestParam double[] x) {
+        return Map.of("model", model, "score", svc.predict(model, x));
+    }
+}
+```
+`application.yml`: `spring.threads.virtual.enabled: true`, `management.endpoints.web.exposure.include: health,prometheus`, `server.shutdown: graceful`.
+
+## 6. Run the Lab
+
+```bash
+cd day-19-spring-boot-3-microservices-architecture
+javac MiniBootMicroservice.java
+java MiniBootMicroservice
+```
+The program prints benchmark tables and finishes with `Day 19 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 7. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
