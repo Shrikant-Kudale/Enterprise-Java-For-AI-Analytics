@@ -10,3 +10,12 @@
 * Spring Boot 3: Java 17+, Jakarta namespace, native images, `spring.threads.virtual.enabled=true` for virtual-thread request handling.
 * Today's lab implements the mechanism - DI container with cycle detection + annotation-driven router on `com.sun.net.httpserver` - using only the JDK.
 
+## 2. Memory Architecture Breakdown
+
+```
+Container: Map<Class, Object> singletons; create(): pick constructor -> resolve params recursively -> newInstance -> cache
+Cycle detection: "currently creating" stack; seeing a class twice => circular dependency error
+Request: HttpServer -> virtual thread -> route table lookup (path -> bean + Method) -> reflection invoke -> JSON
+```
+Reflection `Method.invoke` is JIT-optimised after warm-up; Spring caches handler methods for the same reason.
+
