@@ -10,3 +10,11 @@
 * Pagination: keyset (`WHERE id > ?`) beats `OFFSET`; `open-in-view=false`; `readOnly=true` transactions; projections (DTO) instead of entities for reads.
 * Today: fake DB with per-round-trip latency + a Hikari-style pool built from `ArrayBlockingQueue`.
 
+## 2. Memory Architecture Breakdown
+
+```
+Pool: ArrayBlockingQueue<Connection> idle (size = max). borrow() = poll(timeout); close() = offer back (idempotent).
+Hibernate: first-level cache (Session) = Map<id, entity> + dirty-check snapshots -> memory grows with loaded entities; clear()/flush() in batch jobs.
+```
+Throughput rises with pool size only until the DB saturates; more connections after that only add context switching and lock contention.
+
