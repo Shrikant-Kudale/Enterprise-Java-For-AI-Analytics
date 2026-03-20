@@ -21,3 +21,4 @@
 | 17 | 2026-03-17 | ExecutorService and CompletableFuture | done |
 | 18 | 2026-03-18 | Virtual Threads and Project Loom | done |
 | 19 | 2026-03-19 | Spring Boot 3 Microservices Architecture | done |
+| 20 | 2026-03-20 | Spring Data JPA and HikariCP Optimization | done |
