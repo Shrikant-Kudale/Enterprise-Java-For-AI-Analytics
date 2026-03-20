@@ -25,3 +25,14 @@ Throughput rises with pool size only until the DB saturates; more connections af
 3. `findAll()` + stream in memory = hidden full table scan.
 4. Forgetting `close()` leaks a connection; pool exhaustion shows as timeouts under load.
 
+## 4. Interview Q&A
+
+**Q1. How do you detect N+1 in production?**  
+Log/count statements per request (Hibernate statistics, datasource-proxy, APM traces); alert on queries per request.
+
+**Q2. Why not set pool size to 100?**  
+The DB can only run ~cores*2 queries efficiently; extra connections queue inside the DB, increasing latency.
+
+**Q3. IDENTITY vs SEQUENCE?**  
+IDENTITY needs the insert to get the id, which defeats JDBC batching; SEQUENCE with allocationSize pre-fetches ids.
+
