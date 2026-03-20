@@ -18,3 +18,10 @@ Hibernate: first-level cache (Session) = Map<id, entity> + dirty-check snapshots
 ```
 Throughput rises with pool size only until the DB saturates; more connections after that only add context switching and lock contention.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. `LazyInitializationException` outside a transaction - fetch what you need or use DTO projections.
+2. Pool larger than DB cores often *reduces* throughput.
+3. `findAll()` + stream in memory = hidden full table scan.
+4. Forgetting `close()` leaks a connection; pool exhaustion shows as timeouts under load.
+
