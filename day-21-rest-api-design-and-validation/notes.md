@@ -19,3 +19,11 @@ Validation by reflection reads annotation metadata once per class (cache it in p
 2. Do not leak stack traces in error bodies.
 3. Idempotency store needs TTL and must be atomic (putIfAbsent).
 
+## 4. Interview Q&A
+
+**Q1. PUT vs PATCH?**  
+PUT replaces the full resource (idempotent); PATCH applies a partial change.
+
+**Q2. Why cursor pagination?**  
+OFFSET scans and skips rows (O(n)) and drifts when data changes; cursors seek by key.
+
