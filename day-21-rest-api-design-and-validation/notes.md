@@ -9,3 +9,7 @@
 * **Pagination**: prefer opaque *cursors* over `OFFSET` (stable, O(1) seek). **Idempotency-Key** header makes retried POSTs safe.
 * Version via URL or header; never break existing fields; document with OpenAPI.
 
+## 2. Memory Architecture Breakdown
+
+Validation by reflection reads annotation metadata once per class (cache it in production); a cursor is just base64 of the last seen key.
+
