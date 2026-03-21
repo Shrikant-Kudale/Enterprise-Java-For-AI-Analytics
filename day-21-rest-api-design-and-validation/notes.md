@@ -13,3 +13,9 @@
 
 Validation by reflection reads annotation metadata once per class (cache it in production); a cursor is just base64 of the last seen key.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Validate *and* bound request size (arrays, strings) to avoid DoS.
+2. Do not leak stack traces in error bodies.
+3. Idempotency store needs TTL and must be atomic (putIfAbsent).
+
