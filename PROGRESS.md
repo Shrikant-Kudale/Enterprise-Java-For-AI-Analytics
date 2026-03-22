@@ -23,3 +23,4 @@
 | 19 | 2026-03-19 | Spring Boot 3 Microservices Architecture | done |
 | 20 | 2026-03-20 | Spring Data JPA and HikariCP Optimization | done |
 | 21 | 2026-03-21 | REST API Design and Validation | done |
+| 22 | 2026-03-22 | Redis Caching for High Throughput | done |
