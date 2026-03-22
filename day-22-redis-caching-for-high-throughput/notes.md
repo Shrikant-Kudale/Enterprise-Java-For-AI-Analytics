@@ -16,3 +16,9 @@
 LinkedHashMap(accessOrder=true) keeps an intrusive doubly-linked list: get() moves the entry to the tail, removeEldestEntry evicts the head.
 RESP: `*3\r\n$3\r\nSET\r\n$1\r\nk\r\n$1\r\nv\r\n` - arrays of length-prefixed bulk strings.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Hot-key skew: one Redis shard can melt - replicate or use local L1 cache.
+2. Cache invalidation races: use versioned keys or short TTL.
+3. Serialization size dominates network cost; compress large values.
+
