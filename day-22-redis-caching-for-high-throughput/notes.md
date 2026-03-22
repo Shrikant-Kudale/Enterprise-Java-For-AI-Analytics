@@ -11,3 +11,8 @@
 * **Redis**: single-threaded command execution, RESP protocol over TCP, pipelining, data types (string, hash, zset, HLL, streams). Use Lettuce/Jedis in Java.
 * Today: TTL+LRU cache with an injectable clock, single-flight, RESP encoder/decoder, Zipf hit-ratio experiment.
 
+## 2. Memory Architecture Breakdown
+
+LinkedHashMap(accessOrder=true) keeps an intrusive doubly-linked list: get() moves the entry to the tail, removeEldestEntry evicts the head.
+RESP: `*3\r\n$3\r\nSET\r\n$1\r\nk\r\n$1\r\nv\r\n` - arrays of length-prefixed bulk strings.
+
