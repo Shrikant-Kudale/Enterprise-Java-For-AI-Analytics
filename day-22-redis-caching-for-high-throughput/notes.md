@@ -22,3 +22,11 @@ RESP: `*3\r\n$3\r\nSET\r\n$1\r\nk\r\n$1\r\nv\r\n` - arrays of length-prefixed bu
 2. Cache invalidation races: use versioned keys or short TTL.
 3. Serialization size dominates network cost; compress large values.
 
+## 4. Interview Q&A
+
+**Q1. How do you prevent a cache stampede?**  
+Single-flight per key, probabilistic early refresh, TTL jitter, or serving stale while one thread refreshes.
+
+**Q2. Why is Redis fast?**  
+In-memory, single-threaded event loop (no locks), efficient data structures, pipelining.
+
