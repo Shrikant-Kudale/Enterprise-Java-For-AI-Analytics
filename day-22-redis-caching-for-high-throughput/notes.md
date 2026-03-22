@@ -30,3 +30,30 @@ Single-flight per key, probabilistic early refresh, TTL jitter, or serving stale
 **Q2. Why is Redis fast?**  
 In-memory, single-threaded event loop (no locks), efficient data structures, pipelining.
 
+## 5. Production Mapping (real libraries)
+
+```xml
+<dependency><groupId>io.lettuce</groupId><artifactId>lettuce-core</artifactId><version>6.3.2.RELEASE</version></dependency>
+```
+```java
+RedisClient c = RedisClient.create("redis://localhost:6379");
+RedisCommands<String,String> r = c.connect().sync();
+r.setex("pred:42", 300, "0.91"); String v = r.get("pred:42");
+```
+Spring: `@Cacheable(cacheNames="pred", key="#id")` + `spring.cache.type=redis`, `spring.cache.redis.time-to-live=5m`.
+
+## 6. Run the Lab
+
+```bash
+cd day-22-redis-caching-for-high-throughput
+javac CacheAndResp.java
+java CacheAndResp
+```
+The program prints benchmark tables and finishes with `Day 22 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 7. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
