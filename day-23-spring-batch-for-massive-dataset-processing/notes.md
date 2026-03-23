@@ -10,3 +10,7 @@
 * Chunk size trades commit overhead vs memory and rollback cost; 100-10,000 is typical.
 * Make writers **idempotent** (upsert) because a crash can replay the last uncommitted chunk.
 
+## 2. Memory Architecture Breakdown
+
+Only one chunk lives in memory: streaming reader (cursor/paging) + List<O> buffer. Memory is O(chunk), not O(dataset).
+
