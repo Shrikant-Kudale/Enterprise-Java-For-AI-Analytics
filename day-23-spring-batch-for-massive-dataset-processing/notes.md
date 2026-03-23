@@ -14,3 +14,9 @@
 
 Only one chunk lives in memory: streaming reader (cursor/paging) + List<O> buffer. Memory is O(chunk), not O(dataset).
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Reader must be stateless per partition or thread-safe.
+2. Skip limits hide data-quality problems - alert on skip count.
+3. Large chunk + failure = big rollback.
+
