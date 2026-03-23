@@ -24,3 +24,4 @@
 | 20 | 2026-03-20 | Spring Data JPA and HikariCP Optimization | done |
 | 21 | 2026-03-21 | REST API Design and Validation | done |
 | 22 | 2026-03-22 | Redis Caching for High Throughput | done |
+| 23 | 2026-03-23 | Spring Batch for Massive Dataset Processing | done |
