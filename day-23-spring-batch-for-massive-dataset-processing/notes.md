@@ -20,3 +20,11 @@ Only one chunk lives in memory: streaming reader (cursor/paging) + List<O> buffe
 2. Skip limits hide data-quality problems - alert on skip count.
 3. Large chunk + failure = big rollback.
 
+## 4. Interview Q&A
+
+**Q1. How does restart work?**  
+After each commit the offset is persisted; a restarted job reopens the reader at that offset.
+
+**Q2. Chunk size 1 vs 10,000?**  
+1 = commit per item (slow); 10,000 = fewer commits but more memory and bigger replay on failure.
+
