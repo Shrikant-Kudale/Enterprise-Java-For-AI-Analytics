@@ -28,3 +28,27 @@ After each commit the offset is persisted; a restarted job reopens the reader at
 **Q2. Chunk size 1 vs 10,000?**  
 1 = commit per item (slow); 10,000 = fewer commits but more memory and bigger replay on failure.
 
+## 5. Production Mapping (real libraries)
+
+```java
+@Bean Step step(JobRepository repo, PlatformTransactionManager tx, ItemReader<Txn> r, ItemProcessor<Txn,Row> p, ItemWriter<Row> w) {
+    return new StepBuilder("load", repo).<Txn,Row>chunk(1000, tx).reader(r).processor(p).writer(w)
+        .faultTolerant().skipLimit(100).skip(ParseException.class).build();
+}
+```
+
+## 6. Run the Lab
+
+```bash
+cd day-23-spring-batch-for-massive-dataset-processing
+javac ChunkBatchEngine.java
+java ChunkBatchEngine
+```
+The program prints benchmark tables and finishes with `Day 23 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 7. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
