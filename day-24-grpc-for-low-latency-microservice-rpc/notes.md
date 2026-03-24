@@ -13,3 +13,10 @@
 
 Varint: 300 -> 0xAC 0x02 (2 bytes) vs 4/8 bytes fixed. Floats packed as little-endian 4-byte blocks. Reuse `ByteBuffer`s to avoid per-call garbage.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Set a deadline on every call; propagate cancellation.
+2. Never renumber proto fields.
+3. Large messages (>4 MB default) need streaming.
+4. Client channels are heavy - reuse one `ManagedChannel`.
+
