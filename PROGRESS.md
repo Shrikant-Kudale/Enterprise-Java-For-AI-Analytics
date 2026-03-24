@@ -25,3 +25,4 @@
 | 21 | 2026-03-21 | REST API Design and Validation | done |
 | 22 | 2026-03-22 | Redis Caching for High Throughput | done |
 | 23 | 2026-03-23 | Spring Batch for Massive Dataset Processing | done |
+| 24 | 2026-03-24 | gRPC for Low-Latency Microservice RPC | done |
