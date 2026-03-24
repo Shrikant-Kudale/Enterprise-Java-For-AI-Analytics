@@ -28,3 +28,30 @@ gRPC: binary, typed contracts, streaming, HTTP/2 multiplexing - best for interna
 **Q2. How does protobuf stay backward compatible?**  
 Field numbers are the identity; unknown fields are ignored and missing fields default.
 
+## 5. Production Mapping (real libraries)
+
+```proto
+service Inference { rpc Predict (PredictRequest) returns (PredictResponse); }
+message PredictRequest { string model = 1; int64 id = 2; repeated float x = 3; }
+```
+```xml
+<dependency><groupId>io.grpc</groupId><artifactId>grpc-netty-shaded</artifactId><version>1.64.0</version></dependency>
+<dependency><groupId>io.grpc</groupId><artifactId>grpc-protobuf</artifactId><version>1.64.0</version></dependency>
+<dependency><groupId>io.grpc</groupId><artifactId>grpc-stub</artifactId><version>1.64.0</version></dependency>
+```
+
+## 6. Run the Lab
+
+```bash
+cd day-24-grpc-for-low-latency-microservice-rpc
+javac BinaryRpc.java
+java BinaryRpc
+```
+The program prints benchmark tables and finishes with `Day 24 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 7. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
