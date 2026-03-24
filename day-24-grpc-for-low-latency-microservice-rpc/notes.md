@@ -20,3 +20,11 @@ Varint: 300 -> 0xAC 0x02 (2 bytes) vs 4/8 bytes fixed. Floats packed as little-e
 3. Large messages (>4 MB default) need streaming.
 4. Client channels are heavy - reuse one `ManagedChannel`.
 
+## 4. Interview Q&A
+
+**Q1. gRPC vs REST?**  
+gRPC: binary, typed contracts, streaming, HTTP/2 multiplexing - best for internal service-to-service; REST/JSON for public APIs and browsers.
+
+**Q2. How does protobuf stay backward compatible?**  
+Field numbers are the identity; unknown fields are ignored and missing fields default.
+
