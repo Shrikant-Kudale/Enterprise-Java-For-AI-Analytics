@@ -28,3 +28,18 @@ It streams rows of B and C sequentially, so each cache line is fully used and th
 **Q2. How do you compute softmax safely?**  
 Subtract max(x) first: softmax(x) = softmax(x - max); then exp/sum.
 
+## 5. Run the Lab
+
+```bash
+cd day-25-vector-and-matrix-manipulation-in-java
+javac MatrixOps.java
+java MatrixOps
+```
+The program prints benchmark tables and finishes with `Day 25 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 6. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
