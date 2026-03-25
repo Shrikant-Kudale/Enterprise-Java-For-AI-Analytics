@@ -9,3 +9,8 @@
 * **Numerics**: stable softmax subtracts the max (`exp(1000)` overflows); normalise vectors once so cosine = dot product.
 * Vector API (`jdk.incubator.vector`, run with `--add-modules jdk.incubator.vector`) gives SIMD; libraries (ND4J, EJML, ONNX Runtime) use BLAS.
 
+## 2. Memory Architecture Breakdown
+
+Cache line = 64 B = 8 doubles. Row-wise access uses every byte loaded; column-wise strided access wastes 7/8 of each line.
+`double[n][n]` = array of row references (extra indirection, rows scattered); flat `double[n*n]` is one allocation.
+
