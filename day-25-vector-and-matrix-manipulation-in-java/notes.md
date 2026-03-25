@@ -14,3 +14,9 @@
 Cache line = 64 B = 8 doubles. Row-wise access uses every byte loaded; column-wise strided access wastes 7/8 of each line.
 `double[n][n]` = array of row references (extra indirection, rows scattered); flat `double[n*n]` is one allocation.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Floating-point addition is not associative: parallel sums differ in the last bits.
+2. float vs double: float halves memory/bandwidth but accumulates error - accumulate in double.
+3. NaN from `0/0` or `inf-inf` propagates silently.
+
