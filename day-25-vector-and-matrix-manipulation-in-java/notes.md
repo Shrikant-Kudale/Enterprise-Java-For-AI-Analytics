@@ -20,3 +20,11 @@ Cache line = 64 B = 8 doubles. Row-wise access uses every byte loaded; column-wi
 2. float vs double: float halves memory/bandwidth but accumulates error - accumulate in double.
 3. NaN from `0/0` or `inf-inf` propagates silently.
 
+## 4. Interview Q&A
+
+**Q1. Why is i-k-j faster than i-j-k?**  
+It streams rows of B and C sequentially, so each cache line is fully used and the JIT can vectorise the inner loop.
+
+**Q2. How do you compute softmax safely?**  
+Subtract max(x) first: softmax(x) = softmax(x - max); then exp/sum.
+
