@@ -9,3 +9,7 @@
 * Tune: intra/inter-op threads, execution providers (CPU/CUDA), graph optimisation level, **dynamic batch axis**.
 * Today: a mini executor implementing Gemm, Relu, Softmax over `float[]` tensors, with input validation and batch-size scaling.
 
+## 2. Memory Architecture Breakdown
+
+Tensor = shape + contiguous float buffer. Native ORT holds weights off-heap; `OnnxTensor.createTensor(env, FloatBuffer)` wraps a direct buffer (no copy). Close tensors/results (try-with-resources) or native memory leaks.
+
