@@ -13,3 +13,9 @@
 
 Tensor = shape + contiguous float buffer. Native ORT holds weights off-heap; `OnnxTensor.createTensor(env, FloatBuffer)` wraps a direct buffer (no copy). Close tensors/results (try-with-resources) or native memory leaks.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Close `OnnxTensor` and `Result` - GC does not free native memory promptly.
+2. Input name/shape/dtype must match the model exactly.
+3. Batch 1 is latency-optimal; larger batches maximise throughput.
+
