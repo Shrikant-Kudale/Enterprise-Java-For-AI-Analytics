@@ -19,3 +19,11 @@ Tensor = shape + contiguous float buffer. Native ORT holds weights off-heap; `On
 2. Input name/shape/dtype must match the model exactly.
 3. Batch 1 is latency-optimal; larger batches maximise throughput.
 
+## 4. Interview Q&A
+
+**Q1. Why ONNX?**  
+Framework-neutral export (PyTorch/TF/sklearn) and one optimised runtime for serving without Python.
+
+**Q2. How do you serve concurrently?**  
+A shared `OrtSession` is thread-safe; call `run` from many threads or micro-batch requests.
+
