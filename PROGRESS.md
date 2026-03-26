@@ -27,3 +27,4 @@
 | 23 | 2026-03-23 | Spring Batch for Massive Dataset Processing | done |
 | 24 | 2026-03-24 | gRPC for Low-Latency Microservice RPC | done |
 | 25 | 2026-03-25 | Vector and Matrix Manipulation in Java | done |
+| 26 | 2026-03-26 | ONNX Runtime Integration in Java | done |
