@@ -27,3 +27,32 @@ Framework-neutral export (PyTorch/TF/sklearn) and one optimised runtime for serv
 **Q2. How do you serve concurrently?**  
 A shared `OrtSession` is thread-safe; call `run` from many threads or micro-batch requests.
 
+## 5. Production Mapping (real libraries)
+
+```xml
+<dependency><groupId>com.microsoft.onnxruntime</groupId><artifactId>onnxruntime</artifactId><version>1.18.0</version></dependency>
+```
+```java
+OrtEnvironment env = OrtEnvironment.getEnvironment();
+try (OrtSession s = env.createSession("model.onnx", new OrtSession.SessionOptions());
+     OnnxTensor in = OnnxTensor.createTensor(env, new float[][]{{1f,2f,3f,4f}});
+     OrtSession.Result out = s.run(Map.of("input", in))) {
+    float[][] probs = (float[][]) out.get(0).getValue();
+}
+```
+
+## 6. Run the Lab
+
+```bash
+cd day-26-onnx-runtime-integration-in-java
+javac MiniOnnxRuntime.java
+java MiniOnnxRuntime
+```
+The program prints benchmark tables and finishes with `Day 26 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 7. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
