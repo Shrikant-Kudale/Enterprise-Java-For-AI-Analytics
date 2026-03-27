@@ -19,3 +19,11 @@ Per-call fixed overhead (kernel launch, JNI, tensor alloc) is amortised across t
 2. Close NDManager/NDArray (native memory).
 3. Batch wait time adds to p50; cap it (1-10 ms) and the batch size.
 
+## 4. Interview Q&A
+
+**Q1. Why micro-batch?**  
+Per-inference fixed cost dominates for small inputs; batching amortises it and improves accelerator utilisation.
+
+**Q2. What does a Translator do?**  
+Pre/post-processing: tokenisation or resize/normalise on the way in, softmax/label mapping on the way out.
+
