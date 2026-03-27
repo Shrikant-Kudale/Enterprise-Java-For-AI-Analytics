@@ -13,3 +13,9 @@
 
 Per-call fixed overhead (kernel launch, JNI, tensor alloc) is amortised across the batch: cost ~ fixed + perItem*batch.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Predictor is not thread-safe - pool them.
+2. Close NDManager/NDArray (native memory).
+3. Batch wait time adds to p50; cap it (1-10 ms) and the batch size.
+
