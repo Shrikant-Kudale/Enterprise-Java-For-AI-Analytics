@@ -28,3 +28,4 @@
 | 24 | 2026-03-24 | gRPC for Low-Latency Microservice RPC | done |
 | 25 | 2026-03-25 | Vector and Matrix Manipulation in Java | done |
 | 26 | 2026-03-26 | ONNX Runtime Integration in Java | done |
+| 27 | 2026-03-27 | Deep Java Library (DJL) Inference Pipeline | done |
