@@ -9,3 +9,7 @@
 * **Dynamic micro-batching**: collect concurrent requests for a few ms, run one batched forward pass, scatter results. Raises throughput on GPU/CPU models with high per-call overhead; costs a bounded latency wait.
 * Engines: PyTorch, TensorFlow, ONNX Runtime, MXNet - pick via `optEngine`.
 
+## 2. Memory Architecture Breakdown
+
+Per-call fixed overhead (kernel launch, JNI, tensor alloc) is amortised across the batch: cost ~ fixed + perItem*batch.
+
