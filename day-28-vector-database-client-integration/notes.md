@@ -14,3 +14,9 @@
 
 1M x 768 float32 = 3 GB raw. IVF adds centroid table + id lists; HNSW adds ~M*2 neighbour ids per vector; PQ cuts vectors to 8-64 bytes.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Normalise vectors if using dot product as cosine.
+2. Filtered ANN can lose recall - test with filters.
+3. Embedding model change = full re-index.
+
