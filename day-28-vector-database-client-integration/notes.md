@@ -28,3 +28,25 @@ IVF is memory-light and simple but needs training and probes; HNSW gives better 
 **Q2. How do you evaluate an ANN index?**  
 recall@k versus exact search on held-out queries plus p50/p99 latency.
 
+## 5. Production Mapping (real libraries)
+
+```xml
+<dependency><groupId>io.qdrant</groupId><artifactId>client</artifactId><version>1.9.1</version></dependency>
+```
+REST: `PUT /collections/docs/points` body `{"points":[{"id":1,"vector":[...],"payload":{"tenant":"a"}}]}`; search `POST /collections/docs/points/search` body `{"vector":[...],"limit":10,"filter":{"must":[{"key":"tenant","match":{"value":"a"}}]}}`.
+
+## 6. Run the Lab
+
+```bash
+cd day-28-vector-database-client-integration
+javac VectorSearchClient.java
+java VectorSearchClient
+```
+The program prints benchmark tables and finishes with `Day 28 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 7. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
