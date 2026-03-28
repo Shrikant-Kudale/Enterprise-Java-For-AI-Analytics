@@ -10,3 +10,7 @@
 * Client patterns: upsert in batches, idempotent ids, normalise vectors once, timeouts + retries, and hybrid search (BM25 + vectors).
 * Qdrant, Milvus, pgvector, Pinecone, Weaviate all expose REST/gRPC clients; today builds Qdrant-style payloads and an IVF index from scratch.
 
+## 2. Memory Architecture Breakdown
+
+1M x 768 float32 = 3 GB raw. IVF adds centroid table + id lists; HNSW adds ~M*2 neighbour ids per vector; PQ cuts vectors to 8-64 bytes.
+
