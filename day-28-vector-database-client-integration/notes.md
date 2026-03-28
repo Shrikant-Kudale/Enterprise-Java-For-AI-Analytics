@@ -20,3 +20,11 @@
 2. Filtered ANN can lose recall - test with filters.
 3. Embedding model change = full re-index.
 
+## 4. Interview Q&A
+
+**Q1. IVF vs HNSW?**  
+IVF is memory-light and simple but needs training and probes; HNSW gives better recall/latency at higher memory and build cost.
+
+**Q2. How do you evaluate an ANN index?**  
+recall@k versus exact search on held-out queries plus p50/p99 latency.
+
