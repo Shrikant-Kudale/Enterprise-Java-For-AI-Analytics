@@ -30,3 +30,4 @@
 | 26 | 2026-03-26 | ONNX Runtime Integration in Java | done |
 | 27 | 2026-03-27 | Deep Java Library (DJL) Inference Pipeline | done |
 | 28 | 2026-03-28 | Vector Database Client Integration | done |
+| 29 | 2026-03-29 | Enterprise System Design: AI Microservice | done |
