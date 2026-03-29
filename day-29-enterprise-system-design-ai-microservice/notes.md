@@ -19,3 +19,11 @@ Each protection is a small state machine (counter, semaphore, state enum) - O(1)
 2. Breaker thresholds too low flap; too high delay protection.
 3. Cache keys must include model version.
 
+## 4. Interview Q&A
+
+**Q1. How do you size the cluster for 5000 QPS at 40 ms p99?**  
+In-flight = 5000 x 0.04 = 200; at 8 concurrent per replica = 25; at 60% utilisation = 42 replicas.
+
+**Q2. Circuit breaker states?**  
+CLOSED (normal) -> OPEN after N failures (fail fast) -> HALF_OPEN after a cool-down (trial call) -> CLOSED on success.
+
