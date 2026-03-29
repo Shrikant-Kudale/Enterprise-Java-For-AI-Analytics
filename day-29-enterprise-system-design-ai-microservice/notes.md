@@ -9,3 +9,7 @@
 * **Capacity**: in-flight = QPS x latency (Little's law); replicas = in-flight / per-replica concurrency / target utilisation (~60%).
 * Scale-out: stateless replicas behind an LB, async queue for batch jobs, model registry + canary rollout, feature store, observability (RED metrics, traces).
 
+## 2. Memory Architecture Breakdown
+
+Each protection is a small state machine (counter, semaphore, state enum) - O(1) memory. Cache bounded by LRU; breaker state shared per downstream.
+
