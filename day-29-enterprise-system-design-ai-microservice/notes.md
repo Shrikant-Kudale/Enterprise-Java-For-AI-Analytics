@@ -13,3 +13,9 @@
 
 Each protection is a small state machine (counter, semaphore, state enum) - O(1) memory. Cache bounded by LRU; breaker state shared per downstream.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Retries multiply load - retry budget + jitter, only idempotent calls.
+2. Breaker thresholds too low flap; too high delay protection.
+3. Cache keys must include model version.
+
