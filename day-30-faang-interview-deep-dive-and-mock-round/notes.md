@@ -13,3 +13,9 @@
 
 LRU = HashMap + doubly linked list (O(1) get/put). Median = max-heap (lower half) + min-heap (upper half). Quickselect = in-place partition, O(n) average, O(1) extra space.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. State assumptions out loud.
+2. Handle empty input and duplicates.
+3. Concurrent versions need locks around compound actions.
+
