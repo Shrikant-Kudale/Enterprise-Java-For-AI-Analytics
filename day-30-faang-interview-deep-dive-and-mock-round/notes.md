@@ -19,3 +19,11 @@ LRU = HashMap + doubly linked list (O(1) get/put). Median = max-heap (lower half
 2. Handle empty input and duplicates.
 3. Concurrent versions need locks around compound actions.
 
+## 4. Interview Q&A
+
+**Q1. Median of a stream?**  
+Two heaps: lower half max-heap, upper half min-heap, sizes differ by at most 1; O(log n) add, O(1) median.
+
+**Q2. K-th largest fastest on average?**  
+Quickselect O(n) average; heap of size k is O(n log k) and streaming-friendly.
+
