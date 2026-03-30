@@ -9,36 +9,3 @@
 * **Backend/AI follow-ups**: make it thread-safe, make it distributed, what if data doesn't fit memory, how do you test and monitor it.
 * Communicate: think aloud, state complexity, write tests first for edge cases (empty, one element, duplicates, overflow).
 
-## 2. Memory Architecture Breakdown
-
-LRU = HashMap + doubly linked list (O(1) get/put). Median = max-heap (lower half) + min-heap (upper half). Quickselect = in-place partition, O(n) average, O(1) extra space.
-
-## 3. Interview Edge Cases & Pitfalls
-
-1. State assumptions out loud.
-2. Handle empty input and duplicates.
-3. Concurrent versions need locks around compound actions.
-
-## 4. Interview Q&A
-
-**Q1. Median of a stream?**  
-Two heaps: lower half max-heap, upper half min-heap, sizes differ by at most 1; O(log n) add, O(1) median.
-
-**Q2. K-th largest fastest on average?**  
-Quickselect O(n) average; heap of size k is O(n log k) and streaming-friendly.
-
-## 5. Run the Lab
-
-```bash
-cd day-30-faang-interview-deep-dive-and-mock-round
-javac MockInterviewRound.java
-java MockInterviewRound
-```
-The program prints benchmark tables and finishes with `Day 30 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
-
-## 6. Self-Check Checklist
-
-- [ ] I can explain every section above without looking at it.
-- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
-- [ ] I can answer each Q&A item in under 90 seconds, out loud.
-- [ ] I broke one assertion on purpose and understood the failure message.
