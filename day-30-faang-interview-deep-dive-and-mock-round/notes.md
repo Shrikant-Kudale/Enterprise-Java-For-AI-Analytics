@@ -9,3 +9,7 @@
 * **Backend/AI follow-ups**: make it thread-safe, make it distributed, what if data doesn't fit memory, how do you test and monitor it.
 * Communicate: think aloud, state complexity, write tests first for edge cases (empty, one element, duplicates, overflow).
 
+## 2. Memory Architecture Breakdown
+
+LRU = HashMap + doubly linked list (O(1) get/put). Median = max-heap (lower half) + min-heap (upper half). Quickselect = in-place partition, O(n) average, O(1) extra space.
+
