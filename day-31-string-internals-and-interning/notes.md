@@ -15,3 +15,11 @@ A `String` = object header + `byte[] value` + coder + cached hash. `+=` in a loo
 1. `split` drops trailing empty strings.
 2. `==` works only for pooled literals.
 
+## 4. Interview Q&A
+
+**Q1. Why is String immutable?**  
+Safe sharing, caching of hash, thread-safety and pooling.
+
+**Q2. When to intern?**  
+Rarely - only for many duplicate long-lived strings.
+
