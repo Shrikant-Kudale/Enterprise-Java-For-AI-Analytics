@@ -32,3 +32,4 @@
 | 28 | 2026-03-28 | Vector Database Client Integration | done |
 | 29 | 2026-03-29 | Enterprise System Design: AI Microservice | done |
 | 30 | 2026-03-30 | FAANG Interview Deep Dive and Mock Round | done |
+| 31 | 2026-03-31 | String Internals and Interning | done |
