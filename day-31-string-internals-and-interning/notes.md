@@ -10,3 +10,8 @@ Strings are immutable; the JVM keeps a **string pool** (`intern()`), and since J
 
 A `String` = object header + `byte[] value` + coder + cached hash. `+=` in a loop creates a new array each time.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. `split` drops trailing empty strings.
+2. `==` works only for pooled literals.
+
