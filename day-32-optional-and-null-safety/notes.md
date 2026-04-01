@@ -6,3 +6,7 @@
 
 `Optional<T>` models *absence* in return types (not fields/params). Use `map/flatMap/filter/orElseGet/or`. Never call `get()` blindly.
 
+## 2. Memory Architecture Breakdown
+
+Optional is a heap object (16 B) - avoid in hot loops; `OptionalInt` avoids boxing.
+
