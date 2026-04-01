@@ -15,3 +15,11 @@ Optional is a heap object (16 B) - avoid in hot loops; `OptionalInt` avoids boxi
 1. `orElse` evaluates its argument eagerly.
 2. Do not serialise Optional fields.
 
+## 4. Interview Q&A
+
+**Q1. Optional vs null?**  
+Optional forces callers to handle absence in the type system.
+
+**Q2. orElse vs orElseGet?**  
+orElseGet is lazy.
+
