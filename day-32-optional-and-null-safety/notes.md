@@ -10,3 +10,8 @@
 
 Optional is a heap object (16 B) - avoid in hot loops; `OptionalInt` avoids boxing.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. `orElse` evaluates its argument eagerly.
+2. Do not serialise Optional fields.
+
