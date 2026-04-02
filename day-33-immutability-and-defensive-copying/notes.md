@@ -10,3 +10,8 @@ Immutable objects are thread-safe and cache-friendly. Make fields `final`, copy 
 
 `Collections.unmodifiableList` is a *view* (changes show through); `List.copyOf` is an independent immutable snapshot.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Unmodifiable view != immutable.
+2. Shallow immutability: contents may still mutate.
+
