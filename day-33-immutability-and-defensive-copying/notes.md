@@ -15,3 +15,11 @@ Immutable objects are thread-safe and cache-friendly. Make fields `final`, copy 
 1. Unmodifiable view != immutable.
 2. Shallow immutability: contents may still mutate.
 
+## 4. Interview Q&A
+
+**Q1. Why defensive copies?**  
+Callers can mutate shared references and break invariants.
+
+**Q2. Cost?**  
+Extra allocation; use immutable types to avoid repeating it.
+
