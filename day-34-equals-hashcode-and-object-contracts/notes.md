@@ -6,3 +6,7 @@
 
 `equals` must be reflexive, symmetric, transitive, consistent; equal objects need equal `hashCode`. Use immutable keys in hash collections. Records generate both.
 
+## 2. Memory Architecture Breakdown
+
+HashMap uses `hashCode` for the bucket then `equals` inside the bucket; a mutated key is lost in the wrong bucket.
+
