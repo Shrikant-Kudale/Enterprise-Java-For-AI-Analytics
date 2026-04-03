@@ -10,3 +10,8 @@
 
 HashMap uses `hashCode` for the bucket then `equals` inside the bucket; a mutated key is lost in the wrong bucket.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Overriding equals without hashCode breaks HashSet.
+2. Don't use mutable fields in hashCode.
+
