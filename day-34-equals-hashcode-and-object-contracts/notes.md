@@ -15,3 +15,11 @@ HashMap uses `hashCode` for the bucket then `equals` inside the bucket; a mutate
 1. Overriding equals without hashCode breaks HashSet.
 2. Don't use mutable fields in hashCode.
 
+## 4. Interview Q&A
+
+**Q1. What breaks if hashCode is inconsistent?**  
+Lookups miss the entry.
+
+**Q2. Why records for keys?**  
+Auto value semantics.
+
