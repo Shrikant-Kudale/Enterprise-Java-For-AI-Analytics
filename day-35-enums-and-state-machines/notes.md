@@ -15,3 +15,11 @@ Enums are type-safe singletons that can carry fields and per-constant behaviour.
 1. Never rely on `ordinal()` for persistence.
 2. `valueOf` throws on unknown names.
 
+## 4. Interview Q&A
+
+**Q1. Enum vs sealed interface?**  
+Enum: fixed identical-shape constants; sealed: variants with different data.
+
+**Q2. Why EnumMap?**  
+Array lookup, no hashing.
+
