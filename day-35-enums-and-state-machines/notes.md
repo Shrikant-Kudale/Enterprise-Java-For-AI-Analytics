@@ -10,3 +10,8 @@ Enums are type-safe singletons that can carry fields and per-constant behaviour.
 
 `EnumMap` = array indexed by ordinal; `EnumSet` = a bit vector.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Never rely on `ordinal()` for persistence.
+2. `valueOf` throws on unknown names.
+
