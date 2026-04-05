@@ -15,3 +15,11 @@ Interface call sites are `invokeinterface`; JIT devirtualises monomorphic sites.
 1. Diamond conflict is a compile error until resolved.
 2. Interfaces can't hold instance state.
 
+## 4. Interview Q&A
+
+**Q1. Abstract class vs interface?**  
+Abstract class holds state and single inheritance; interfaces give multiple inheritance of type/behaviour.
+
+**Q2. Why default methods?**  
+Backward-compatible API evolution (e.g. `Collection.stream`).
+
