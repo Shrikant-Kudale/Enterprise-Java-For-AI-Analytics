@@ -6,3 +6,7 @@
 
 Default methods let interfaces evolve and act as mixins (behaviour without state). Conflicts must be resolved explicitly with `Iface.super.method()`.
 
+## 2. Memory Architecture Breakdown
+
+Interface call sites are `invokeinterface`; JIT devirtualises monomorphic sites.
+
