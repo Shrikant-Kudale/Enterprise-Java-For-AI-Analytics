@@ -37,3 +37,4 @@
 | 33 | 2026-04-02 | Immutability and Defensive Copying | done |
 | 34 | 2026-04-03 | equals, hashCode and Object Contracts | done |
 | 35 | 2026-04-04 | Enums and State Machines | done |
+| 36 | 2026-04-05 | Interfaces, Default Methods and Mixins | done |
