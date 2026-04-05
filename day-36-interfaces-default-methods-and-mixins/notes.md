@@ -23,3 +23,18 @@ Abstract class holds state and single inheritance; interfaces give multiple inhe
 **Q2. Why default methods?**  
 Backward-compatible API evolution (e.g. `Collection.stream`).
 
+## 5. Run the Lab
+
+```bash
+cd day-36-interfaces-default-methods-and-mixins
+javac DefaultMethodsMixins.java
+java DefaultMethodsMixins
+```
+The program prints benchmark tables and finishes with `Day 36 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 6. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
