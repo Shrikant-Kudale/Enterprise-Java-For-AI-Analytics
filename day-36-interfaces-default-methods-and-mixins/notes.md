@@ -10,3 +10,8 @@ Default methods let interfaces evolve and act as mixins (behaviour without state
 
 Interface call sites are `invokeinterface`; JIT devirtualises monomorphic sites.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Diamond conflict is a compile error until resolved.
+2. Interfaces can't hold instance state.
+
