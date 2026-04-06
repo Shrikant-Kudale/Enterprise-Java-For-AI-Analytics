@@ -6,3 +6,7 @@
 
 Inner (non-static) classes hold a hidden reference to the outer instance - a classic leak. Prefer `static` nested classes. Lambdas capture effectively-final locals or fields.
 
+## 2. Memory Architecture Breakdown
+
+Inner class instance = object + `this$0` reference to outer; a lambda capturing only locals does not retain `this`.
+
