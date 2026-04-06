@@ -10,3 +10,8 @@ Inner (non-static) classes hold a hidden reference to the outer instance - a cla
 
 Inner class instance = object + `this$0` reference to outer; a lambda capturing only locals does not retain `this`.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Inner class keeps outer alive.
+2. Captured locals must be effectively final.
+
