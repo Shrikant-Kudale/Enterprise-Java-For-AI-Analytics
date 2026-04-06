@@ -15,3 +15,11 @@ Inner class instance = object + `this$0` reference to outer; a lambda capturing 
 1. Inner class keeps outer alive.
 2. Captured locals must be effectively final.
 
+## 4. Interview Q&A
+
+**Q1. static vs inner nested class?**  
+Static has no outer reference; inner does.
+
+**Q2. What does a lambda capture?**  
+Values of locals; `this` only if used.
+
