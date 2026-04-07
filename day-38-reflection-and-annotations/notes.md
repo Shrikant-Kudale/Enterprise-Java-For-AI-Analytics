@@ -15,3 +15,11 @@ Class metadata lives in Metaspace; `Method` objects are copied on each `getMetho
 1. `setAccessible` is restricted by modules.
 2. Reflection defeats inlining until JIT warms.
 
+## 4. Interview Q&A
+
+**Q1. How does Spring find @Component?**  
+Classpath scanning reads annotations via reflection/ASM.
+
+**Q2. Faster than reflection?**  
+MethodHandle / generated code.
+
