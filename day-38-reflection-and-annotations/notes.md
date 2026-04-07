@@ -6,3 +6,7 @@
 
 Reflection inspects classes at runtime (`getDeclaredMethods`, `Method.invoke`); annotations with `RUNTIME` retention drive frameworks (Spring, JPA). It is slower and bypasses compile-time checks - cache lookups, prefer MethodHandles.
 
+## 2. Memory Architecture Breakdown
+
+Class metadata lives in Metaspace; `Method` objects are copied on each `getMethods()` call.
+
