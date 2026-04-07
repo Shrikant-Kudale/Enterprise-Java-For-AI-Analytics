@@ -10,3 +10,8 @@ Reflection inspects classes at runtime (`getDeclaredMethods`, `Method.invoke`); 
 
 Class metadata lives in Metaspace; `Method` objects are copied on each `getMethods()` call.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. `setAccessible` is restricted by modules.
+2. Reflection defeats inlining until JIT warms.
+
