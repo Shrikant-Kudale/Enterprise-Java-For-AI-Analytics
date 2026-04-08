@@ -10,3 +10,8 @@ Use `Instant` (UTC machine time), `ZonedDateTime` (human time), `LocalDate`, `Du
 
 `Instant` = seconds + nanos (12 bytes of state).
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. DST gaps/overlaps for local times.
+2. Always specify the ZoneId.
+
