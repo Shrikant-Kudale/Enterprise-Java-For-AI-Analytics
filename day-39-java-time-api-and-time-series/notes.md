@@ -6,3 +6,7 @@
 
 Use `Instant` (UTC machine time), `ZonedDateTime` (human time), `LocalDate`, `Duration`/`Period`. Store UTC, convert at the edge. Immutable and thread-safe (unlike `Date`/`SimpleDateFormat`).
 
+## 2. Memory Architecture Breakdown
+
+`Instant` = seconds + nanos (12 bytes of state).
+
