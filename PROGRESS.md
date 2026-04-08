@@ -40,3 +40,4 @@
 | 36 | 2026-04-05 | Interfaces, Default Methods and Mixins | done |
 | 37 | 2026-04-06 | Nested Classes and Variable Capture | done |
 | 38 | 2026-04-07 | Reflection and Annotations | done |
+| 39 | 2026-04-08 | java.time API and Time Series | done |
