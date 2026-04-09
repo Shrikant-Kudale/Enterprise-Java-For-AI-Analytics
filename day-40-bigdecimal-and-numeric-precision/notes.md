@@ -6,3 +6,7 @@
 
 `double` is binary floating point (0.1+0.2 != 0.3). Use `BigDecimal` (string constructor, explicit `RoundingMode`) for money; compare with `compareTo`, not `equals` (scale matters).
 
+## 2. Memory Architecture Breakdown
+
+BigDecimal = unscaled BigInteger + scale: far slower and larger than double.
+
