@@ -41,3 +41,4 @@
 | 37 | 2026-04-06 | Nested Classes and Variable Capture | done |
 | 38 | 2026-04-07 | Reflection and Annotations | done |
 | 39 | 2026-04-08 | java.time API and Time Series | done |
+| 40 | 2026-04-09 | BigDecimal and Numeric Precision | done |
