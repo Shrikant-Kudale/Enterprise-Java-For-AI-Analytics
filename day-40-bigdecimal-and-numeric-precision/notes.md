@@ -15,3 +15,11 @@ BigDecimal = unscaled BigInteger + scale: far slower and larger than double.
 1. `new BigDecimal(0.1)` captures the binary error.
 2. divide() without a scale can throw.
 
+## 4. Interview Q&A
+
+**Q1. Why not double for money?**  
+Representation error and rounding drift.
+
+**Q2. equals vs compareTo?**  
+equals compares scale too (1.10 != 1.1).
+
