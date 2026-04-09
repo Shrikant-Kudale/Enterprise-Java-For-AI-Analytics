@@ -10,3 +10,8 @@
 
 BigDecimal = unscaled BigInteger + scale: far slower and larger than double.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. `new BigDecimal(0.1)` captures the binary error.
+2. divide() without a scale can throw.
+
