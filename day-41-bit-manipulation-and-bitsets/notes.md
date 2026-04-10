@@ -10,3 +10,8 @@ Bit tricks: `x & (x-1)` clears the lowest set bit, `x & -x` isolates it, power o
 
 `BitSet` = `long[]`; 1M flags = 125 KB vs 1 MB for `boolean[]`.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. `>>` is arithmetic, `>>>` logical.
+2. Shifts are masked to 5/6 bits.
+
