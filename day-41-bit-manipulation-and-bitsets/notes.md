@@ -6,3 +6,7 @@
 
 Bit tricks: `x & (x-1)` clears the lowest set bit, `x & -x` isolates it, power of two test `x>0 && (x&(x-1))==0`. `BitSet` stores flags at 1 bit each - great for dense id sets and Bloom filters.
 
+## 2. Memory Architecture Breakdown
+
+`BitSet` = `long[]`; 1M flags = 125 KB vs 1 MB for `boolean[]`.
+
