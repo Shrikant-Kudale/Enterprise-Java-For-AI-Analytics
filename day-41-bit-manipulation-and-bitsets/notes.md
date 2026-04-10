@@ -15,3 +15,11 @@ Bit tricks: `x & (x-1)` clears the lowest set bit, `x & -x` isolates it, power o
 1. `>>` is arithmetic, `>>>` logical.
 2. Shifts are masked to 5/6 bits.
 
+## 4. Interview Q&A
+
+**Q1. Count set bits?**  
+`Integer.bitCount` (POPCNT intrinsic).
+
+**Q2. Swap without temp?**  
+Three XORs - clever but not faster.
+
