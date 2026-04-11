@@ -6,3 +6,7 @@
 
 Tokenise with `split`/`Pattern`, lower-case, strip punctuation. Precompile `Pattern`s (static final); use named groups. Beware catastrophic backtracking (`(a+)+`).
 
+## 2. Memory Architecture Breakdown
+
+`Pattern` is immutable/thread-safe; `Matcher` is not.
+
