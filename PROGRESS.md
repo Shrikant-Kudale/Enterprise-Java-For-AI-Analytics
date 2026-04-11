@@ -43,3 +43,4 @@
 | 39 | 2026-04-08 | java.time API and Time Series | done |
 | 40 | 2026-04-09 | BigDecimal and Numeric Precision | done |
 | 41 | 2026-04-10 | Bit Manipulation and BitSets | done |
+| 42 | 2026-04-11 | Regex and Tokenization | done |
