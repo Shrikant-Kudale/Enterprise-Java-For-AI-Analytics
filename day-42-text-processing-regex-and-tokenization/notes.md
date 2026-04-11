@@ -10,3 +10,8 @@ Tokenise with `split`/`Pattern`, lower-case, strip punctuation. Precompile `Patt
 
 `Pattern` is immutable/thread-safe; `Matcher` is not.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Regex in hot loops without precompile.
+2. Unicode: use `\\p{L}` not `[a-z]`.
+
