@@ -15,3 +15,11 @@ Tokenise with `split`/`Pattern`, lower-case, strip punctuation. Precompile `Patt
 1. Regex in hot loops without precompile.
 2. Unicode: use `\\p{L}` not `[a-z]`.
 
+## 4. Interview Q&A
+
+**Q1. Why precompile patterns?**  
+Compilation is expensive; reuse the Pattern.
+
+**Q2. What is ReDoS?**  
+Exponential backtracking on crafted input.
+
