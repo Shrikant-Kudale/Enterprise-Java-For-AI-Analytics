@@ -6,3 +6,7 @@
 
 A recursive-descent parser: look at one char, dispatch to `parseArray/parseString/parseNumber`, advance an index. Production code uses Jackson (streaming `JsonParser`, `ObjectMapper`, `@JsonCreator`).
 
+## 2. Memory Architecture Breakdown
+
+The parse tree is nested `List/Map` objects; streaming parsers avoid materialising it.
+
