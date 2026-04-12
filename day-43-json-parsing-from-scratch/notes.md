@@ -10,3 +10,8 @@ A recursive-descent parser: look at one char, dispatch to `parseArray/parseStrin
 
 The parse tree is nested `List/Map` objects; streaming parsers avoid materialising it.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Escapes and unicode in strings.
+2. Depth limits to stop stack overflow.
+
