@@ -15,3 +15,11 @@ The parse tree is nested `List/Map` objects; streaming parsers avoid materialisi
 1. Escapes and unicode in strings.
 2. Depth limits to stop stack overflow.
 
+## 4. Interview Q&A
+
+**Q1. Jackson streaming vs tree vs databind?**  
+Streaming = lowest memory, tree = flexible, databind = typed POJOs.
+
+**Q2. Recursive descent?**  
+One function per grammar rule.
+
