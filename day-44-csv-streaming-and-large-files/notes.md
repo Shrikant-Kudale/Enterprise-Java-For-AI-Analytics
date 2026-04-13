@@ -15,3 +15,11 @@ Stream line by line (`BufferedReader.lines()`, `Files.lines`) so memory is O(1).
 1. Quoted commas break `split`.
 2. Charset must be explicit.
 
+## 4. Interview Q&A
+
+**Q1. How to read a 50 GB CSV?**  
+Stream + chunk + parallel by file split; or load into Parquet.
+
+**Q2. Why close Files.lines?**  
+It keeps the file open.
+
