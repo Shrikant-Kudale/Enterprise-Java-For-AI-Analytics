@@ -10,3 +10,8 @@ Stream line by line (`BufferedReader.lines()`, `Files.lines`) so memory is O(1).
 
 `Files.lines` holds an open file handle - close it (try-with-resources).
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Quoted commas break `split`.
+2. Charset must be explicit.
+
