@@ -23,3 +23,18 @@ Stream + chunk + parallel by file split; or load into Parquet.
 **Q2. Why close Files.lines?**  
 It keeps the file open.
 
+## 5. Run the Lab
+
+```bash
+cd day-44-csv-streaming-and-large-files
+javac CsvStreaming.java
+java CsvStreaming
+```
+The program prints benchmark tables and finishes with `Day 44 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 6. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
