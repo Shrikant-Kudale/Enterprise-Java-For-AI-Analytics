@@ -6,3 +6,7 @@
 
 Log JSON events with stable keys (level, msg, traceId, latency_ms) so they are searchable. Use SLF4J + Logback/Log4j2 with MDC for correlation ids; log at the boundary once; never log secrets/PII.
 
+## 2. Memory Architecture Breakdown
+
+Parameterised logging (`log.info("x {}", v)`) avoids string building when the level is off.
+
