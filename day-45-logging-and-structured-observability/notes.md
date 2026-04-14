@@ -15,3 +15,11 @@ Parameterised logging (`log.info("x {}", v)`) avoids string building when the le
 1. Logging inside tight loops hurts throughput.
 2. Don't log and rethrow.
 
+## 4. Interview Q&A
+
+**Q1. Structured vs plain logs?**  
+Machine-parseable fields enable queries and alerts.
+
+**Q2. What is MDC?**  
+Thread-local key/values added to every log line.
+
