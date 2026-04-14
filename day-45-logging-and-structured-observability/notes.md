@@ -10,3 +10,8 @@ Log JSON events with stable keys (level, msg, traceId, latency_ms) so they are s
 
 Parameterised logging (`log.info("x {}", v)`) avoids string building when the level is off.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Logging inside tight loops hurts throughput.
+2. Don't log and rethrow.
+
