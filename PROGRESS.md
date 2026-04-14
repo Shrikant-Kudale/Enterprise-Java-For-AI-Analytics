@@ -46,3 +46,4 @@
 | 42 | 2026-04-11 | Regex and Tokenization | done |
 | 43 | 2026-04-12 | JSON Parsing from Scratch | done |
 | 44 | 2026-04-13 | CSV Streaming and Large Files | done |
+| 45 | 2026-04-14 | Logging and Structured Observability | done |
