@@ -10,3 +10,8 @@ Good tests are fast, isolated and deterministic: arrange-act-assert, one behavio
 
 Seed random generators so failures reproduce.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Time and randomness make tests flaky - inject clocks/seeds.
+2. Over-mocking tests implementation, not behaviour.
+
