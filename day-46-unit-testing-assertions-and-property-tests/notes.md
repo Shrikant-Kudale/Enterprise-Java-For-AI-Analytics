@@ -6,3 +6,7 @@
 
 Good tests are fast, isolated and deterministic: arrange-act-assert, one behaviour per test, fakes over mocks. **Property tests** assert invariants over many random inputs (jqwik). JUnit 5 + AssertJ + Mockito/Testcontainers in practice.
 
+## 2. Memory Architecture Breakdown
+
+Seed random generators so failures reproduce.
+
