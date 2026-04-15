@@ -6,35 +6,3 @@
 
 Good tests are fast, isolated and deterministic: arrange-act-assert, one behaviour per test, fakes over mocks. **Property tests** assert invariants over many random inputs (jqwik). JUnit 5 + AssertJ + Mockito/Testcontainers in practice.
 
-## 2. Memory Architecture Breakdown
-
-Seed random generators so failures reproduce.
-
-## 3. Interview Edge Cases & Pitfalls
-
-1. Time and randomness make tests flaky - inject clocks/seeds.
-2. Over-mocking tests implementation, not behaviour.
-
-## 4. Interview Q&A
-
-**Q1. Unit vs integration test?**  
-Unit isolates logic; integration verifies wiring with real dependencies.
-
-**Q2. What is a property test?**  
-A rule that must hold for all generated inputs.
-
-## 5. Run the Lab
-
-```bash
-cd day-46-unit-testing-assertions-and-property-tests
-javac MiniPropertyTests.java
-java MiniPropertyTests
-```
-The program prints benchmark tables and finishes with `Day 46 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
-
-## 6. Self-Check Checklist
-
-- [ ] I can explain every section above without looking at it.
-- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
-- [ ] I can answer each Q&A item in under 90 seconds, out loud.
-- [ ] I broke one assertion on purpose and understood the failure message.
