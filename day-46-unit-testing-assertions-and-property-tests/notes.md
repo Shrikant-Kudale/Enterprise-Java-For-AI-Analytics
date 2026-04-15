@@ -15,3 +15,11 @@ Seed random generators so failures reproduce.
 1. Time and randomness make tests flaky - inject clocks/seeds.
 2. Over-mocking tests implementation, not behaviour.
 
+## 4. Interview Q&A
+
+**Q1. Unit vs integration test?**  
+Unit isolates logic; integration verifies wiring with real dependencies.
+
+**Q2. What is a property test?**  
+A rule that must hold for all generated inputs.
+
