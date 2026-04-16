@@ -6,3 +6,7 @@
 
 Microbenchmarks lie without **warm-up**, dead-code protection (consume results), fixed inputs and multiple forks. Use **JMH** (`@Benchmark`, `Blackhole`). Report ops/s with error bars, compare against a baseline.
 
+## 2. Memory Architecture Breakdown
+
+JIT compiles hot code after thousands of calls; GC and CPU frequency add noise.
+
