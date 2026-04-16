@@ -15,3 +15,11 @@ JIT compiles hot code after thousands of calls; GC and CPU frequency add noise.
 1. Constant folding removes the work.
 2. Measuring `System.nanoTime` once includes warm-up.
 
+## 4. Interview Q&A
+
+**Q1. Why use JMH?**  
+It handles warm-up, forks, dead-code elimination and statistics.
+
+**Q2. What is dead-code elimination?**  
+JIT removes computations whose result is unused.
+
