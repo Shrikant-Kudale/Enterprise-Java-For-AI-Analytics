@@ -49,3 +49,4 @@
 | 45 | 2026-04-14 | Logging and Structured Observability | done |
 | 46 | 2026-04-15 | Unit Testing and Property Tests | done |
 | 47 | 2026-04-16 | JMH-style Benchmarking Pitfalls | done |
+| 48 | 2026-04-17 | Garbage Collection: Mark-Sweep Simulation | done |
