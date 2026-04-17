@@ -6,3 +6,7 @@
 
 Tracing GC: **mark** everything reachable from roots, **sweep** (or copy/compact) the rest. Cycles are collected (unlike ref counting). Generational hypothesis: most objects die young. G1/ZGC add regions and concurrency.
 
+## 2. Memory Architecture Breakdown
+
+Roots = thread stacks, statics, JNI refs. Mark bits live in the header or side bitmaps.
+
