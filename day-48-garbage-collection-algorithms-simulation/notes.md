@@ -10,3 +10,8 @@ Tracing GC: **mark** everything reachable from roots, **sweep** (or copy/compact
 
 Roots = thread stacks, statics, JNI refs. Mark bits live in the header or side bitmaps.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Unreachable cycles are garbage.
+2. Long-lived caches keep objects reachable (leaks).
+
