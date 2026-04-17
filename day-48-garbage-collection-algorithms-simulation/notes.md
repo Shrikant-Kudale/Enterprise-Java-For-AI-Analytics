@@ -15,3 +15,11 @@ Roots = thread stacks, statics, JNI refs. Mark bits live in the header or side b
 1. Unreachable cycles are garbage.
 2. Long-lived caches keep objects reachable (leaks).
 
+## 4. Interview Q&A
+
+**Q1. Mark-sweep vs copying?**  
+Copying compacts and allocates fast; mark-sweep needs free lists.
+
+**Q2. What is a GC root?**  
+A reference the GC treats as live by definition.
+
