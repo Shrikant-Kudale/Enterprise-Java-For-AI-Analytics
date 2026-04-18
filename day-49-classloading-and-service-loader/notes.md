@@ -15,3 +15,11 @@ Loaded classes live in Metaspace and are unloaded only when their loader is garb
 1. Custom loaders can leak Metaspace (redeploys).
 2. Same class name from two loaders = different types.
 
+## 4. Interview Q&A
+
+**Q1. Parent-first delegation?**  
+A loader asks its parent first, so core classes cannot be replaced.
+
+**Q2. Why Metaspace leaks on redeploy?**  
+Old loaders stay reachable via statics/threads.
+
