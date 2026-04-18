@@ -10,3 +10,8 @@ Class loaders form a delegation hierarchy: bootstrap -> platform -> application.
 
 Loaded classes live in Metaspace and are unloaded only when their loader is garbage collected.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Custom loaders can leak Metaspace (redeploys).
+2. Same class name from two loaders = different types.
+
