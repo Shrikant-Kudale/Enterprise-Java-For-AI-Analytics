@@ -23,3 +23,18 @@ A loader asks its parent first, so core classes cannot be replaced.
 **Q2. Why Metaspace leaks on redeploy?**  
 Old loaders stay reachable via statics/threads.
 
+## 5. Run the Lab
+
+```bash
+cd day-49-classloading-and-service-loader
+javac ClassLoadingBasics.java
+java ClassLoadingBasics
+```
+The program prints benchmark tables and finishes with `Day 49 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 6. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
