@@ -15,3 +15,11 @@ Reference strength: strong > soft (cleared under memory pressure) > weak (next G
 1. GC timing is not guaranteed - never assert on it.
 2. ThreadLocals in pools outlive requests.
 
+## 4. Interview Q&A
+
+**Q1. How to find a leak?**  
+Compare heap dumps; inspect the dominator tree and GC roots.
+
+**Q2. WeakHashMap use?**  
+Metadata keyed by objects you do not want to keep alive.
+
