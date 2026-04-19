@@ -10,3 +10,8 @@ Leaks in Java = *unintended reachability*: static maps, listeners, ThreadLocals,
 
 Reference strength: strong > soft (cleared under memory pressure) > weak (next GC) > phantom (cleanup hooks).
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. GC timing is not guaranteed - never assert on it.
+2. ThreadLocals in pools outlive requests.
+
