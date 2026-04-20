@@ -52,3 +52,4 @@
 | 48 | 2026-04-17 | Garbage Collection: Mark-Sweep Simulation | done |
 | 49 | 2026-04-18 | Class Loading Basics | done |
 | 50 | 2026-04-19 | Memory Leaks, Weak References and Caches | done |
+| 51 | 2026-04-20 | JVM Flags and Heap Sizing | done |
