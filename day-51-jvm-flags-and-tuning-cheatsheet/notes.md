@@ -15,3 +15,11 @@ RSS is larger than -Xmx: add ~25-40% headroom.
 1. Heap = 100% of container -> OOM-kill.
 2. Set Xms=Xmx in prod to avoid resize pauses.
 
+## 4. Interview Q&A
+
+**Q1. How to size heap in Kubernetes?**  
+MaxRAMPercentage ~65-75% and verify total RSS.
+
+**Q2. Why Xms = Xmx?**  
+Avoids heap resize and commit costs.
+
