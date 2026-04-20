@@ -10,3 +10,8 @@ Key flags: `-Xms/-Xmx`, `-XX:MaxRAMPercentage`, `-XX:+UseG1GC|UseZGC`, `-XX:MaxG
 
 RSS is larger than -Xmx: add ~25-40% headroom.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Heap = 100% of container -> OOM-kill.
+2. Set Xms=Xmx in prod to avoid resize pauses.
+
