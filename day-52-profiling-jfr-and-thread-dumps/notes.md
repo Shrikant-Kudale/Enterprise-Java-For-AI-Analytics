@@ -15,3 +15,11 @@ JFR has <2% overhead and records GC, allocation, locks and I/O events.
 1. Sampling profilers have safepoint bias (use async-profiler).
 2. Take 3 dumps 5 s apart to see stuck threads.
 
+## 4. Interview Q&A
+
+**Q1. How to find a deadlock?**  
+Thread dump shows 'Found one Java-level deadlock'.
+
+**Q2. Flame graph?**  
+Stack samples aggregated by width = time.
+
