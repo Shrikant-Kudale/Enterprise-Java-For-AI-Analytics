@@ -10,3 +10,8 @@ Diagnose with **JFR** (`jcmd <pid> JFR.start`), thread dumps (`jcmd Thread.print
 
 JFR has <2% overhead and records GC, allocation, locks and I/O events.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Sampling profilers have safepoint bias (use async-profiler).
+2. Take 3 dumps 5 s apart to see stuck threads.
+
