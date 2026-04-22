@@ -10,3 +10,8 @@ Two pointers shrink O(n^2) scans to O(n) on sorted/structured data; a sliding wi
 
 O(1) extra state (running sum or last-seen map).
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Off-by-one when shrinking the window.
+2. Negative numbers break 'sum >= target' windows.
+
