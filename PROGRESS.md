@@ -54,3 +54,4 @@
 | 50 | 2026-04-19 | Memory Leaks, Weak References and Caches | done |
 | 51 | 2026-04-20 | JVM Flags and Heap Sizing | done |
 | 52 | 2026-04-21 | Profiling, JFR and Thread Dumps | done |
+| 53 | 2026-04-22 | Two Pointers and Sliding Window | done |
