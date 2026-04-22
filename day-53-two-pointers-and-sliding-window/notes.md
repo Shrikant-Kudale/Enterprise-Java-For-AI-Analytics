@@ -15,3 +15,11 @@ O(1) extra state (running sum or last-seen map).
 1. Off-by-one when shrinking the window.
 2. Negative numbers break 'sum >= target' windows.
 
+## 4. Interview Q&A
+
+**Q1. When does sliding window apply?**  
+Contiguous subarray/substring problems with monotone constraints.
+
+**Q2. Complexity?**  
+O(n) - each index enters/leaves once.
+
