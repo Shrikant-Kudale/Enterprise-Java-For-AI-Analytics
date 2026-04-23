@@ -23,3 +23,18 @@ Difference array: d[l]+=v, d[r+1]-=v.
 **Q2. 2D version?**  
 Prefix over rows and columns with inclusion-exclusion.
 
+## 5. Run the Lab
+
+```bash
+cd day-54-prefix-sums-and-difference-arrays
+javac PrefixSumsDiffArrays.java
+java PrefixSumsDiffArrays
+```
+The program prints benchmark tables and finishes with `Day 54 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 6. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
