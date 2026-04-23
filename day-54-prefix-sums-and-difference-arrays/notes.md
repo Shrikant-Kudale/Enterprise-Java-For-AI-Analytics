@@ -6,3 +6,7 @@
 
 Prefix sums answer range-sum queries in O(1) after O(n) build: `sum(i..j) = p[j+1]-p[i]`. Difference arrays apply many range updates in O(1) each, then one pass rebuilds values.
 
+## 2. Memory Architecture Breakdown
+
+One extra `int[n+1]`.
+
