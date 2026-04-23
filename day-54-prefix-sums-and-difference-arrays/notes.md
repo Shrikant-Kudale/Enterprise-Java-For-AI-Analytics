@@ -15,3 +15,11 @@ One extra `int[n+1]`.
 1. Use `long` to avoid overflow.
 2. Index shift by one is the classic bug.
 
+## 4. Interview Q&A
+
+**Q1. Range add updates?**  
+Difference array: d[l]+=v, d[r+1]-=v.
+
+**Q2. 2D version?**  
+Prefix over rows and columns with inclusion-exclusion.
+
