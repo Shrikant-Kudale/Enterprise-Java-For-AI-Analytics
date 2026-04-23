@@ -10,3 +10,8 @@ Prefix sums answer range-sum queries in O(1) after O(n) build: `sum(i..j) = p[j+
 
 One extra `int[n+1]`.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Use `long` to avoid overflow.
+2. Index shift by one is the classic bug.
+
