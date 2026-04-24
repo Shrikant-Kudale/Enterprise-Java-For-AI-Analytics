@@ -15,3 +15,11 @@ Adjacency list O(V+E) memory; use `ArrayDeque` for the queue.
 1. Cycle => topological order impossible (result shorter than V).
 2. Recursive DFS can overflow the stack.
 
+## 4. Interview Q&A
+
+**Q1. Detect a cycle in a directed graph?**  
+Kahn leaves nodes unprocessed, or DFS colours (white/grey/black).
+
+**Q2. BFS complexity?**  
+O(V+E).
+
