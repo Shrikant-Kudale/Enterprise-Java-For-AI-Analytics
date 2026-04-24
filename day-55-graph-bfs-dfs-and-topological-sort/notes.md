@@ -10,3 +10,8 @@ Model graphs as adjacency lists. BFS = shortest path in unweighted graphs; DFS =
 
 Adjacency list O(V+E) memory; use `ArrayDeque` for the queue.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Cycle => topological order impossible (result shorter than V).
+2. Recursive DFS can overflow the stack.
+
