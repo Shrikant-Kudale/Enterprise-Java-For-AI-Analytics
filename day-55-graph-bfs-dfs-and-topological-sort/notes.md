@@ -6,3 +6,7 @@
 
 Model graphs as adjacency lists. BFS = shortest path in unweighted graphs; DFS = connectivity/cycles; **Kahn's algorithm** orders a DAG by repeatedly removing zero in-degree nodes (build pipelines, ML DAGs).
 
+## 2. Memory Architecture Breakdown
+
+Adjacency list O(V+E) memory; use `ArrayDeque` for the queue.
+
