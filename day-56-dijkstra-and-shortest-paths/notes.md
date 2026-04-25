@@ -10,3 +10,8 @@ Dijkstra finds shortest paths with **non-negative** weights using a min-heap: po
 
 Java's `PriorityQueue` has no decrease-key: push duplicates and skip stale entries.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Negative edges break correctness.
+2. Use `long` distances for big graphs.
+
