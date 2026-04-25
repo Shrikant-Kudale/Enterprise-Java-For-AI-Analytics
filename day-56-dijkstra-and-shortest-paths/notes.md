@@ -15,3 +15,11 @@ Java's `PriorityQueue` has no decrease-key: push duplicates and skip stale entri
 1. Negative edges break correctness.
 2. Use `long` distances for big graphs.
 
+## 4. Interview Q&A
+
+**Q1. Why a heap?**  
+Always expand the currently closest unsettled node.
+
+**Q2. A* difference?**  
+Adds an admissible heuristic to prune.
+
