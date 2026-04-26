@@ -6,3 +6,7 @@
 
 Disjoint-set union with **path compression** and union by rank gives near O(1) `find/union` (inverse Ackermann). Used for connected components, Kruskal MST, clustering and entity resolution.
 
+## 2. Memory Architecture Breakdown
+
+One `int[] parent` (plus rank).
+
