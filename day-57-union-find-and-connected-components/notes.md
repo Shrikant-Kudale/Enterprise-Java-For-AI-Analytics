@@ -10,3 +10,8 @@ Disjoint-set union with **path compression** and union by rank gives near O(1) `
 
 One `int[] parent` (plus rank).
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Recursion depth without compression.
+2. Union the roots, not the nodes.
+
