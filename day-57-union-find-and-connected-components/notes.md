@@ -15,3 +15,11 @@ One `int[] parent` (plus rank).
 1. Recursion depth without compression.
 2. Union the roots, not the nodes.
 
+## 4. Interview Q&A
+
+**Q1. Complexity?**  
+Amortised O(alpha(n)) per operation.
+
+**Q2. Use case in analytics?**  
+Deduplicating entities / merging user identities.
+
