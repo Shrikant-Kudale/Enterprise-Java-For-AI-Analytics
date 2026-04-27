@@ -6,3 +6,7 @@
 
 A **trie** stores strings by shared prefixes: insert/search O(L). Prefix queries power autocomplete, spell check and routing tables. Compress with radix trees; use sorted arrays + binary search for read-only sets.
 
+## 2. Memory Architecture Breakdown
+
+Each node holds a child map/array - memory-heavy for sparse alphabets.
+
