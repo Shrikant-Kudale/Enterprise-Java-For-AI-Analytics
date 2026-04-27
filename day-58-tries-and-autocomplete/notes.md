@@ -10,3 +10,8 @@ A **trie** stores strings by shared prefixes: insert/search O(L). Prefix queries
 
 Each node holds a child map/array - memory-heavy for sparse alphabets.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Case/unicode normalisation.
+2. Limit suggestions (top-k by frequency).
+
