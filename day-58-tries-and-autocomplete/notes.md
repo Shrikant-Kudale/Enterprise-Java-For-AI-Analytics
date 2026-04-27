@@ -15,3 +15,11 @@ Each node holds a child map/array - memory-heavy for sparse alphabets.
 1. Case/unicode normalisation.
 2. Limit suggestions (top-k by frequency).
 
+## 4. Interview Q&A
+
+**Q1. Trie vs HashMap?**  
+Trie supports prefix queries; HashMap only exact lookup.
+
+**Q2. Memory trade-off?**  
+Fast prefix search for higher memory.
+
