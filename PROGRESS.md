@@ -59,3 +59,4 @@
 | 55 | 2026-04-24 | Graph BFS, DFS and Topological Sort | done |
 | 56 | 2026-04-25 | Dijkstra and Shortest Paths | done |
 | 57 | 2026-04-26 | Union-Find and Connected Components | done |
+| 58 | 2026-04-27 | Tries and Autocomplete | done |
