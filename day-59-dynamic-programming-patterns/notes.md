@@ -15,3 +15,11 @@ Tables can often be rolled to O(n) memory.
 1. Wrong base case/initial 'infinity' overflow.
 2. State must capture everything the future needs.
 
+## 4. Interview Q&A
+
+**Q1. Memo vs tabulation?**  
+Memo is easier to write; tabulation avoids recursion depth.
+
+**Q2. Coin change recurrence?**  
+dp[a]=min(dp[a-c]+1).
+
