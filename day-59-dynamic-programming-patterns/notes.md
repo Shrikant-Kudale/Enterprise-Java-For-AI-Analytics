@@ -10,3 +10,8 @@ DP = overlapping subproblems + optimal substructure. Define the state, the recur
 
 Tables can often be rolled to O(n) memory.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Wrong base case/initial 'infinity' overflow.
+2. State must capture everything the future needs.
+
