@@ -15,3 +15,11 @@ Recursion depth = solution size; copy a path only when emitting.
 1. Forgetting to undo the choice.
 2. Duplicates need sorting + skipping.
 
+## 4. Interview Q&A
+
+**Q1. Permutations count?**  
+n! - use pruning when possible.
+
+**Q2. Backtracking vs DP?**  
+DP reuses overlapping subproblems; backtracking enumerates.
+
