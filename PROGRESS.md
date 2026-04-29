@@ -61,3 +61,4 @@
 | 57 | 2026-04-26 | Union-Find and Connected Components | done |
 | 58 | 2026-04-27 | Tries and Autocomplete | done |
 | 59 | 2026-04-28 | Dynamic Programming Patterns | done |
+| 60 | 2026-04-29 | Backtracking and Combinatorics | done |
