@@ -6,3 +6,7 @@
 
 Backtracking builds candidates incrementally and abandons a branch as soon as it cannot work (choose -> explore -> un-choose). Use for permutations, subsets, N-Queens, sudoku; prune early to tame exponential time.
 
+## 2. Memory Architecture Breakdown
+
+Recursion depth = solution size; copy a path only when emitting.
+
