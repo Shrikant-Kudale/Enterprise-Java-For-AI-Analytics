@@ -10,3 +10,8 @@ Backtracking builds candidates incrementally and abandons a branch as soon as it
 
 Recursion depth = solution size; copy a path only when emitting.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Forgetting to undo the choice.
+2. Duplicates need sorting + skipping.
+
