@@ -62,3 +62,4 @@
 | 58 | 2026-04-27 | Tries and Autocomplete | done |
 | 59 | 2026-04-28 | Dynamic Programming Patterns | done |
 | 60 | 2026-04-29 | Backtracking and Combinatorics | done |
+| 61 | 2026-04-30 | Intervals and Sweep Line | done |
