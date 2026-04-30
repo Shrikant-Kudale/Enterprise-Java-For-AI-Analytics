@@ -15,3 +15,11 @@ O(n log n) for sorting, O(n) extra.
 1. Touching intervals: decide whether [1,2],[2,3] merge.
 2. Sort ends before starts at equal times if closed-open.
 
+## 4. Interview Q&A
+
+**Q1. Min meeting rooms?**  
+Max overlap from a sweep.
+
+**Q2. Merge intervals complexity?**  
+O(n log n).
+
