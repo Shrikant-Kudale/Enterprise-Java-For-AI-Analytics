@@ -15,3 +15,11 @@ A shared `HttpClient` reuses connections; create it once.
 1. Retry storms amplify outages.
 2. Never retry non-idempotent POSTs without an idempotency key.
 
+## 4. Interview Q&A
+
+**Q1. Why jitter?**  
+Prevents synchronized retries (thundering herd).
+
+**Q2. What to retry?**  
+Timeouts, 502/503/504, connection resets.
+
