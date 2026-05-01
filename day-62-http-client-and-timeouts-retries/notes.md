@@ -10,3 +10,8 @@ Every outbound call needs connect + request timeouts, bounded retries with **exp
 
 A shared `HttpClient` reuses connections; create it once.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Retry storms amplify outages.
+2. Never retry non-idempotent POSTs without an idempotency key.
+
