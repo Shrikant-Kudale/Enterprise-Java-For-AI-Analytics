@@ -23,3 +23,18 @@ Prevents synchronized retries (thundering herd).
 **Q2. What to retry?**  
 Timeouts, 502/503/504, connection resets.
 
+## 5. Run the Lab
+
+```bash
+cd day-62-http-client-and-timeouts-retries
+javac RetryBackoffClient.java
+java RetryBackoffClient
+```
+The program prints benchmark tables and finishes with `Day 62 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 6. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
