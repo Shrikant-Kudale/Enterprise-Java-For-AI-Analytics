@@ -6,3 +6,7 @@
 
 Every outbound call needs connect + request timeouts, bounded retries with **exponential backoff + jitter**, only for idempotent operations, plus a circuit breaker. Java 11+ `java.net.http.HttpClient` supports HTTP/2, async and timeouts.
 
+## 2. Memory Architecture Breakdown
+
+A shared `HttpClient` reuses connections; create it once.
+
