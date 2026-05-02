@@ -10,3 +10,8 @@ ACID. Isolation levels: READ UNCOMMITTED, READ COMMITTED (no dirty reads), REPEA
 
 MVCC keeps row versions (undo/xmin-xmax) until no snapshot needs them.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Lost update without locking/versioning.
+2. Long transactions bloat MVCC and block vacuum.
+
