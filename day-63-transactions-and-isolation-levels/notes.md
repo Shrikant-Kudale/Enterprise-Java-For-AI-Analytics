@@ -6,35 +6,3 @@
 
 ACID. Isolation levels: READ UNCOMMITTED, READ COMMITTED (no dirty reads), REPEATABLE READ (no non-repeatable reads), SERIALIZABLE (no phantoms). MVCC gives each transaction a snapshot. Keep transactions short; set `readOnly=true` for reads.
 
-## 2. Memory Architecture Breakdown
-
-MVCC keeps row versions (undo/xmin-xmax) until no snapshot needs them.
-
-## 3. Interview Edge Cases & Pitfalls
-
-1. Lost update without locking/versioning.
-2. Long transactions bloat MVCC and block vacuum.
-
-## 4. Interview Q&A
-
-**Q1. Dirty vs non-repeatable read?**  
-Dirty reads uncommitted data; non-repeatable read sees a row change between two reads.
-
-**Q2. Default in Postgres/MySQL?**  
-READ COMMITTED / REPEATABLE READ.
-
-## 5. Run the Lab
-
-```bash
-cd day-63-transactions-and-isolation-levels
-javac TransactionIsolationToy.java
-java TransactionIsolationToy
-```
-The program prints benchmark tables and finishes with `Day 63 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
-
-## 6. Self-Check Checklist
-
-- [ ] I can explain every section above without looking at it.
-- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
-- [ ] I can answer each Q&A item in under 90 seconds, out loud.
-- [ ] I broke one assertion on purpose and understood the failure message.
