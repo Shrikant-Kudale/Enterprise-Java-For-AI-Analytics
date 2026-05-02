@@ -6,3 +6,7 @@
 
 ACID. Isolation levels: READ UNCOMMITTED, READ COMMITTED (no dirty reads), REPEATABLE READ (no non-repeatable reads), SERIALIZABLE (no phantoms). MVCC gives each transaction a snapshot. Keep transactions short; set `readOnly=true` for reads.
 
+## 2. Memory Architecture Breakdown
+
+MVCC keeps row versions (undo/xmin-xmax) until no snapshot needs them.
+
