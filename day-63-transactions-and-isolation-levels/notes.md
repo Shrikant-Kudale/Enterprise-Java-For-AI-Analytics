@@ -23,3 +23,18 @@ Dirty reads uncommitted data; non-repeatable read sees a row change between two 
 **Q2. Default in Postgres/MySQL?**  
 READ COMMITTED / REPEATABLE READ.
 
+## 5. Run the Lab
+
+```bash
+cd day-63-transactions-and-isolation-levels
+javac TransactionIsolationToy.java
+java TransactionIsolationToy
+```
+The program prints benchmark tables and finishes with `Day 63 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 6. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
