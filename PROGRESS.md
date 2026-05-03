@@ -65,3 +65,4 @@
 | 61 | 2026-04-30 | Intervals and Sweep Line | done |
 | 62 | 2026-05-01 | HTTP Client, Timeouts and Retries | done |
 | 63 | 2026-05-02 | Transactions and Isolation Levels | done |
+| 64 | 2026-05-03 | Optimistic Locking and Versioning | done |
