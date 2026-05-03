@@ -10,3 +10,8 @@ Optimistic locking adds a **version** column: `UPDATE ... WHERE id=? AND version
 
 Compare-and-set (CAS) is the in-memory equivalent.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Retries must re-read state.
+2. ABA problem needs version stamps.
+
