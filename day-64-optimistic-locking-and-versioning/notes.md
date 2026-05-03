@@ -15,3 +15,11 @@ Compare-and-set (CAS) is the in-memory equivalent.
 1. Retries must re-read state.
 2. ABA problem needs version stamps.
 
+## 4. Interview Q&A
+
+**Q1. Optimistic vs pessimistic?**  
+Optimistic detects conflicts at commit; pessimistic blocks up front.
+
+**Q2. HTTP mapping?**  
+ETag/If-Match with 412/409.
+
