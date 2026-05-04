@@ -15,3 +15,11 @@ Dedup store needs atomic insert and a TTL.
 1. Store the *response*, not only the key.
 2. Key scope must include the tenant/user.
 
+## 4. Interview Q&A
+
+**Q1. Exactly-once in Kafka?**  
+Idempotent producer + transactions + consumer offsets in the same transaction.
+
+**Q2. Why dedup tables?**  
+Convert retries into no-ops.
+
