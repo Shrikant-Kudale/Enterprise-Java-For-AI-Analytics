@@ -10,3 +10,8 @@ Networks give *at-least-once* delivery. Make handlers **idempotent**: client sen
 
 Dedup store needs atomic insert and a TTL.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Store the *response*, not only the key.
+2. Key scope must include the tenant/user.
+
