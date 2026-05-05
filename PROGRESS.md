@@ -67,3 +67,4 @@
 | 63 | 2026-05-02 | Transactions and Isolation Levels | done |
 | 64 | 2026-05-03 | Optimistic Locking and Versioning | done |
 | 65 | 2026-05-04 | Idempotency and Exactly-Once Semantics | done |
+| 66 | 2026-05-05 | Message Queues and Consumer Groups | done |
