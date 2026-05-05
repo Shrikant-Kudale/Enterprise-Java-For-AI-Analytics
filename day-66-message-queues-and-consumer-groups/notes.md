@@ -23,3 +23,18 @@ Add consumers up to the partition count.
 **Q2. At-least-once?**  
 Commit offsets after processing.
 
+## 5. Run the Lab
+
+```bash
+cd day-66-message-queues-and-consumer-groups
+javac PartitionedLogToy.java
+java PartitionedLogToy
+```
+The program prints benchmark tables and finishes with `Day 66 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 6. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
