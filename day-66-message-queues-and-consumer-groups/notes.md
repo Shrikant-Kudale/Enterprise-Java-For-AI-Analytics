@@ -6,3 +6,7 @@
 
 Kafka-style log: topics split into **partitions**; messages with the same key hash to the same partition (per-key ordering). A **consumer group** assigns each partition to one consumer; **offsets** record progress. More partitions = more parallelism.
 
+## 2. Memory Architecture Breakdown
+
+Append-only segment files; sequential I/O + page cache make it fast.
+
