@@ -10,3 +10,8 @@ Kafka-style log: topics split into **partitions**; messages with the same key ha
 
 Append-only segment files; sequential I/O + page cache make it fast.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Ordering is per partition only.
+2. Rebalances pause consumption.
+
