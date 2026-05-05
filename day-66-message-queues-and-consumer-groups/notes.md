@@ -15,3 +15,11 @@ Append-only segment files; sequential I/O + page cache make it fast.
 1. Ordering is per partition only.
 2. Rebalances pause consumption.
 
+## 4. Interview Q&A
+
+**Q1. How do you scale consumers?**  
+Add consumers up to the partition count.
+
+**Q2. At-least-once?**  
+Commit offsets after processing.
+
