@@ -6,3 +6,7 @@
 
 **Event sourcing** stores immutable events; state = fold(events). Gives audit, replay and time travel. **CQRS** separates the write model from read-optimised projections. Snapshots bound replay cost.
 
+## 2. Memory Architecture Breakdown
+
+Append-only store + projections rebuilt from the log.
+
