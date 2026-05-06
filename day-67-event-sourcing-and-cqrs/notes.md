@@ -15,3 +15,11 @@ Append-only store + projections rebuilt from the log.
 1. Event schema evolution needs upcasters.
 2. Eventual consistency between write and read sides.
 
+## 4. Interview Q&A
+
+**Q1. Why snapshots?**  
+Avoid replaying millions of events.
+
+**Q2. CQRS cost?**  
+Two models and eventual consistency.
+
