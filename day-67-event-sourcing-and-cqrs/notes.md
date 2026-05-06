@@ -10,3 +10,8 @@
 
 Append-only store + projections rebuilt from the log.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Event schema evolution needs upcasters.
+2. Eventual consistency between write and read sides.
+
