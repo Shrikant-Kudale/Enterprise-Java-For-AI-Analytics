@@ -6,3 +6,7 @@
 
 Fixed window (cheap, bursty at edges), sliding window log/counter (accurate), **token bucket** (allows bursts, smooth refill), leaky bucket (constant outflow). Distributed limiters use Redis (INCR+EXPIRE, Lua scripts).
 
+## 2. Memory Architecture Breakdown
+
+Token bucket = two numbers (tokens, lastRefill) per key.
+
