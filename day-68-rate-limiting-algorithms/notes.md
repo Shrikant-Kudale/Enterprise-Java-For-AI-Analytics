@@ -15,3 +15,11 @@ Token bucket = two numbers (tokens, lastRefill) per key.
 1. Clock skew across nodes.
 2. Return 429 with `Retry-After`.
 
+## 4. Interview Q&A
+
+**Q1. Token vs leaky bucket?**  
+Token allows bursts up to capacity; leaky enforces a steady rate.
+
+**Q2. Per-user limits at scale?**  
+Shard counters in Redis keyed by user.
+
