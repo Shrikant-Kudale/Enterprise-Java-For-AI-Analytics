@@ -69,3 +69,4 @@
 | 65 | 2026-05-04 | Idempotency and Exactly-Once Semantics | done |
 | 66 | 2026-05-05 | Message Queues and Consumer Groups | done |
 | 67 | 2026-05-06 | Event Sourcing and CQRS | done |
+| 68 | 2026-05-07 | Rate Limiting Algorithms | done |
