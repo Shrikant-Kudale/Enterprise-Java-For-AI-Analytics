@@ -10,3 +10,8 @@ Fixed window (cheap, bursty at edges), sliding window log/counter (accurate), **
 
 Token bucket = two numbers (tokens, lastRefill) per key.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Clock skew across nodes.
+2. Return 429 with `Retry-After`.
+
