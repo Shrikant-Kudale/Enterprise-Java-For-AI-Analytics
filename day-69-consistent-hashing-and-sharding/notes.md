@@ -6,3 +6,7 @@
 
 Hash keys and nodes onto a ring; a key belongs to the next node clockwise. Adding/removing a node remaps only ~1/N of keys. **Virtual nodes** smooth the load. Used by caches, Dynamo, Cassandra.
 
+## 2. Memory Architecture Breakdown
+
+A `TreeMap<hash,node>` gives O(log n) lookups via `ceilingEntry`.
+
