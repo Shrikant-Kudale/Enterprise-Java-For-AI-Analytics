@@ -15,3 +15,11 @@ A `TreeMap<hash,node>` gives O(log n) lookups via `ceilingEntry`.
 1. Hot keys still overload one node.
 2. Use a well-mixed hash.
 
+## 4. Interview Q&A
+
+**Q1. Why not `hash % N`?**  
+Changing N remaps almost every key.
+
+**Q2. Why virtual nodes?**  
+Even distribution and smoother rebalancing.
+
