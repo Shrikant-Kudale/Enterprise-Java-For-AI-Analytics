@@ -10,3 +10,8 @@ Hash keys and nodes onto a ring; a key belongs to the next node clockwise. Addin
 
 A `TreeMap<hash,node>` gives O(log n) lookups via `ceilingEntry`.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Hot keys still overload one node.
+2. Use a well-mixed hash.
+
