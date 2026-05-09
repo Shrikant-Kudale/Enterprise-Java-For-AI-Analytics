@@ -15,3 +15,11 @@ Semaphore = counter; bounded queue = array of fixed capacity.
 1. Unbounded queues hide overload.
 2. Shed load early, not after queueing.
 
+## 4. Interview Q&A
+
+**Q1. Bulkhead vs circuit breaker?**  
+Bulkhead limits concurrency; breaker stops calling a failing dependency.
+
+**Q2. How to apply backpressure?**  
+Bound queues and reject/slow producers.
+
