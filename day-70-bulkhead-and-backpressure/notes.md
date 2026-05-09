@@ -10,3 +10,8 @@
 
 Semaphore = counter; bounded queue = array of fixed capacity.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Unbounded queues hide overload.
+2. Shed load early, not after queueing.
+
