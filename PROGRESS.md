@@ -71,3 +71,4 @@
 | 67 | 2026-05-06 | Event Sourcing and CQRS | done |
 | 68 | 2026-05-07 | Rate Limiting Algorithms | done |
 | 69 | 2026-05-08 | Consistent Hashing and Sharding | done |
+| 70 | 2026-05-09 | Bulkhead and Backpressure | done |
