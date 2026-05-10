@@ -10,3 +10,8 @@ A JWT = base64url(header).base64url(payload).signature. **HS256** signs with a s
 
 HMAC is a keyed hash: no key, no valid tag.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. `alg=none` attacks - pin allowed algorithms.
+2. Never put secrets in the payload (it is only encoded).
+
