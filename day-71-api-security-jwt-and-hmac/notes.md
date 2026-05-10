@@ -15,3 +15,11 @@ HMAC is a keyed hash: no key, no valid tag.
 1. `alg=none` attacks - pin allowed algorithms.
 2. Never put secrets in the payload (it is only encoded).
 
+## 4. Interview Q&A
+
+**Q1. HS256 vs RS256?**  
+Shared secret vs public/private keys - RS256 lets services verify without signing power.
+
+**Q2. Why constant-time compare?**  
+Avoid timing attacks.
+
