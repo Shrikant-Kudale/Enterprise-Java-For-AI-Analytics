@@ -72,3 +72,4 @@
 | 68 | 2026-05-07 | Rate Limiting Algorithms | done |
 | 69 | 2026-05-08 | Consistent Hashing and Sharding | done |
 | 70 | 2026-05-09 | Bulkhead and Backpressure | done |
+| 71 | 2026-05-10 | API Security: HMAC and JWT | done |
