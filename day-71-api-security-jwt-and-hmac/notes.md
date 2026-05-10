@@ -6,3 +6,7 @@
 
 A JWT = base64url(header).base64url(payload).signature. **HS256** signs with a shared secret (HMAC-SHA256); RS256 uses a key pair. Always verify signature, `exp`, `aud`, `iss`; compare signatures in constant time; use HTTPS; keep tokens short-lived.
 
+## 2. Memory Architecture Breakdown
+
+HMAC is a keyed hash: no key, no valid tag.
+
