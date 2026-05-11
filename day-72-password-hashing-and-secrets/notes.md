@@ -6,3 +6,7 @@
 
 Never store passwords or hash with plain SHA. Use a slow, salted KDF: **bcrypt/scrypt/Argon2** or PBKDF2 with high iterations and a random per-user salt. Keep secrets in a vault / env, not in git; rotate regularly.
 
+## 2. Memory Architecture Breakdown
+
+Cost factor trades CPU time for attacker cost.
+
