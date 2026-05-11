@@ -15,3 +15,11 @@ Cost factor trades CPU time for attacker cost.
 1. Unique salt per password.
 2. Compare hashes in constant time.
 
+## 4. Interview Q&A
+
+**Q1. Why salt?**  
+Defeats rainbow tables and identical-hash detection.
+
+**Q2. Why slow hashes?**  
+Make brute force expensive.
+
