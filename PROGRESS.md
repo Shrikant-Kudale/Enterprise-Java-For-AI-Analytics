@@ -73,3 +73,4 @@
 | 69 | 2026-05-08 | Consistent Hashing and Sharding | done |
 | 70 | 2026-05-09 | Bulkhead and Backpressure | done |
 | 71 | 2026-05-10 | API Security: HMAC and JWT | done |
+| 72 | 2026-05-11 | Password Hashing and Secrets | done |
