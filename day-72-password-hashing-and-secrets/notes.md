@@ -10,3 +10,8 @@ Never store passwords or hash with plain SHA. Use a slow, salted KDF: **bcrypt/s
 
 Cost factor trades CPU time for attacker cost.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Unique salt per password.
+2. Compare hashes in constant time.
+
