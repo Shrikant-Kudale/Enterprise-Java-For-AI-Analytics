@@ -15,3 +15,11 @@ Histograms use fixed buckets - O(1) record, tiny memory.
 1. Averaging percentiles across hosts is wrong - merge histograms.
 2. Coordinated omission under-reports latency.
 
+## 4. Interview Q&A
+
+**Q1. Why p99?**  
+Users experience the tail; fan-out amplifies it.
+
+**Q2. SLI/SLO?**  
+Measured indicator vs target.
+
