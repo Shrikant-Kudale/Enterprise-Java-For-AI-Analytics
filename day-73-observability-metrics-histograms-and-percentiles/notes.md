@@ -10,3 +10,8 @@ Averages hide tail latency. Track **p50/p95/p99** with histograms (HdrHistogram,
 
 Histograms use fixed buckets - O(1) record, tiny memory.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Averaging percentiles across hosts is wrong - merge histograms.
+2. Coordinated omission under-reports latency.
+
