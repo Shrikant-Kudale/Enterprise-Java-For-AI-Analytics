@@ -10,3 +10,8 @@ Snowflake IDs pack **timestamp | node id | sequence** into 64 bits: roughly time
 
 41 bits time + 10 bits node + 12 bits sequence = 4096 ids/ms/node.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Clock rollback can duplicate ids.
+2. Random UUIDv4 fragments B-tree indexes.
+
