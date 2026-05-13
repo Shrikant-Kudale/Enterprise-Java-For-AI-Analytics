@@ -6,3 +6,7 @@
 
 Snowflake IDs pack **timestamp | node id | sequence** into 64 bits: roughly time-ordered, unique without coordination, index-friendly. Alternatives: UUIDv7, ULID, DB sequences. Beware clock moving backwards.
 
+## 2. Memory Architecture Breakdown
+
+41 bits time + 10 bits node + 12 bits sequence = 4096 ids/ms/node.
+
