@@ -15,3 +15,11 @@ Snowflake IDs pack **timestamp | node id | sequence** into 64 bits: roughly time
 1. Clock rollback can duplicate ids.
 2. Random UUIDv4 fragments B-tree indexes.
 
+## 4. Interview Q&A
+
+**Q1. Why time-ordered ids?**  
+Better insert locality in indexes.
+
+**Q2. Sequence overflow?**  
+Wait for the next millisecond.
+
