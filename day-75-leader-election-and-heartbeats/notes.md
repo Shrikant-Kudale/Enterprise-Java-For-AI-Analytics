@@ -15,3 +15,11 @@ State = term/epoch + lease expiry timestamps.
 1. Clock skew breaks lease logic.
 2. Split brain without fencing.
 
+## 4. Interview Q&A
+
+**Q1. Why Raft?**  
+Understandable consensus: leader election + log replication.
+
+**Q2. What is a fencing token?**  
+Monotonic number so storage rejects old leaders.
+
