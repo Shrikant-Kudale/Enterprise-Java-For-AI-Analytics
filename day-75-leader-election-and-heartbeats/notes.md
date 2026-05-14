@@ -6,3 +6,7 @@
 
 Distributed systems elect a leader (Raft, ZooKeeper/etcd leases). Nodes send **heartbeats**; a missing heartbeat past a timeout marks a node dead. Fencing tokens stop a stale leader from writing. Use a library (etcd, Curator) - don't hand-roll consensus.
 
+## 2. Memory Architecture Breakdown
+
+State = term/epoch + lease expiry timestamps.
+
