@@ -10,3 +10,8 @@ Distributed systems elect a leader (Raft, ZooKeeper/etcd leases). Nodes send **h
 
 State = term/epoch + lease expiry timestamps.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Clock skew breaks lease logic.
+2. Split brain without fencing.
+
