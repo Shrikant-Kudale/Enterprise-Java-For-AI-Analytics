@@ -6,3 +6,7 @@
 
 JVMs are container-aware: `-XX:MaxRAMPercentage`, `-XX:ActiveProcessorCount`. Use multi-stage builds, a slim JRE image, non-root user, health checks, and `docker stats`/`jcmd VM.native_memory` to verify. Kubernetes: requests vs limits, liveness vs readiness.
 
+## 2. Memory Architecture Breakdown
+
+RSS = heap + metaspace + code cache + threads + direct + native libs.
+
