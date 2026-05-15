@@ -15,3 +15,11 @@ RSS = heap + metaspace + code cache + threads + direct + native libs.
 1. CPU limits cause throttling and GC pauses.
 2. OOMKilled (exit 137) is not a Java OOM.
 
+## 4. Interview Q&A
+
+**Q1. Why OOMKilled with a small heap?**  
+Native/direct/thread memory exceeded the limit.
+
+**Q2. Requests vs limits?**  
+Scheduling guarantee vs hard cap.
+
