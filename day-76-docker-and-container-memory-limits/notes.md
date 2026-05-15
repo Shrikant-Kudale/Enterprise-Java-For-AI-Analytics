@@ -10,3 +10,8 @@ JVMs are container-aware: `-XX:MaxRAMPercentage`, `-XX:ActiveProcessorCount`. Us
 
 RSS = heap + metaspace + code cache + threads + direct + native libs.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. CPU limits cause throttling and GC pauses.
+2. OOMKilled (exit 137) is not a Java OOM.
+
