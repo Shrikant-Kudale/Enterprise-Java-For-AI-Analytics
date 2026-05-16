@@ -15,3 +15,11 @@ Parameters are two doubles; data fits in `double[]`.
 1. Learning rate too high diverges.
 2. Unscaled features slow convergence.
 
+## 4. Interview Q&A
+
+**Q1. Why gradient descent?**  
+Scales to huge data via mini-batches.
+
+**Q2. Overfitting fix?**  
+Regularisation, more data, simpler model.
+
