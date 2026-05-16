@@ -78,3 +78,4 @@
 | 74 | 2026-05-13 | Distributed ID Generation (Snowflake) | done |
 | 75 | 2026-05-14 | Leader Election and Heartbeats | done |
 | 76 | 2026-05-15 | Docker and Container Memory Limits | done |
+| 77 | 2026-05-16 | Linear Regression with Gradient Descent | done |
