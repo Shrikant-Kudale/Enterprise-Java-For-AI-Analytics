@@ -6,3 +6,7 @@
 
 Model `y = w*x + b`; loss = mean squared error; gradient descent updates `w -= lr * dL/dw`. Normalise features, choose a learning rate that converges, and monitor loss. Closed form (normal equations) exists for small problems.
 
+## 2. Memory Architecture Breakdown
+
+Parameters are two doubles; data fits in `double[]`.
+
