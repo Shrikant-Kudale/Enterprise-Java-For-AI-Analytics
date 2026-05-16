@@ -10,3 +10,8 @@ Model `y = w*x + b`; loss = mean squared error; gradient descent updates `w -= l
 
 Parameters are two doubles; data fits in `double[]`.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Learning rate too high diverges.
+2. Unscaled features slow convergence.
+
