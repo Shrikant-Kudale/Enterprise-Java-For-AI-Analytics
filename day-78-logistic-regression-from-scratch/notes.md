@@ -6,3 +6,7 @@
 
 Logistic regression = linear score passed through the **sigmoid**; trained with cross-entropy; gradient is `(p - y) * x`. Outputs calibrated-ish probabilities; threshold trades precision vs recall.
 
+## 2. Memory Architecture Breakdown
+
+Weights + bias only; inference is a dot product.
+
