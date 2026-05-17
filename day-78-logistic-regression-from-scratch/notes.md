@@ -10,3 +10,8 @@ Logistic regression = linear score passed through the **sigmoid**; trained with 
 
 Weights + bias only; inference is a dot product.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Separable data -> weights grow (use L2).
+2. Class imbalance needs weighting/threshold tuning.
+
