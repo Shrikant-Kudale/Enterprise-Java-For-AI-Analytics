@@ -15,3 +15,11 @@ Weights + bias only; inference is a dot product.
 1. Separable data -> weights grow (use L2).
 2. Class imbalance needs weighting/threshold tuning.
 
+## 4. Interview Q&A
+
+**Q1. Why sigmoid?**  
+Maps scores to (0,1) and gives a convex loss.
+
+**Q2. Decision threshold?**  
+Pick from the PR/ROC curve per cost.
+
