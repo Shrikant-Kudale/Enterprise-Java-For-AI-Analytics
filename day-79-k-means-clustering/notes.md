@@ -10,3 +10,8 @@ K-means alternates **assign** each point to the nearest centroid and **update** 
 
 Centroids k*d doubles + assignments n ints.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Local optima - run multiple seeds.
+2. Sensitive to outliers/scale.
+
