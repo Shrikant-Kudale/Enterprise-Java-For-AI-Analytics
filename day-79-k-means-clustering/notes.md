@@ -15,3 +15,11 @@ Centroids k*d doubles + assignments n ints.
 1. Local optima - run multiple seeds.
 2. Sensitive to outliers/scale.
 
+## 4. Interview Q&A
+
+**Q1. k-means limitation?**  
+Assumes spherical, similar-size clusters.
+
+**Q2. Use in vector search?**  
+IVF coarse quantiser (day 28).
+
