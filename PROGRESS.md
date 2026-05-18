@@ -80,3 +80,4 @@
 | 76 | 2026-05-15 | Docker and Container Memory Limits | done |
 | 77 | 2026-05-16 | Linear Regression with Gradient Descent | done |
 | 78 | 2026-05-17 | Logistic Regression from Scratch | done |
+| 79 | 2026-05-18 | K-Means Clustering | done |
