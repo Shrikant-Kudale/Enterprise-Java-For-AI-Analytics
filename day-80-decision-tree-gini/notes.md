@@ -15,3 +15,11 @@ Tree = arrays of feature, threshold, left, right.
 1. Deep trees overfit.
 2. Greedy splits are not globally optimal.
 
+## 4. Interview Q&A
+
+**Q1. Gini vs entropy?**  
+Similar results; Gini is cheaper.
+
+**Q2. Why ensembles?**  
+Averaging reduces variance.
+
