@@ -6,3 +6,7 @@
 
 A tree greedily picks the split that most reduces impurity: **Gini** `2p(1-p)` (binary) or entropy. Leaves predict the majority class. Control depth/min-samples to avoid overfitting; ensembles (random forest, gradient boosting) dominate tabular ML.
 
+## 2. Memory Architecture Breakdown
+
+Tree = arrays of feature, threshold, left, right.
+
