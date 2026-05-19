@@ -10,3 +10,8 @@ A tree greedily picks the split that most reduces impurity: **Gini** `2p(1-p)` (
 
 Tree = arrays of feature, threshold, left, right.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Deep trees overfit.
+2. Greedy splits are not globally optimal.
+
