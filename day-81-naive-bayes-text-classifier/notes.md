@@ -6,3 +6,7 @@
 
 Naive Bayes assumes features are independent given the class: `P(c|doc) ~ P(c) * prod P(w|c)`. Use log-probabilities and **Laplace smoothing**. Fast, strong baseline for spam/sentiment.
 
+## 2. Memory Architecture Breakdown
+
+Word-count table per class.
+
