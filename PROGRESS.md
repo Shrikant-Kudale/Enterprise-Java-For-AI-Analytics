@@ -82,3 +82,4 @@
 | 78 | 2026-05-17 | Logistic Regression from Scratch | done |
 | 79 | 2026-05-18 | K-Means Clustering | done |
 | 80 | 2026-05-19 | Decision Trees and Gini Impurity | done |
+| 81 | 2026-05-20 | Naive Bayes Text Classifier | done |
