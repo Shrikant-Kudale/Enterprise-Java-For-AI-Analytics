@@ -10,3 +10,8 @@ Naive Bayes assumes features are independent given the class: `P(c|doc) ~ P(c) *
 
 Word-count table per class.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Zero counts without smoothing.
+2. Use logs to avoid underflow.
+
