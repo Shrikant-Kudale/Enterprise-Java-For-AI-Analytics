@@ -15,3 +15,11 @@ Word-count table per class.
 1. Zero counts without smoothing.
 2. Use logs to avoid underflow.
 
+## 4. Interview Q&A
+
+**Q1. Why 'naive'?**  
+Independence assumption.
+
+**Q2. Why smoothing?**  
+Unseen words would zero the probability.
+
