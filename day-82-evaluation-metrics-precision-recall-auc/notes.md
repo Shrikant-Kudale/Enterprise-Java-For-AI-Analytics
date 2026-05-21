@@ -6,3 +6,7 @@
 
 Accuracy misleads on imbalanced data. **Precision** = TP/(TP+FP), **Recall** = TP/(TP+FN), F1 = harmonic mean, **ROC-AUC** = P(score of a random positive > random negative). Use PR-AUC for rare positives.
 
+## 2. Memory Architecture Breakdown
+
+A confusion matrix is 4 counters.
+
