@@ -10,3 +10,8 @@ Accuracy misleads on imbalanced data. **Precision** = TP/(TP+FP), **Recall** = T
 
 A confusion matrix is 4 counters.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Threshold choice changes P/R.
+2. Data leakage inflates metrics.
+
