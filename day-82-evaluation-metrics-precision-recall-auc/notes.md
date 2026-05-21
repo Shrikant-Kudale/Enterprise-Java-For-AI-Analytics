@@ -15,3 +15,11 @@ A confusion matrix is 4 counters.
 1. Threshold choice changes P/R.
 2. Data leakage inflates metrics.
 
+## 4. Interview Q&A
+
+**Q1. Precision vs recall?**  
+Precision: how many flagged are right; recall: how many true cases were found.
+
+**Q2. AUC meaning?**  
+Ranking quality independent of threshold.
+
