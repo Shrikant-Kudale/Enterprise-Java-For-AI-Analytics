@@ -15,3 +15,11 @@ Hashing keeps memory fixed: `index = floorMod(hash, dim)`.
 1. Training-serving skew.
 2. Target leakage in target encoding.
 
+## 4. Interview Q&A
+
+**Q1. One-hot vs hashing?**  
+One-hot is lossless; hashing bounds dimension at the cost of collisions.
+
+**Q2. Why feature stores?**  
+Consistent features online and offline.
+
