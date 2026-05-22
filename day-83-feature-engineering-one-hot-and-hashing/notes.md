@@ -6,3 +6,7 @@
 
 Categorical features: **one-hot** (exact, high-dimensional), **hashing trick** (fixed size, collisions), target/frequency encoding, embeddings. Scale numeric features; handle missing values; keep train/serve transforms identical (feature store).
 
+## 2. Memory Architecture Breakdown
+
+Hashing keeps memory fixed: `index = floorMod(hash, dim)`.
+
