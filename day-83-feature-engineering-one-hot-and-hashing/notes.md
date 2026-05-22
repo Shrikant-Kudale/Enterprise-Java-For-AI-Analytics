@@ -10,3 +10,8 @@ Categorical features: **one-hot** (exact, high-dimensional), **hashing trick** (
 
 Hashing keeps memory fixed: `index = floorMod(hash, dim)`.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Training-serving skew.
+2. Target leakage in target encoding.
+
