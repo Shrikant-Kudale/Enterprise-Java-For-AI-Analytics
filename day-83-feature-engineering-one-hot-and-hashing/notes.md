@@ -23,3 +23,18 @@ One-hot is lossless; hashing bounds dimension at the cost of collisions.
 **Q2. Why feature stores?**  
 Consistent features online and offline.
 
+## 5. Run the Lab
+
+```bash
+cd day-83-feature-engineering-one-hot-and-hashing
+javac FeatureHashing.java
+java FeatureHashing
+```
+The program prints benchmark tables and finishes with `Day 83 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 6. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
