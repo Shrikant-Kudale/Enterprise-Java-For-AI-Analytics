@@ -15,3 +15,11 @@ d floats per item (e.g. 768 x 4 B = 3 KB).
 1. Compare vectors from the same model/version.
 2. Curse of dimensionality for raw features.
 
+## 4. Interview Q&A
+
+**Q1. Cosine vs L2?**  
+Cosine ignores magnitude; equals L2 on normalised vectors.
+
+**Q2. Why normalise?**  
+Turns cosine into a fast dot product.
+
