@@ -85,3 +85,4 @@
 | 81 | 2026-05-20 | Naive Bayes Text Classifier | done |
 | 82 | 2026-05-21 | Evaluation Metrics: Precision, Recall, AUC | done |
 | 83 | 2026-05-22 | Feature Engineering: One-Hot and Hashing | done |
+| 84 | 2026-05-23 | Embeddings, Cosine Similarity and kNN | done |
