@@ -10,3 +10,8 @@ Embeddings map items to dense vectors where distance = semantic similarity. **Co
 
 d floats per item (e.g. 768 x 4 B = 3 KB).
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Compare vectors from the same model/version.
+2. Curse of dimensionality for raw features.
+
