@@ -15,3 +15,11 @@ Inverted index: term -> posting list of (doc, tf).
 1. Stop words and stemming change scores.
 2. Normalise doc length.
 
+## 4. Interview Q&A
+
+**Q1. Why IDF?**  
+Down-weights common words.
+
+**Q2. BM25 vs TF-IDF?**  
+BM25 saturates tf and normalises length.
+
