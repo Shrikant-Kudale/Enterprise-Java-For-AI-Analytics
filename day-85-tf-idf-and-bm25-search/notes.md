@@ -6,3 +6,7 @@
 
 **TF-IDF** weights a term by frequency in the doc times `log(N/df)` (rare terms matter more). **BM25** adds term-frequency saturation and length normalisation - the default in Lucene/Elasticsearch. Hybrid search blends BM25 with vector similarity.
 
+## 2. Memory Architecture Breakdown
+
+Inverted index: term -> posting list of (doc, tf).
+
