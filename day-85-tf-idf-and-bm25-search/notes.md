@@ -10,3 +10,8 @@
 
 Inverted index: term -> posting list of (doc, tf).
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Stop words and stemming change scores.
+2. Normalise doc length.
+
