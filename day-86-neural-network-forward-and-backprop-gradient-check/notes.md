@@ -10,3 +10,8 @@ Forward pass computes activations; **backpropagation** applies the chain rule la
 
 Backprop stores forward activations (memory ~ depth x batch).
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Use a small epsilon (1e-5..1e-7).
+2. Vanishing/exploding gradients in deep nets.
+
