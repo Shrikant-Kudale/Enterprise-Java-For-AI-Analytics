@@ -87,3 +87,4 @@
 | 83 | 2026-05-22 | Feature Engineering: One-Hot and Hashing | done |
 | 84 | 2026-05-23 | Embeddings, Cosine Similarity and kNN | done |
 | 85 | 2026-05-24 | TF-IDF and BM25 Search | done |
+| 86 | 2026-05-25 | Neural Network Backprop and Gradient Check | done |
