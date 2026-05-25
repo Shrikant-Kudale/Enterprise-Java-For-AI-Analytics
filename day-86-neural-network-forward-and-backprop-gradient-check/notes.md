@@ -15,3 +15,11 @@ Backprop stores forward activations (memory ~ depth x batch).
 1. Use a small epsilon (1e-5..1e-7).
 2. Vanishing/exploding gradients in deep nets.
 
+## 4. Interview Q&A
+
+**Q1. Why gradient check?**  
+Catches backprop bugs.
+
+**Q2. Sigmoid derivative?**  
+p(1-p); for cross-entropy the output gradient is p - y.
+
