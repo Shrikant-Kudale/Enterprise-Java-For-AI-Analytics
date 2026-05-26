@@ -15,3 +15,11 @@ Per-request overhead is amortised across the batch.
 1. Batch wait adds latency.
 2. Cold starts break p99 - warm up.
 
+## 4. Interview Q&A
+
+**Q1. How big a batch?**  
+Largest batch that still meets the p99 budget.
+
+**Q2. Canary vs shadow?**  
+Canary serves a slice of real traffic; shadow mirrors without serving.
+
