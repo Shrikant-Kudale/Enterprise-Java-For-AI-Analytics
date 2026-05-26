@@ -88,3 +88,4 @@
 | 84 | 2026-05-23 | Embeddings, Cosine Similarity and kNN | done |
 | 85 | 2026-05-24 | TF-IDF and BM25 Search | done |
 | 86 | 2026-05-25 | Neural Network Backprop and Gradient Check | done |
+| 87 | 2026-05-26 | Model Serving: Batching and Latency Budgets | done |
