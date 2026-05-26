@@ -10,3 +10,8 @@ Split the SLO into a **latency budget** (network + queue + batch wait + inferenc
 
 Per-request overhead is amortised across the batch.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Batch wait adds latency.
+2. Cold starts break p99 - warm up.
+
