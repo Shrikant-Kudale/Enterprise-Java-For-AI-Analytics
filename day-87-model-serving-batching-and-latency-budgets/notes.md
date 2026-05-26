@@ -6,3 +6,7 @@
 
 Split the SLO into a **latency budget** (network + queue + batch wait + inference + post-processing). With cost `fixed + perItem*batch`, the largest batch within budget maximises throughput. Add warm-up, timeouts, shadow/canary rollouts, and model versioning.
 
+## 2. Memory Architecture Breakdown
+
+Per-request overhead is amortised across the batch.
+
