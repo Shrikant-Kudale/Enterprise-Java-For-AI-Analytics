@@ -6,3 +6,7 @@
 
 Compare conversion rates with a **two-proportion z-test**: `z = (p2-p1)/sqrt(p(1-p)(1/n1+1/n2))`. Decide sample size up front, avoid peeking, check sample-ratio mismatch, and report effect size with confidence intervals. |z|>1.96 ~ p<0.05.
 
+## 2. Memory Architecture Breakdown
+
+Only counts needed: successes and trials per arm.
+
