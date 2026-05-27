@@ -15,3 +15,11 @@ Only counts needed: successes and trials per arm.
 1. Peeking inflates false positives.
 2. Multiple metrics need correction.
 
+## 4. Interview Q&A
+
+**Q1. p-value meaning?**  
+Probability of data this extreme if there were no effect.
+
+**Q2. Why pre-register sample size?**  
+Prevents optional stopping.
+
