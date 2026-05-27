@@ -10,3 +10,8 @@ Compare conversion rates with a **two-proportion z-test**: `z = (p2-p1)/sqrt(p(1
 
 Only counts needed: successes and trials per arm.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Peeking inflates false positives.
+2. Multiple metrics need correction.
+
