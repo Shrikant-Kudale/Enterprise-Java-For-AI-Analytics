@@ -10,3 +10,8 @@ Monitor features and predictions for **drift**. **PSI** = sum((a-e) * ln(a/e)) o
 
 Keep reference histograms from training; compare windows of live traffic.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Empty bins -> add epsilon.
+2. Label drift appears later than feature drift.
+
