@@ -15,3 +15,11 @@ Keep reference histograms from training; compare windows of live traffic.
 1. Empty bins -> add epsilon.
 2. Label drift appears later than feature drift.
 
+## 4. Interview Q&A
+
+**Q1. PSI thresholds?**  
+0.1 and 0.25.
+
+**Q2. Data vs concept drift?**  
+Inputs change vs the input-output relation changes.
+
