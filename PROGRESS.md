@@ -91,3 +91,4 @@
 | 87 | 2026-05-26 | Model Serving: Batching and Latency Budgets | done |
 | 88 | 2026-05-27 | A/B Testing and Statistics | done |
 | 89 | 2026-05-28 | Data Drift: PSI and KS | done |
+| 90 | 2026-05-29 | Mock Coding Round: Drills | done |
