@@ -15,3 +15,11 @@ O(n) time / O(n) space for hash-map and stack solutions.
 1. Empty input.
 2. Duplicates and negative numbers.
 
+## 4. Interview Q&A
+
+**Q1. Two-sum complexity?**  
+O(n) time with a hash map.
+
+**Q2. LRU in Java quickly?**  
+LinkedHashMap(accessOrder=true) + removeEldestEntry.
+
