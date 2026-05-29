@@ -6,3 +6,7 @@
 
 Warm-up set: two-sum (hash map), valid parentheses (stack), LRU (LinkedHashMap with access order). Speak the approach and complexity before coding; test edge cases; then discuss thread-safety and scale.
 
+## 2. Memory Architecture Breakdown
+
+O(n) time / O(n) space for hash-map and stack solutions.
+
