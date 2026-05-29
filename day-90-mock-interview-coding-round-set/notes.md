@@ -10,3 +10,8 @@ Warm-up set: two-sum (hash map), valid parentheses (stack), LRU (LinkedHashMap w
 
 O(n) time / O(n) space for hash-map and stack solutions.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Empty input.
+2. Duplicates and negative numbers.
+
