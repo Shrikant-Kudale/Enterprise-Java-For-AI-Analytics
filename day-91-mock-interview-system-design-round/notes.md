@@ -10,3 +10,8 @@ Back-of-envelope: QPS, in-flight = QPS x latency, replicas = in-flight / concurr
 
 Embedding store: 1B items x 768 dims x 4 B = ~3 TB before replication.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Peak vs average traffic.
+2. Replication and index overhead multiply storage.
+
