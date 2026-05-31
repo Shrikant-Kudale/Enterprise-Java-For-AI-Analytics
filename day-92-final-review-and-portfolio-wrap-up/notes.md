@@ -23,3 +23,18 @@ Pick 3 projects, explain a trade-off and a measured result for each.
 **Q2. What next?**  
 Build one end-to-end AI service and deploy it.
 
+## 5. Run the Lab
+
+```bash
+cd day-92-final-review-and-portfolio-wrap-up
+javac FinalReviewWrapUp.java
+java FinalReviewWrapUp
+```
+The program prints benchmark tables and finishes with `Day 92 OK` only if **every assertion passes** (assertions are plain `if/throw AssertionError` checks, so `-ea` is not required).
+
+## 6. Self-Check Checklist
+
+- [ ] I can explain every section above without looking at it.
+- [ ] I changed one parameter in the benchmark, predicted the result, then measured it.
+- [ ] I can answer each Q&A item in under 90 seconds, out loud.
+- [ ] I broke one assertion on purpose and understood the failure message.
