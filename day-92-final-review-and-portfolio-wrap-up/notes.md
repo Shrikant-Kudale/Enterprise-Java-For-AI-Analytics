@@ -10,3 +10,8 @@ Review plan: redo the weakest five labs from a blank file, re-read every Q&A alo
 
 Spaced repetition: revisit each pillar at +1, +3, +7 days.
 
+## 3. Interview Edge Cases & Pitfalls
+
+1. Do not memorise - explain trade-offs.
+2. Keep the repo runnable with one command.
+
