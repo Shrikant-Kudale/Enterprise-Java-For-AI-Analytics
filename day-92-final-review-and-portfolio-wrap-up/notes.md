@@ -15,3 +15,11 @@ Spaced repetition: revisit each pillar at +1, +3, +7 days.
 1. Do not memorise - explain trade-offs.
 2. Keep the repo runnable with one command.
 
+## 4. Interview Q&A
+
+**Q1. How to present this repo?**  
+Pick 3 projects, explain a trade-off and a measured result for each.
+
+**Q2. What next?**  
+Build one end-to-end AI service and deploy it.
+
